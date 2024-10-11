@@ -434,7 +434,7 @@
     <name>Geo-Coordinates</name>
   </path>
   <path>
-    <id>zeitangaben</id>
+    <id>timespan</id>
     <weight>0</weight>
     <enabled>1</enabled>
     <group_id>0</group_id>
@@ -454,13 +454,13 @@
     <description/>
     <uuid>f683a641-c3a4-49c8-8a48-3267c09e4fba</uuid>
     <is_group>1</is_group>
-    <name>Zeitangaben</name>
+    <name>Timespan</name>
   </path>
   <path>
     <id>appellation_timespan</id>
     <weight>0</weight>
     <enabled>1</enabled>
-    <group_id>zeitangaben</group_id>
+    <group_id>timespan</group_id>
     <bundle>be096a062a0de6444199ba3ce3cdf3cd</bundle>
     <field>faa5d353e01babfcbdeed0f0ff62c2ae</field>
     <fieldtype>string</fieldtype>
@@ -485,7 +485,7 @@
     <id>start_timespan</id>
     <weight>1</weight>
     <enabled>1</enabled>
-    <group_id>zeitangaben</group_id>
+    <group_id>timespan</group_id>
     <bundle>be096a062a0de6444199ba3ce3cdf3cd</bundle>
     <field>fef8cd878a89531b5d0f8f0614574cf6</field>
     <fieldtype>timestamp</fieldtype>
@@ -508,7 +508,7 @@
     <id>end_timespan</id>
     <weight>2</weight>
     <enabled>1</enabled>
-    <group_id>zeitangaben</group_id>
+    <group_id>timespan</group_id>
     <bundle>be096a062a0de6444199ba3ce3cdf3cd</bundle>
     <field>f6278d27a096f914377774a4dea2918c</field>
     <fieldtype>timestamp</fieldtype>
