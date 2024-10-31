@@ -1,7 +1,7 @@
 TIPSY ("the software") is an advanced inspector for Pathbuilders produced by the [WissKI](https://wiss-ki.eu) software.
 The current version you are using exists for demo purposes only.
 It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
-It is explicitly <b>not</b> tested on Chromium based browsers, and some functionality is unavailable.
+It is explicitly <b>not</b> tested on Chrome and Chromium-based browsers, and some functionality is unavailable.
 
 It is made available to you free of charge given you comply with the following terms and conditions:
 

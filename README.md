@@ -4,7 +4,7 @@ This repository contains TIPSY, an advanced inspector for Pathbuilders produced 
 This source code is made available for evaluation purposes only.
 
 It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
-It is explicitly <b>not</b> tested on Chromium based browsers, and some functionality may not be available.
+It is explicitly <b>not</b> tested on Chrome and Chromium-based browsers, and some functionality may not be available.
 
 See [banner.md](docs/banner.md) for more information about licensing terms.
 
