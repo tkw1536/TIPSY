@@ -1,0 +1,4 @@
+.copyable {
+  -webkit-user-select: all;
+  user-select: all;
+}

@@ -19,19 +19,9 @@ For a more thorough introduction to to those topics please refer to the WissKI D
 
 ## Legal Notices
 
-The TIPSY project is entirely open source and it's source code can be found on GitHub [^4]. 
-
-**Even though you may inspect the source code to your heart's content, TIPSY (currently) does not have a license. This means that you may not publicly perform, create derivative works of or distribute this code . In particular you are not granted a license to use this code to create visualizations of your own pathbuilders.**
-
-This app makes use of several JavaScript libraries. Some of these require that attribution is given to their authors. You can look at these notices below.
-
-<details>
-    <summary>Attribution Notices</summary>
-
-<Legal>(the app will include legal notices here)</Legal>
-
-</details>
-
+<Banner>
+(the app will include <code>banner.md</code> here)
+</Banner>
 
 ## Interface Documentation
 

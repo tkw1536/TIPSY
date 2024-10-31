@@ -3,7 +3,9 @@ import generateDisclaimer from '../../macros/disclaimer' with { type: 'macro' }
 import markdownDocument from '../../macros/markdown' with { type: 'macro' }
 import UnClosableModal from './layout/banner'
 import HTML from './html'
-import { useCallback, useState } from 'preact/hooks'
+import { useCallback, useRef, useState } from 'preact/hooks'
+import { classes } from '../lib/utils/classes'
+import * as styles from './legal.module.css'
 
 const disclaimer = generateDisclaimer()
 
@@ -12,17 +14,9 @@ export default function Legal(): VNode<any> {
     <>
       <p>
         While the code to this project is open source and you may inspect it to
-        your heart's content, it (currently) does not have a license. This means
-        that you may not run, create derivative works of or distribute this code
-        (except for what is explicitly permitted by{' '}
-        <a
-          href='https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#5-license-grant-to-other-users'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Section 5 of GitHub terms of service
-        </a>
-        ). In particular you are not granted a license to use this code to
+        your heart's content, it does not have a license. This means that you
+        may not publicly perform, create derivative works of or distribute this
+        code. In particular you are not granted a license to use this code to
         create visualizations of your own pathbuilders. If you would like to
         acquire a license to use this software, please contact us.
       </p>
@@ -44,6 +38,37 @@ export function LegalDisclaimer(): VNode<any> {
     <pre>
       <code>{disclaimer}</code>
     </pre>
+  )
+}
+
+function Copyable(props: { children: VNode[] }): VNode {
+  const ref = useRef<HTMLSpanElement>(null)
+  const handleClick = useCallback(() => {
+    const { current } = ref
+    if (current === null) {
+      throw new Error('never reached')
+    }
+    const { innerHTML, innerText } = current
+
+    navigator.clipboard
+      .write([
+        new ClipboardItem({
+          'text/plain': new Blob([innerText], { type: 'text/plain' }),
+          'text/html': new Blob([innerHTML], { type: 'text/html' }),
+        }),
+      ])
+      .then(
+        () => {},
+        err => {
+          console.error('Unable to copy to clipboard: ', err)
+        },
+      )
+  }, [])
+
+  return (
+    <span class={classes(styles.copyable)} ref={ref} onClick={handleClick}>
+      {props.children}
+    </span>
   )
 }
 
@@ -81,14 +106,23 @@ export function LegalModal(props: {
       buttonText='I Understand And Agree To These Terms'
     >
       <p>
-        <HTML
-          html={bannerHTML}
-          trim={false}
-          noContainer
-          components={{ Legal: LegalDisclaimer }}
-        />
+        <h1>
+          TIPSY - Tom's Inspector for Pathbuilders <sub>Yaaaaaahs!</sub>
+        </h1>
+        <BannerContents />
       </p>
     </UnClosableModal>
+  )
+}
+
+export function BannerContents(): VNode {
+  return (
+    <HTML
+      html={bannerHTML}
+      trim={false}
+      noContainer
+      components={{ Legal: LegalDisclaimer, Copyable }}
+    />
   )
 }
 

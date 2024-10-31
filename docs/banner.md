@@ -1,5 +1,3 @@
-# TIPSY - Tom's Inspector for Pathbuilders <sub>Yaaaaaahs!</sub>
-
 TIPSY ("the software") is an advanced inspector for Pathbuilders produced by the [WissKI](https://wiss-ki.eu) software.
 The current version you are using exists for demo purposes only.
 It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
@@ -10,7 +8,11 @@ It is made available to you free of charge given you comply with the following t
 TIPSY provides functionality to export the created visualizations.
 You are granted a license to use the exported visualizations, provided you add the following attribution notice to any document, presentation, poster, image or other medium in which it appears:
 
-<code>Created with <em>TIPSY</em> provided by <em>Tom Wiesing</em> available at <a href="https://tipsy.guys.wtf/">https://tipsy.guys.wtf</a>.</code>
+<code>
+    <Copyable>
+        Created with <em>TIPSY</em> provided by <em>Tom Wiesing</em> available at <a href="https://tipsy.guys.wtf/">https://tipsy.guys.wtf</a>.
+    </Copyable>
+</code>
 
 You also agree to only use the visualizations created by TIPSY by using built-in export functionality, and not using tools such as screenshots. 
 This clause does not apply if you chose to show the entirety of the TIPSY user interface (including header and footer), for example during screen sharing sessions and the like.

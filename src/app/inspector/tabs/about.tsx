@@ -1,5 +1,5 @@
 import { type JSX } from 'preact'
-import { LegalDisclaimer } from '../../../components/legal'
+import { BannerContents } from '../../../components/legal'
 
 import HTML from '../../../components/html'
 import markdownDocument from '../../../../macros/markdown' with { type: 'macro' }
@@ -12,7 +12,7 @@ export default function DocsTab(): JSX.Element {
       narrow
       html={html}
       trim={false}
-      components={{ Legal: LegalDisclaimer }}
+      components={{ Banner: BannerContents }}
     />
   )
 }
