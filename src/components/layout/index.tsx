@@ -47,7 +47,7 @@ export default function Layout(props: {
           Source Code
         </a>
         .{` `}
-        Version: {` `}
+        TIPSY Version: {` `}
         <code>{VERSION_INFO}</code>
       </footer>
     </>

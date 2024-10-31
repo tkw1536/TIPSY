@@ -1,16 +1,12 @@
 # TIPSY - Tom's Inspector for Pathbuilders <sub>Yaaaaaahs!</sub>
 
 This repository contains TIPSY, an advanced inspector for Pathbuilders produced by the [WissKI](https://wiss-ki.eu) software.
-It is a work in progress, and made available for evaluation purposes only.
+This source code is made available for evaluation purposes only.
 
-<b>
-While the code to this project is open source and you may inspect it to your heart's content, this repository (currently) does not have a license. 
-This means that you may not run, create derivative works of or distribute this code.
+It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
+It is explicitly <b>not</b> tested on Chromium based browsers, and some functionality may not be available.
 
-In particular you are __not__ granted a license to use this code to create visualizations of your own pathbuilders for publications.
-
-You may only use this tool in non-chromium-based browsers, such as [Firefox](https://www.mozilla.org/en-US/firefox/new/) (or Safari if you must). 
-</b>
+See [banner.md](docs/banner.md) for more information about licensing terms.
 
 ## User-facing Documentation
 
@@ -101,6 +97,6 @@ The individual scripts each come with an appropriate `--help` argument for detai
 
 ## LICENSE
 
-None yet, see warning above.
+None, see warning above.
 
 <!-- spellchecker:words HTMLIFrameElement pathbuilderinterface -->

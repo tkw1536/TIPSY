@@ -95,6 +95,9 @@ export function LegalModal(props: {
 const skipBrowserCheckEnv = import.meta.env.VITE_SKIP_ALLOWED_BROWSER_CHECK
 const skipBrowserCheck =
   typeof skipBrowserCheckEnv === 'string' && skipBrowserCheckEnv !== ''
+export const IsAllowedBrowser = skipBrowserCheck
+  ? true
+  : !('chrome' in globalThis)
 
 /**
  * Checks if the browser is allowed to use this software.
@@ -102,14 +105,12 @@ const skipBrowserCheck =
  * If not, returns false and {@link window.alert}s the user.
  */
 function isAllowedBrowser(): boolean {
-  if (skipBrowserCheck) {
-    return true
-  }
-  if ('chrome' in globalThis) {
-    alert(
-      'RTFM: You MAY NOT use this in Chromium-based browsers. Use Firefox. ',
+  if (!IsAllowedBrowser) {
+    return (
+      confirm(
+        'You are using a Chromium-based browser. Please be aware that export functionality is not be available, and per the licensing terms you may not take screenshots. ',
+      ) ?? false
     )
-    return false
   }
 
   return true
