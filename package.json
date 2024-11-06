@@ -28,7 +28,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.34.4",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "happy-dom": "^15.6.1",
+    "happy-dom": "^15.10.1",
     "marked": "^14.1.0",
     "marked-footnote": "^1.2.3",
     "prettier": "^3.3.3",
