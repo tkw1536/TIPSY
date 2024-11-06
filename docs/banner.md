@@ -10,7 +10,7 @@ You are granted a license to use the exported visualizations, provided you add t
 
 <code>
     <Copyable>
-        Created with <em>TIPSY</em> provided by <em>Tom Wiesing</em> available at <a href="https://tipsy.guys.wtf/">https://tipsy.guys.wtf</a>.
+        Created with <a href="https://tipsy.guys.wtf/">TIPSY</a> provided by <em>Tom Wiesing</em>.
     </Copyable>
 </code>
 
