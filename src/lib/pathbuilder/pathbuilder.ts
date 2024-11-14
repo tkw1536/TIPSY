@@ -159,8 +159,11 @@ export class Pathbuilder {
     const paths: Path[] = []
     const extraNodes = Array.from(node.childNodes).map((node, index) => {
       if (node.nodeType === node.ELEMENT_NODE && node.nodeName === 'path') {
-        paths.push(Path.fromNode(node as Element))
-        return null
+        const path = Path.fromNode(node as Element)
+        if (path !== null) {
+          paths.push(path)
+          return null
+        }
       }
       return node.cloneNode(true)
     })
@@ -409,9 +412,20 @@ export class Path {
       })
   }
 
-  static fromNode(node: Element): Path {
+  /**
+   * Parses a <path> node into a Path object.
+   * If not a well-formed path node, throws an error.
+   * If an empty path node (<path />), returns null.
+   */
+  static fromNode(node: Element): Path | null {
+    // if we don't have a <path>, that's an error
     if (node.nodeName !== 'path') {
       throw new Error(`expected a <path>, but got a <${node.nodeName}>`)
+    }
+
+    // if we have an empty node, return null
+    if (node.childNodes.length === 0) {
+      return null
     }
 
     const p = this.#parseValue.bind(this, node) as <T>(
