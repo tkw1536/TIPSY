@@ -159,8 +159,17 @@ export class Pathbuilder {
     const paths: Path[] = []
     const extraNodes = Array.from(node.childNodes).map((node, index) => {
       if (node.nodeType === node.ELEMENT_NODE && node.nodeName === 'path') {
-        paths.push(Path.fromNode(node as Element))
-        return null
+        try {
+          paths.push(Path.fromNode(node as Element))
+          return null
+        } catch (err: unknown) {
+          const xml = new XMLSerializer().serializeToString(node)
+          console.warn(
+            'unable to parse <path> node, treating as transparent node',
+            err,
+            xml,
+          )
+        }
       }
       return node.cloneNode(true)
     })
