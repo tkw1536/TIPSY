@@ -91,14 +91,7 @@ describe(Path, async () => {
 
     // clone all the paths
     const doc = new DOMImplementation().createDocument(null, null, null)
-    const clones = paths
-      .map(p => Path.fromNode(p.toXML(doc)))
-      .filter((n): n is Path => {
-        if (n === null) {
-          throw new Error('fromNode returned null')
-        }
-        return true
-      })
+    const clones = paths.map(p => Path.fromNode(p.toXML(doc)))
 
     // expect clones to be equal to the original
     paths.forEach((path, i) => {
