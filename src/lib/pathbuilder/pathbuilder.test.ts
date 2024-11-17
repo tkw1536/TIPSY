@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import { Path, Pathbuilder, type PathParams } from './pathbuilder'
 import { readFixture, readFixtureJSON } from '../utils/test/fixture'
-import { DOMImplementation } from '@xmldom/xmldom'
+import { DOMImplementation, MIME_TYPE, DOMParser } from '@xmldom/xmldom'
 
 const sampleJSON = await readFixtureJSON<PathParams[]>(
   'pathbuilder',
@@ -31,6 +31,32 @@ describe(Pathbuilder, async () => {
   test('round-trips parsing xml correctly', async () => {
     const roundTrip = Pathbuilder.parse(samplePB.toXML())
     expect(roundTrip).toEqual(samplePB)
+  })
+
+  test('parses xml with an empty <path /> node transparently', async () => {
+    const xml = await readFixture('pathbuilder', 'empty_path.xml')
+
+    // parse it into a pathbuilder
+    const pb = Pathbuilder.parse(xml)
+    expect(pb.paths.length).toEqual(1)
+
+    // find the paths elements in the round tripped document
+    const xmlRT = new DOMParser().parseFromString(
+      pb.toXML(),
+      MIME_TYPE.XML_TEXT,
+    )
+    const paths = xmlRT.childNodes.item(1).childNodes
+    expect(paths.length).toEqual(5)
+
+    // regular <path> node
+    // (exactly tested in other code)
+    expect(paths.item(1).nodeName).toBe('path')
+    expect(paths.item(1).childNodes.length).toBe(19)
+
+    // empty <path />
+    // passed through from the input
+    expect(paths.item(3).nodeName).toBe('path')
+    expect(paths.item(3).childNodes.length).toBe(0)
   })
 })
 
