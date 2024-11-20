@@ -65,7 +65,7 @@ All tabs ignore disabled paths.
 
 ## The Tree Tab
 
-The Tree Tab shows the pathbuilder as a hierarchical structure: A set of bundles and field associated with them.
+The Tree Tab shows the pathbuilder as a hierarchical structure: A set of bundles and fields associated with them.
 It is similar, although not quite identical, to the pathbuilder overview in WissKI.
 
 In the main panel, each path is represented as a table row.
