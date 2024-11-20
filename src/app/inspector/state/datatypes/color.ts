@@ -7,12 +7,14 @@ import {
 
 export enum ColorPreset {
   OrangeAndGray = 'Orange And Gray',
+  OnePerMainBundle = 'One Color Per Main Bundle',
   OnePerBundle = 'One Color Per Bundle',
 }
 
 export const colorPresets: ColorPreset[] = [
   ColorPreset.OrangeAndGray,
   ColorPreset.OnePerBundle,
+  ColorPreset.OnePerMainBundle,
 ]
 
 export function applyColorPreset(
@@ -22,6 +24,8 @@ export function applyColorPreset(
   switch (preset) {
     case ColorPreset.OnePerBundle:
       return colorPerBundlePreset(node)
+    case ColorPreset.OnePerMainBundle:
+      return colorPerMainBundlePreset(node)
     default:
       return bluePreset(node)
   }
@@ -56,6 +60,37 @@ function colorPerBundlePreset(root: PathTreeNode): ColorMap {
       }
       map.set(node.path.id, parentColor)
     }
+  }
+
+  return new ColorMap(ColorMap.globalDefault, map)
+}
+
+function colorPerMainBundlePreset(root: PathTreeNode): ColorMap {
+  const map = new Map<string, string>()
+  const bundleColors = new Map<string, string>()
+
+  let index = 0
+  for (const node of root.walk()) {
+    // grab the corresponding main bundle
+    const bundle = node.mainBundle
+    if (bundle === null) {
+      continue
+    }
+
+    // get or set the color of the main bundle
+    const id = bundle.path.id
+    let color = bundleColors.get(id)
+    if (typeof color !== 'string') {
+      color = colorOf(index++)
+      bundleColors.set(id, color)
+    }
+
+    // set the color of the path
+    const { path } = node
+    if (path === null) {
+      continue
+    }
+    map.set(path.id, color)
   }
 
   return new ColorMap(ColorMap.globalDefault, map)
