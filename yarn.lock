@@ -4861,45 +4861,45 @@ undici@^5.21.2:
   dependencies:
     "@fastify/busboy" "^2.0.0"
 
-unplugin-parcel-macros-darwin-arm64@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-darwin-arm64/-/unplugin-parcel-macros-darwin-arm64-0.0.3.tgz#dda9acd545b772d3c6740f4e84573ec83247de81"
-  integrity sha512-5m0013/JQkhON4PaTJrOe1c6GCQWRMpPeNvn1n4zGLrPh2lTN6P/S8ZMkP06zg7cQ2YlIs4l8BIIOPdhByuK8A==
+unplugin-parcel-macros-darwin-arm64@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-darwin-arm64/-/unplugin-parcel-macros-darwin-arm64-0.1.1.tgz#080668691538b65bdb8f0cfdf54dd99c32ea0718"
+  integrity sha512-+kFEdpo+rRoE+sZotZoLa0N/eTY4U7sxwbiNPi+FcM0HNvPsMcvlQTmkgekoiW02rBeD/kxoFXG+ZGhLi40Z7w==
 
-unplugin-parcel-macros-darwin-x64@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-darwin-x64/-/unplugin-parcel-macros-darwin-x64-0.0.3.tgz#e6eb092a2d75ca5688232895b45408de013d80f9"
-  integrity sha512-xIAD97nZr2I03d5Xjb/9iC6ZK6wWLF6V2/TMQJKEF3fcTbJPnHHCRwyvDccXTxrQvwlSrcFgCxHDgZDxbCTxng==
+unplugin-parcel-macros-darwin-x64@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-darwin-x64/-/unplugin-parcel-macros-darwin-x64-0.1.1.tgz#2ede68846deeba64fda35b3c9a6ddc51c67f3368"
+  integrity sha512-IYvpoUYONVC2DxiAaZJBEW45ZQ6t1EpyzvCGW+142SxGxDzHv5/y308y0DEbpx6RXHdVDt7A5VdNNmhVahfdeA==
 
-unplugin-parcel-macros-linux-arm64-gnu@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-arm64-gnu/-/unplugin-parcel-macros-linux-arm64-gnu-0.0.3.tgz#e42f4c305765e908b20b494036eac92ef76ef4ec"
-  integrity sha512-2W10eBu78+lM0t5X5mjvONQjTVjYmJArLyt9t5PplJSDFWDM0jV6KBh1bpeTaStd1C65MSa+wWB/FN6wx16ZlQ==
+unplugin-parcel-macros-linux-arm64-gnu@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-arm64-gnu/-/unplugin-parcel-macros-linux-arm64-gnu-0.1.1.tgz#f88fa3673047a2b3eab4d8c60cdd9e0c084ab490"
+  integrity sha512-mCel+qhqo45qsfIzKEwrWGJB6LYrVlLIneDxhbLl5Wsjsuo1kNKjaxVOKLOxhi1sSXsostZ/I5W+b2nowsMzUA==
 
-unplugin-parcel-macros-linux-arm64-musl@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-arm64-musl/-/unplugin-parcel-macros-linux-arm64-musl-0.0.3.tgz#f7a71dcdf08385174e9e8f581c96c11883d967e2"
-  integrity sha512-SkeZcoGvdSJM9MzA9olVV+gT6IllRXZgRy6zhG+7RQ/l2NMojr924cUBs7RpGot5wQj4Yy3aXzVxg7jXIRm6cw==
+unplugin-parcel-macros-linux-arm64-musl@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-arm64-musl/-/unplugin-parcel-macros-linux-arm64-musl-0.1.1.tgz#fb1d17c475922cd7d2882c14f458453b47223607"
+  integrity sha512-G3EmXNDm1hQUQY6XVtfAcJNTnW7A+nal5l2eHVh/es6T76oDtylXuqAqXoORzbFRD2FmiDuYkATNSMz0aO+szQ==
 
-unplugin-parcel-macros-linux-x64-gnu@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-x64-gnu/-/unplugin-parcel-macros-linux-x64-gnu-0.0.3.tgz#da5f3bbce63b3a0a41f1cbd02f38e422c2fe2a20"
-  integrity sha512-JmAHiOLFcWgkWOh62peq7zJ4SQwBgbv+brtRNU1q2AHqN4gSZ+70UyITCvs93UE1K4REjifYESG1Ht5nEcEklQ==
+unplugin-parcel-macros-linux-x64-gnu@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-x64-gnu/-/unplugin-parcel-macros-linux-x64-gnu-0.1.1.tgz#611f67599329e6b0f30f7b5fe8357322dd3c09e2"
+  integrity sha512-Zw7c02vqs4Tkmxuhv6g1Jy8yJiQOvIDM1FROFOtMx8txY4KuRu44sEp4qM8JPHpEEVE0ts3W1DUEnRi8oXIRcg==
 
-unplugin-parcel-macros-linux-x64-musl@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-x64-musl/-/unplugin-parcel-macros-linux-x64-musl-0.0.3.tgz#d97941b7b4f2379bd52c84dbbc0188d90a8c6a82"
-  integrity sha512-gMHeKzFAMs70dKFUI0L/L6i1kGT8IEJcTmxv5LDJCbvTLM9lYntiyapus7jJOQL/8GTX142jcmTVnAx6drAJCw==
+unplugin-parcel-macros-linux-x64-musl@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-linux-x64-musl/-/unplugin-parcel-macros-linux-x64-musl-0.1.1.tgz#4992cdf02d7b8784b2898e676bcaab23b455c026"
+  integrity sha512-bYynQvRdt3Ftp6KEGRwgPVFvgZceFfAw6uWKPi/2Stfht4eesMx3DdngKg9tblnSn3iFhrCR1ICW1UwcsrA8Fg==
 
-unplugin-parcel-macros-win32-x64-msvc@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-win32-x64-msvc/-/unplugin-parcel-macros-win32-x64-msvc-0.0.3.tgz#2b3fcf13a8a72bbe6c7b9336e715184656ef68a7"
-  integrity sha512-AnvsxKq+Jho6phf0yTeyaiLl8aX/qgQNS6uiIUpTCbeAg/WzfTjqfqd4qa1HG5Z6mY/Qcq2kpc2mXjqhk7qEQg==
+unplugin-parcel-macros-win32-x64-msvc@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros-win32-x64-msvc/-/unplugin-parcel-macros-win32-x64-msvc-0.1.1.tgz#885142aa8c65171400ff21b867c82177778e24b4"
+  integrity sha512-1ub2kCy2OZqo3hO9KhU06sFuXRQmLlYZNY6iK+c8NHnzOQRK4W9NDIk3cV49bptUmZ9WK9YgDHTtyJ2Ee/94LA==
 
-unplugin-parcel-macros@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros/-/unplugin-parcel-macros-0.0.3.tgz#130803efc2e68d7a118b0d031c74f684036e9bea"
-  integrity sha512-4JBJ/6cF6Yb9ruLH/FkOSOJw7TF5q2oVpn6YZN4C5MujZeacAubew/Q0KqHQAGg3K9ISYLW8yyxARKzGBZnwZg==
+unplugin-parcel-macros@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/unplugin-parcel-macros/-/unplugin-parcel-macros-0.1.1.tgz#f665cc3a1596b2d25891b017ee8bdd68a9e627e4"
+  integrity sha512-tyiplFstmSFKvkZLqkYz9A6ClNV0M0yXNktsmcXkzJKdJxNxzXJC1Mqt/xocKcLy7QWHT9mBttm1oiXLa0o+Ow==
   dependencies:
     "@parcel/core" "^2.12.0"
     "@parcel/fs" "^2.12.0"
@@ -4907,13 +4907,13 @@ unplugin-parcel-macros@^0.0.3:
     "@parcel/source-map" "^2.1.1"
     unplugin "^1.9.0"
   optionalDependencies:
-    unplugin-parcel-macros-darwin-arm64 "0.0.3"
-    unplugin-parcel-macros-darwin-x64 "0.0.3"
-    unplugin-parcel-macros-linux-arm64-gnu "0.0.3"
-    unplugin-parcel-macros-linux-arm64-musl "0.0.3"
-    unplugin-parcel-macros-linux-x64-gnu "0.0.3"
-    unplugin-parcel-macros-linux-x64-musl "0.0.3"
-    unplugin-parcel-macros-win32-x64-msvc "0.0.3"
+    unplugin-parcel-macros-darwin-arm64 "0.1.1"
+    unplugin-parcel-macros-darwin-x64 "0.1.1"
+    unplugin-parcel-macros-linux-arm64-gnu "0.1.1"
+    unplugin-parcel-macros-linux-arm64-musl "0.1.1"
+    unplugin-parcel-macros-linux-x64-gnu "0.1.1"
+    unplugin-parcel-macros-linux-x64-musl "0.1.1"
+    unplugin-parcel-macros-win32-x64-msvc "0.1.1"
 
 unplugin@^1.9.0:
   version "1.12.2"
