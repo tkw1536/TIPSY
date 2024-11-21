@@ -89,7 +89,14 @@ The side panel also holds buttons to select `All`, `None`, only `Bundles` or onl
 These buttons overwrite any previously made selections.
 
 Each path can be given a color to be used in the Graph Displays using a color input.
+
 Four presets can be applied via the side panel.
+- `Orange And Gray`: Assigns bundles the color `orange`, and fields the color `gray`. This is the default. 
+- `Per Main Bundle`: Assigns a unique color to each path based on the main bundle it belongs to.
+- `Per Bundle`: Assigns a unique color to each path based on the bundle it belongs to.
+- `Per Path`: Assigns each path a unique color.
+Unique colors are generated automatically by using the golden ratio within the HSV color scheme. 
+
 The side panel also allows exporting and importing the colors as a json file.
 
 ## The Namespace Map Tab
