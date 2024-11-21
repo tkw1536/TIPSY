@@ -10,12 +10,12 @@ Here the ontology used is the conceptual reference model developed by the intern
 
 <!-- spellchecker:words upreme nspector athbuilder aaaaaahs -->
 **T**om's **I**nspector for **P**athbuilder**s** **Y**aaaaaahs!, or TIPSY for short, is a tool adjacent to WissKI. 
-Its' goal is to inspect and visualize pathbuilders[^2].
+Its' goal is to inspect and visualize pathbuilders.
 It was built in 2024 by Tom Wiesing to improve on the WissKI interface. 
 
 This document is meant to provide generic information about the functionality of the TIPSY tool.
 It assumes basic knowledge about pathbuilders and the WissKI software. 
-For a more thorough introduction to to those topics please refer to the WissKI Documentation at [^3]. 
+For a more thorough introduction to to those topics please refer to the WissKI Documentation at [^2]. 
 
 ## Legal Notices
 
@@ -95,7 +95,7 @@ Four presets can be applied via the side panel.
 - `Per Main Bundle`: Assigns a unique color to each path based on the main bundle it belongs to.
 - `Per Bundle`: Assigns a unique color to each path based on the bundle it belongs to.
 - `Per Path`: Assigns each path a unique color.
-Unique colors are generated automatically by using the golden ratio within the HSV color scheme. 
+Unique colors are generated automatically by using the golden ratio within the HSV color scheme [^3]. 
 
 The side panel also allows exporting and importing the colors as a json file.
 
@@ -140,7 +140,7 @@ After selecting a renderer, a layout can also be chosen.
 
 Some layouts involve randomness in the initial node positions.
 For this purpose, a random `Seed` can be specified, or randomized.
-This is used to initialize an appropriate PRNG [^5].
+This is used to initialize an appropriate PRNG [^4].
 Not all renderers and layouts make use of the seed, and the graph layout make look identical despite choosing a different seed.
 
 Some renderers do not produce a static graph layout; instead they use a physics simulation to progressively animate the node positions.
@@ -197,7 +197,7 @@ In addition, the model graph overlays the model nodes with the location of each 
 Fields are split into `Data Fields` (those at a literal node that have a `Datatype Property`) and `Concept Fields` (those at a concept node).
 Each of these can be toggled off individually in the `Display` control.
 
-By default these annotations are associated with the corresponding concept or literal node using a box [^6].
+By default these annotations are associated with the corresponding concept or literal node using a box [^5].
 Then, each annotation is given the color selected in the `Tree` Tab.
 For concepts and literals, the boxes around these annotations can be toggled on or off, allowing the renderers layout to position the nodes more freely.
 The new positioning is only applied once the node positions are reset using the `Reset` button in the `Renderer` control.
@@ -212,10 +212,9 @@ Most important means the path with the fewest number of descendants, or (if seve
 Contains this document. 
 
 [^1]: https://wiss-ki.eu/
-[^2]: A future version of TIPSY may allow editing of Pathbuilders; in such a case this document will be updated.
-[^3]: https://wiss-ki.eu/documentation
-[^4]: https://github.com/tkw1536/TIPSY
-[^5]: https://en.wikipedia.org/wiki/Pseudorandom_number_generator
-[^6]: Not all renderers support boxes.
+[^2]: https://wiss-ki.eu/documentation
+[^3]: https://en.wikipedia.org/wiki/HSL_and_HSV
+[^4]: https://en.wikipedia.org/wiki/Pseudorandom_number_generator
+[^5]: Not all renderers support boxes.
 
 <!-- spellchecker:words PRNG -->
