@@ -1,20 +1,18 @@
 import ColorMap from '../../../../lib/pathbuilder/annotations/colormap'
-import {
-  Bundle,
-  Field,
-  type PathTreeNode,
-} from '../../../../lib/pathbuilder/pathtree'
+import { Field, type PathTreeNode } from '../../../../lib/pathbuilder/pathtree'
 
 export enum ColorPreset {
   OrangeAndGray = 'Orange And Gray',
-  OnePerMainBundle = 'One Color Per Main Bundle',
-  OnePerBundle = 'One Color Per Bundle',
+  OnePerMainBundle = 'Per Main Bundle',
+  OnePerBundle = 'Per Bundle',
+  OnePerPath = 'Per Path',
 }
 
 export const colorPresets: ColorPreset[] = [
   ColorPreset.OrangeAndGray,
-  ColorPreset.OnePerBundle,
   ColorPreset.OnePerMainBundle,
+  ColorPreset.OnePerBundle,
+  ColorPreset.OnePerPath,
 ]
 
 export function applyColorPreset(
@@ -26,6 +24,8 @@ export function applyColorPreset(
       return colorPerBundlePreset(node)
     case ColorPreset.OnePerMainBundle:
       return colorPerMainBundlePreset(node)
+    case ColorPreset.OnePerPath:
+      return colorPerPath(node)
     default:
       return bluePreset(node)
   }
@@ -43,46 +43,60 @@ function colorOf(index: number): string {
   )
 }
 
+/**
+ * Assigns one color per bundle
+ */
 function colorPerBundlePreset(root: PathTreeNode): ColorMap {
-  const map = new Map<string, string>()
-  let index = 0
-  for (const node of root.walk()) {
-    if (node instanceof Bundle) {
-      map.set(node.path.id, colorOf(index++))
-      continue
-    }
-
-    if (node instanceof Field) {
-      const parentColor = map.get(node.parent.path.id)
-      if (typeof parentColor === 'undefined') {
-        map.set(node.path.id, colorOf(index++))
-        continue
-      }
-      map.set(node.path.id, parentColor)
-    }
-  }
-
-  return new ColorMap(ColorMap.globalDefault, map)
+  return colorPerAssocPreset(root, node =>
+    node instanceof Field ? node.parent.path.id : node.path?.id,
+  )
 }
 
+/**
+ * Assigns one color per main bundle
+ * @param root
+ * @returns
+ */
 function colorPerMainBundlePreset(root: PathTreeNode): ColorMap {
+  return colorPerAssocPreset(root, node => node.mainBundle?.path.id)
+}
+
+/**
+ * Assigns one color per path
+ * @param root
+ * @returns
+ */
+function colorPerPath(root: PathTreeNode): ColorMap {
+  return colorPerAssocPreset(root, node => node.path?.id)
+}
+
+/**
+ * colorPerAssocPreset generates one color per "association".
+ * the {@param assoc} function is called for each node.
+ *
+ * When two nodes return the same string value, they are given the same color.
+ * When it returns undefined, no color is assigned to the node.
+ */
+function colorPerAssocPreset(
+  root: PathTreeNode,
+  assoc: (node: PathTreeNode) => string | undefined,
+): ColorMap {
   const map = new Map<string, string>()
-  const bundleColors = new Map<string, string>()
+  const colors = new Map<string, string>()
 
   let index = 0
   for (const node of root.walk()) {
-    // grab the corresponding main bundle
-    const bundle = node.mainBundle
-    if (bundle === null) {
+    // grab the corresponding association
+    const id = assoc(node)
+    if (typeof id !== 'string') {
       continue
     }
 
-    // get or set the color of the main bundle
-    const id = bundle.path.id
-    let color = bundleColors.get(id)
+    // get or set the color of the id
+    let color = colors.get(id)
     if (typeof color !== 'string') {
       color = colorOf(index++)
-      bundleColors.set(id, color)
+      colors.set(id, color)
     }
 
     // set the color of the path

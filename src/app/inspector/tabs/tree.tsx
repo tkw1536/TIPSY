@@ -217,6 +217,11 @@ function ColorMapControl(): JSX.Element {
       </p>
 
       <p>
+        Use the below presets to assign colors to all nodes or manually pick on
+        the right.{' '}
+      </p>
+
+      <p>
         <ButtonGroup>
           {colorPresets.map(preset => (
             <Button value={preset} key={preset} onInput={handleColorPreset}>

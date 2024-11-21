@@ -89,7 +89,7 @@ The side panel also holds buttons to select `All`, `None`, only `Bundles` or onl
 These buttons overwrite any previously made selections.
 
 Each path can be given a color to be used in the Graph Displays using a color input.
-Three presets can be applied via the side panel.
+Four presets can be applied via the side panel.
 The side panel also allows exporting and importing the colors as a json file.
 
 ## The Namespace Map Tab
