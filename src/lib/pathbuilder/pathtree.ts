@@ -304,7 +304,7 @@ export abstract class PathTreeNode {
   get mainBundle(): Bundle | null {
     let current = this instanceof Bundle ? this : this.parent
     while (current instanceof Bundle) {
-      if (current.isMainBundle) {
+      if (current.isMain) {
         return current
       }
       current = current.parent
@@ -495,7 +495,7 @@ export class Bundle extends PathTreeNode {
   }
 
   /** checks if this bundle is a mainBundle */
-  get isMainBundle(): boolean {
+  get isMain(): boolean {
     return this.depth === 1
   }
 

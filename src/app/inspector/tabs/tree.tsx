@@ -370,7 +370,7 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
     <td class={styles.tree_level}></td>,
   )
 
-  const isMainBundle = node instanceof Bundle && node.depth === 1
+  const isMainBundle = node instanceof Bundle && node.isMain
 
   return (
     <tr class={classes(isMainBundle && styles.main_bundle)}>

@@ -217,7 +217,7 @@ describe(PathTree, async () => {
       throw new Error('test case: missing bundle ' + tBundle)
     }
 
-    expect(bundle.isMainBundle).toBe(want)
+    expect(bundle.isMain).toBe(want)
   })
 
   test.each([
