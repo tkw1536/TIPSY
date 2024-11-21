@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import { Pathbuilder } from './pathbuilder'
 import { readFixture } from '../utils/test/fixture'
-import { PathTree, type PathTreeNode } from './pathtree'
+import { Bundle, PathTree, type PathTreeNode } from './pathtree'
 
 const samplePB = Pathbuilder.parse(
   await readFixture('pathbuilder', 'sample.xml'),
@@ -170,7 +170,6 @@ describe(PathTree, async () => {
     ])
     expect(Array.from(got)).toEqual(Array.from(want))
   })
-
   test('tree navigation works', () => {
     const checkParentRelation = (
       node: PathTreeNode,
@@ -205,5 +204,47 @@ describe(PathTree, async () => {
 
     checkParentRelation(sampleTree, null, -1)
     checkNode(sampleTree)
+  })
+
+  test.each([
+    ['publication', true],
+    ['creation', false],
+    ['scientific_figure', true],
+    ['person', true],
+  ])('isMainBundle(%1) === %2', (tBundle, want) => {
+    const bundle = sampleTree.find(tBundle)
+    if (!(bundle instanceof Bundle)) {
+      throw new Error('test case: missing bundle ' + tBundle)
+    }
+
+    expect(bundle.isMainBundle).toBe(want)
+  })
+
+  test.each([
+    [null, null],
+    ['publication', 'publication'],
+    ['title', 'publication'],
+    ['creation', 'publication'],
+    ['date_of_writing', 'publication'],
+    ['author', 'publication'],
+    ['scientific_publication', 'publication'],
+    ['figure_image', 'publication'],
+    ['scientific_figure', 'scientific_figure'],
+    ['image', 'scientific_figure'],
+    ['person', 'person'],
+    ['name', 'person'],
+  ])('mainBundle(%1) === %2', (tNode, tMain) => {
+    const node = typeof tNode === 'string' ? sampleTree.find(tNode) : sampleTree
+    if (node === null) {
+      throw new Error('test case: missing node ' + tNode)
+    }
+
+    const want = typeof tMain === 'string' ? sampleTree.find(tMain) : null
+    if (typeof tMain === 'string' && want === null) {
+      throw new Error('test case: missing main bundle')
+    }
+
+    // ensure that the main bundle resolves correctly
+    expect(node.mainBundle).toBe(want)
   })
 })
