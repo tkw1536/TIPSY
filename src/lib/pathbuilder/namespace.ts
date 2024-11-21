@@ -265,9 +265,9 @@ export class NamespaceMap {
     const name = index >= 0 ? long.substring(index + '://'.length) : long
 
     // check if we have a special prefix
-    const special = (specials ?? []).find(
-      ([s, l]) => name.startsWith(l) || long.startsWith(l),
-    )
+    const special = (specials ?? [])
+      .filter(([s, l]) => name.startsWith(l) || long.startsWith(l))
+      .sort((l, r) => r[1].length - l[1].length)[0]
     if (typeof special !== 'undefined') {
       return special[0]
     }
@@ -289,6 +289,7 @@ export class NamespaceMap {
 
       ecrm: 'http://erlangen-crm.org/',
       crm: 'http://www.cidoc-crm.org/',
+      crme: 'http://www.cidoc-crm.org/extensions/',
       // spellchecker:enable
     }),
   )
