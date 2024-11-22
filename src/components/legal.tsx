@@ -142,7 +142,7 @@ function isAllowedBrowser(): boolean {
   if (!IsAllowedBrowser) {
     return (
       confirm(
-        'You are using Chrome or a Chromium-based browser. Please be aware that export functionality is not be available, and per the licensing terms you may not take screenshots. ',
+        'You are using Chrome or a Chromium-based browser. Please be aware that export functionality is not be available. ',
       ) ?? false
     )
   }

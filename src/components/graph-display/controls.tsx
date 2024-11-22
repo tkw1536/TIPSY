@@ -257,7 +257,7 @@ export function ExportControl<
 
       if (!IsAllowedBrowser) {
         alert(
-          'Export is not available on Chrome and Chromium-based browsers. Try Firefox or Safari. Please note by the licensing terms, you may not take screenshots to work around this. ',
+          'Export is not available on Chrome and Chromium-based browsers. Try Firefox or Safari. ',
         )
         return
       }

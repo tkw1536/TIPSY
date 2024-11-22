@@ -14,10 +14,10 @@ You are granted a license to use the exported visualizations, provided you add t
     </Copyable>
 </code>
 
-You also agree to only use the visualizations created by TIPSY by using built-in export functionality, and not using tools such as screenshots. 
+You also agree to use the visualizations created by TIPSY by using built-in export functionality, and only falling back to using screenshots when necessary.  
 This clause does not apply if you chose to show the entirety of the TIPSY user interface (including header and footer), for example during screen sharing sessions and the like.
 
-Please also be aware that even though the code to this project is open source and you may inspect it to your heart's content, the source code (currently) does not have a license. 
+Please also be aware that even though the code to this project is open source and you may inspect it to your heart's content, the source code does not have a license. 
 This means that you may not publicly perform, create derivative works of or distribute this code.
 
 <code>
