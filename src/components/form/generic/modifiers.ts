@@ -1,4 +1,4 @@
-import { type Ref } from 'preact'
+import type { Ref } from 'preact'
 import { setRef } from '../../../lib/utils/ref'
 import { useEffect, useRef, type MutableRef } from 'preact/hooks'
 

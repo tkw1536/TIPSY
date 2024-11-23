@@ -8,8 +8,8 @@ import {
   useRef,
 } from 'preact/compat'
 import { useCombine } from '../../../lib/utils/ref'
-import { type ModifierKeys } from './modifiers'
-import { type ComponentChildren } from 'preact'
+import type { ModifierKeys } from './modifiers'
+import type { ComponentChildren } from 'preact'
 import { classes } from '../../../lib/utils/classes'
 import * as styles from './index.module.css'
 
@@ -115,7 +115,7 @@ export const Label = forwardRef(function Label(
 
 type Dataset = Record<`data-${string}`, string | undefined>
 
-export function datasetEntries<T extends Dataset>(dataset: T): Dataset {
+export function datasetEntries(dataset: Dataset): Dataset {
   return Object.fromEntries(
     Object.entries(dataset).filter(
       ([k, v]) =>

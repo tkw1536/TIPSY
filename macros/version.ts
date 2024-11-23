@@ -18,6 +18,7 @@ export default function getVersionInfo(this: MacroContext | void): VersionInfo {
 
   const version: string = JSON.parse(
     readFileSync(PACKAGE_JSON).toString(),
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- type is known
   ).version
   const compileTime = new Date().toISOString()
   const git = execSync('git rev-parse HEAD', {

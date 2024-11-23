@@ -8,32 +8,28 @@ import {
   type View,
   defaultLayout,
 } from '..'
-import {
-  type BundleOptions,
-  type BundleEdge,
-  type BundleNode,
+import type {
+  BundleOptions,
+  BundleEdge,
+  BundleNode,
 } from '../../../graph/builders/bundle'
-import { type RenderOptions } from '@viz-js/viz'
+import type { RenderOptions } from '@viz-js/viz'
 import { Type } from '../../../utils/media'
-import { type GraphVizRequest, type GraphVizResponse } from './impl'
+import type { GraphVizRequest, GraphVizResponse } from './impl'
 import { LazyValue } from '../../../utils/once'
 // lazy import svg-pan-zoom (so that we can skip loading it in server-side mode)
-import { type default as SvgPanZoom } from 'svg-pan-zoom'
-import { type default as HammerStatic } from '@egjs/hammerjs'
-import {
-  type RDFOptions,
-  type RDFEdge,
-  type RDFNode,
-} from '../../../graph/builders/rdf'
-import {
-  type ModelOptions,
-  type ModelEdge,
-  type ModelNode,
-  type ModelAttachmentKey,
+import type SvgPanZoom from 'svg-pan-zoom'
+import type HammerStatic from '@egjs/hammerjs'
+import type { RDFOptions, RDFEdge, RDFNode } from '../../../graph/builders/rdf'
+import type {
+  ModelOptions,
+  ModelEdge,
+  ModelNode,
+  ModelAttachmentKey,
 } from '../../../graph/builders/model/labels'
-import { type Renderable, type Element } from '../../../graph/builders'
-import { type Size } from '../../../../components/hooks/observer'
-import { MIME_TYPE, Node } from '@xmldom/xmldom'
+import type { Renderable, Element } from '../../../graph/builders'
+import type { Size } from '../../../../components/hooks/observer'
+import { MIME_TYPE, type Node } from '@xmldom/xmldom'
 
 type HammerManager = HammerStatic extends new (...vars: any[]) => infer T
   ? T
@@ -151,7 +147,7 @@ abstract class GraphvizDriver<
     }
 
     const nodes: Node[] = [documentElement]
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- 0 is not a magic number
+
     while (nodes.length > 0) {
       const node = nodes.shift()
       if (typeof node === 'undefined') {
@@ -193,7 +189,6 @@ abstract class GraphvizDriver<
       worker.onmessage = e => {
         worker.terminate()
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- worker return type is known
         const data: GraphVizResponse = e.data
         if (!data.success) {
           reject(new Error(data.message))
@@ -268,7 +263,7 @@ abstract class GraphvizDriver<
         let pannedX = 0
         let pannedY = 0
 
-        const instance = options.instance
+        const { instance } = options
 
         this.hammer.get('pinch').set({ enable: true })
         this.hammer.on('doubletap', () => {
@@ -401,7 +396,7 @@ abstract class GraphvizDriver<
     graph: Graph,
     id: string,
     attributes: Attributes,
-    cluster?: Subgraph | undefined,
+    cluster?: Subgraph,
   ): void {
     ;(cluster ?? graph).nodes.push({
       name: id,
@@ -414,7 +409,7 @@ abstract class GraphvizDriver<
     from: string,
     to: string,
     attributes: Attributes,
-    cluster?: Subgraph | undefined,
+    cluster?: Subgraph,
   ): void {
     ;(cluster ?? graph).edges.push({
       head: to,

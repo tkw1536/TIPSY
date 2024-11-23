@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'preact/hooks'
-import { type JSX } from 'preact/jsx-runtime'
+import type { JSX } from 'preact/jsx-runtime'
 import * as styles from './panel.module.css'
 import { classes } from '../../lib/utils/classes'
-import { type ComponentChildren } from 'preact'
+import type { ComponentChildren } from 'preact'
 
 interface PanelProps {
   /** current state of the panel (only respected if controlled) */

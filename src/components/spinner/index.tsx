@@ -1,4 +1,4 @@
-import { type ComponentChildren, type VNode, type JSX } from 'preact'
+import type { ComponentChildren, VNode, JSX } from 'preact'
 import * as styles from './index.module.css'
 import { useEffect, useState } from 'preact/hooks'
 

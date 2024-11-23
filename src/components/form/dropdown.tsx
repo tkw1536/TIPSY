@@ -41,7 +41,7 @@ export default function Dropdown<T extends string>({
 
       // validate that we have a valid value
       const { value, dataset } = evt.currentTarget
-      if (!(values?.includes(value as T) ?? false)) return
+      if (!values.includes(value as T)) return
 
       // call the handler
       onInput(value as T, dataset, modifiers.current)
@@ -90,7 +90,7 @@ export function Radio<T extends string>(props: RadioProps<T>): JSX.Element {
 
       // validate that we have a valid value
       const { value, dataset } = evt.currentTarget
-      if (!(values?.includes(value as T) ?? false)) return
+      if (!values.includes(value as T)) return
 
       // call the handler
       onInput(value as T, dataset, modifiers.current)

@@ -1,6 +1,6 @@
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import { loaders, resetters, type BoundState } from '.'
-import { type Store } from 'rdflib'
+import type { Store } from 'rdflib'
 
 export type Slice = State & Actions
 

@@ -1,4 +1,4 @@
-import { type JSX, type VNode } from 'preact'
+import type { JSX, VNode } from 'preact'
 import generateDisclaimer from '../../macros/disclaimer' with { type: 'macro' }
 import markdownDocument from '../../macros/markdown' with { type: 'macro' }
 import UnClosableModal from './layout/banner'
@@ -59,7 +59,7 @@ function Copyable(props: { children: VNode[] }): VNode {
       ])
       .then(
         () => {},
-        err => {
+        (err: unknown) => {
           console.error('Unable to copy to clipboard: ', err)
         },
       )
@@ -140,10 +140,8 @@ export const IsAllowedBrowser = skipBrowserCheck
  */
 function isAllowedBrowser(): boolean {
   if (!IsAllowedBrowser) {
-    return (
-      confirm(
-        'You are using Chrome or a Chromium-based browser. Please be aware that export functionality is not be available. ',
-      ) ?? false
+    return confirm(
+      'You are using Chrome or a Chromium-based browser. Please be aware that export functionality is not be available. ',
     )
   }
 

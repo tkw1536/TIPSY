@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 
 import useRDFStore from '../state'
 import NamespaceEditor from '../../../components/namespace-editor'

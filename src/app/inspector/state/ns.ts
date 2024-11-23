@@ -1,12 +1,12 @@
 import { type BoundState, loaders, resetters } from '.'
 
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import {
   NamespaceMap,
   type NamespaceMapExport,
 } from '../../../lib/pathbuilder/namespace'
-import { type PathTree } from '../../../lib/pathbuilder/pathtree'
-import { type Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
+import type { PathTree } from '../../../lib/pathbuilder/pathtree'
+import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 export type Slice = State & Actions
 
 interface State {

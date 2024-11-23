@@ -1,4 +1,4 @@
-import { type Ref } from 'preact'
+import type { Ref } from 'preact'
 import { useMemo, type ForwardedRef } from 'preact/compat'
 
 type RefLike<T> = Ref<T> | ForwardedRef<T> | null | undefined
@@ -25,7 +25,7 @@ export function useCombine<T>(...refs: Array<RefLike<T>>): Ref<T> {
         setRef(ref, value)
       })
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- this is a hook
     refs,
   )
 }

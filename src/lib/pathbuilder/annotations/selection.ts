@@ -1,6 +1,6 @@
 import ImmutableSet from '../../utils/immutable-set'
 import { Path, Pathbuilder } from '../pathbuilder'
-import { type PathTreeNode } from '../pathtree'
+import type { PathTreeNode } from '../pathtree'
 
 type Key = PathTreeNode | Path | undefined
 
@@ -38,9 +38,11 @@ export default class NodeSelection {
     if (typeof data !== 'object' || data === null) {
       return false
     }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     if (!('type' in data && data.type === 'node-selection')) {
       return false
     }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     if (!('defaultValue' in data && typeof data.defaultValue === 'boolean')) {
       return false
     }

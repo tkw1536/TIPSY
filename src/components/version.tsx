@@ -1,4 +1,4 @@
-import { type VNode } from 'preact'
+import type { VNode } from 'preact'
 import getVersionInfo from '../../macros/version' with { type: 'macro' }
 
 const version = getVersionInfo()

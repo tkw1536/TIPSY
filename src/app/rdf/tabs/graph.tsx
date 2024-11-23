@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import GraphDisplay, {
   type PanelProps,
 } from '../../../components/graph-display'
@@ -15,7 +15,7 @@ import RDFGraphBuilder, {
 import { triples } from '../../../lib/drivers/collection'
 import useRDFStore from '../state'
 import { useCallback, useMemo } from 'preact/hooks'
-import { type ContextFlags } from '../../../lib/drivers/impl'
+import type { ContextFlags } from '../../../lib/drivers/impl'
 
 export default function GraphTab(): JSX.Element {
   const store = useRDFStore(s => s.store)

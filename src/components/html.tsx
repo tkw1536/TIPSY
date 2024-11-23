@@ -1,4 +1,4 @@
-import { type ComponentProps, type VNode } from 'preact'
+import type { ComponentProps, VNode } from 'preact'
 
 import * as styles from './html.module.css'
 import Markup from 'preact-markup'

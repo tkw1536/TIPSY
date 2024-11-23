@@ -13,6 +13,6 @@ export function useComponentWillUnmount(
     return () => {
       callbackRef.current()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- this is a custom hook
   }, inputs)
 }

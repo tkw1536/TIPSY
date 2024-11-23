@@ -1,12 +1,12 @@
-import {
-  type Attachment,
-  type Element,
-  type ElementWithAttachments,
-  type Renderable,
+import type {
+  Attachment,
+  Element,
+  ElementWithAttachments,
+  Renderable,
 } from '..'
 import type ColorMap from '../../../pathbuilder/annotations/colormap'
-import { type NamespaceMap } from '../../../pathbuilder/namespace'
-import { type Bundle, type Field } from '../../../pathbuilder/pathtree'
+import type { NamespaceMap } from '../../../pathbuilder/namespace'
+import type { Bundle, Field } from '../../../pathbuilder/pathtree'
 import type ImmutableSet from '../../../utils/immutable-set'
 
 /** a node in the model graph */
@@ -187,10 +187,10 @@ export class LiteralModelNode {
       : []
 
     if (!options.display.Literal.complex) {
-      return this.#renderSimple(id, options, fields)
+      return LiteralModelNode.#renderSimple(id, options, fields)
     }
 
-    const { element, fields: fieldRenders } = this.#renderComplex(
+    const { element, fields: fieldRenders } = LiteralModelNode.#renderComplex(
       id,
       options,
       fields,
@@ -210,7 +210,11 @@ export class LiteralModelNode {
     }
   }
 
-  #renderSimple(id: string, options: ModelOptions, fields: Field[]): Element {
+  static #renderSimple(
+    id: string,
+    options: ModelOptions,
+    fields: Field[],
+  ): Element {
     const label = options.display.Labels.DatatypeField
       ? fields.map(field => field.path.name).join('\n\n')
       : null
@@ -224,7 +228,7 @@ export class LiteralModelNode {
     }
   }
 
-  #renderComplex(
+  static #renderComplex(
     id: string,
     options: ModelOptions,
     fields: Field[],

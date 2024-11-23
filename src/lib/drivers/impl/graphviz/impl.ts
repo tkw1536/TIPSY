@@ -1,4 +1,4 @@
-import { type Graph, type RenderOptions } from '@viz-js/viz'
+import type { Graph, RenderOptions } from '@viz-js/viz'
 import { formatError } from '../../../utils/errors'
 
 export interface GraphVizRequest {

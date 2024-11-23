@@ -1,4 +1,4 @@
-import { type JSX, type ComponentChildren } from 'preact'
+import type { JSX, ComponentChildren } from 'preact'
 import { classes } from '../../lib/utils/classes'
 import * as styles from './index.module.css'
 import getVersionInfo from '../../../macros/version' with { type: 'macro' }

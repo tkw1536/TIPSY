@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import ModelGraphBuilder from '../../../lib/graph/builders/model'
 import { explanations, names, values } from '../state/datatypes/deduplication'
 import { models } from '../../../lib/drivers/collection'
@@ -12,18 +12,18 @@ import {
   ExportControl,
 } from '../../../components/graph-display/controls'
 
-import {
-  type ModelOptions,
-  type ModelEdge,
-  type ModelNode,
-  type ModelDisplay,
-  type ModelAttachmentKey,
+import type {
+  ModelOptions,
+  ModelEdge,
+  ModelNode,
+  ModelDisplay,
+  ModelAttachmentKey,
 } from '../../../lib/graph/builders/model/labels'
 import { useCallback, useMemo } from 'preact/hooks'
 import useInspectorStore from '../state'
 import { Radio } from '../../../components/form/dropdown'
 import { Switch } from '../../../components/form/checkbox'
-import { type ContextFlags } from '../../../lib/drivers/impl'
+import type { ContextFlags } from '../../../lib/drivers/impl'
 import * as styles from './model.module.css'
 
 export default function ModelGraphView(): JSX.Element {

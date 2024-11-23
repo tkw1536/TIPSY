@@ -41,6 +41,7 @@ export class NamespaceMap {
     if (typeof data !== 'object' || data === null) {
       return false
     }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     if (!('type' in data && data.type === 'namespace-map')) {
       return false
     }
@@ -161,6 +162,7 @@ export class NamespaceMap {
       prefix = l
       ns = s
     })
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive because closure
     if (ns === null) {
       return [null, null]
     }
@@ -184,7 +186,7 @@ export class NamespaceMap {
   /** generate automatically generates a prefix map */
   static generate(
     uris: Set<string>,
-    separators: string = '/#',
+    separators = '/#',
     specials: Array<[string, string]> | undefined = undefined,
     len = 30,
   ): NamespaceMap {
@@ -226,6 +228,7 @@ export class NamespaceMap {
       })
 
       // don't add the prefix
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive, changed with closure above
       if (hadPrefix) {
         return
       }

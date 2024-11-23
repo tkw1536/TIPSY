@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import NamespaceEditor from '../../../components/namespace-editor'
 import useInspectorStore from '../state'
 

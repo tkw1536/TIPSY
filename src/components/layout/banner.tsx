@@ -1,4 +1,4 @@
-import { type ComponentChildren, type JSX } from 'preact'
+import type { ComponentChildren, JSX } from 'preact'
 import { useCallback, useEffect, useRef } from 'preact/hooks'
 import * as styles from './banner.module.css'
 import Button from '../form/button'

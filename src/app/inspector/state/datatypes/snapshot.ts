@@ -1,5 +1,5 @@
-import { type BoundState } from '..'
-import { type Pathbuilder } from '../../../../lib/pathbuilder/pathbuilder'
+import type { BoundState } from '..'
+import type { Pathbuilder } from '../../../../lib/pathbuilder/pathbuilder'
 
 import * as Bundle from '../bundle'
 import * as Color from '../cm'

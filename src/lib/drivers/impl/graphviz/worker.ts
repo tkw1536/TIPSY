@@ -11,7 +11,7 @@ onmessage = function (e) {
       const message: GraphVizResponse = { success: true, result }
       postMessage(message)
     })
-    .catch(err => {
+    .catch((err: unknown) => {
       const message: GraphVizResponse = {
         success: false,
         message: formatError(err),

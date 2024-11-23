@@ -1,7 +1,7 @@
 import { graph, parse, Store } from 'rdflib'
 import { resetters, type BoundState, loaders } from '.'
 
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 
 export type Slice = State & Actions
 

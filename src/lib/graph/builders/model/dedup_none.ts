@@ -1,9 +1,9 @@
-import {
-  type Bundle,
-  type Field,
-  type ConceptPathElement,
-  type PropertyPathElement,
-  type PathElement,
+import type {
+  Bundle,
+  Field,
+  ConceptPathElement,
+  PropertyPathElement,
+  PathElement,
 } from '../../../pathbuilder/pathtree'
 import {
   type NodeContext,

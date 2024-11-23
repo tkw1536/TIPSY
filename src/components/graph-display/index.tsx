@@ -1,4 +1,4 @@
-import { type ComponentType, type JSX } from 'preact'
+import type { ComponentType, JSX } from 'preact'
 import Kernel, {
   type KernelProps,
   type DriverLoader,
@@ -9,12 +9,12 @@ import type Graph from '../../lib/graph'
 import ErrorDisplay from '../error'
 import { useMemo, useState } from 'preact/hooks'
 import { Panel } from '../layout/panel'
-import { type Renderable } from '../../lib/graph/builders'
+import type { Renderable } from '../../lib/graph/builders'
 import useAsyncState, { reasonAsCause, type AsyncState } from '../hooks/async'
-import {
-  type Snapshot,
-  type DriverClass,
-  type ContextFlags,
+import type {
+  Snapshot,
+  DriverClass,
+  ContextFlags,
 } from '../../lib/drivers/impl'
 import Spinner from '../spinner'
 

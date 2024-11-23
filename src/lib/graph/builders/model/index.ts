@@ -1,16 +1,16 @@
 import GraphBuilder from '..'
 import Deduplication from '../../../../app/inspector/state/datatypes/deduplication'
-import { type PathTree } from '../../../pathbuilder/pathtree'
-import { type DeduplicatingBuilder, type DedupOptions } from './dedup'
+import type { PathTree } from '../../../pathbuilder/pathtree'
+import type { DeduplicatingBuilder, DedupOptions } from './dedup'
 import BundleBuilder from './dedup_bundle'
 import FullBuilder from './dedup_full'
 import NoneBuilder from './dedup_none'
 import ParentsBuilder from './dedup_parents'
-import {
-  type ModelOptions,
-  type ModelAttachmentKey,
-  type ModelEdge,
-  type ModelNode,
+import type {
+  ModelOptions,
+  ModelAttachmentKey,
+  ModelEdge,
+  ModelNode,
 } from './labels'
 
 export type Options = DedupOptions & {
@@ -48,7 +48,7 @@ export default class ModelGraphBuilder extends GraphBuilder<
     }
   }
 
-  protected async doBuild(): Promise<void> {
+  protected doBuild(): void {
     this.#specific.build()
   }
 }

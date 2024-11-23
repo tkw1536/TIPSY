@@ -1,11 +1,11 @@
-import { type JSX, type Ref, type ComponentChildren } from 'preact'
+import type { JSX, Ref, ComponentChildren } from 'preact'
 import type Graph from '../graph'
 import * as styles from './index.module.css'
 import type Driver from './impl'
 import ErrorDisplay from '../../components/error'
-import { type DriverClass, type ContextFlags, type Snapshot } from './impl'
+import type { DriverClass, ContextFlags, Snapshot } from './impl'
 import Spinner from '../../components/spinner'
-import { type Renderable } from '../graph/builders'
+import type { Renderable } from '../graph/builders'
 import { setRef } from '../utils/ref'
 import useVisibleSize, { type Size } from '../../components/hooks/observer'
 import { useEffect, useRef } from 'preact/hooks'
@@ -101,8 +101,6 @@ export default function Kernel<
     case 'rejected':
       body = <ErrorDisplay error={instance.reason} />
       break
-    default:
-      throw new Error('never reached')
   }
 
   return (

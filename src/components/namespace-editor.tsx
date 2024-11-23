@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import { NamespaceMap } from '../lib/pathbuilder/namespace'
 import { Type } from '../lib/utils/media'
 import download from '../lib/utils/download'
@@ -112,7 +112,7 @@ export default function NamespaceEditor(
         </tbody>
       </table>
       {loading?.status === 'rejected' && (
-        <ErrorDisplay error={loading?.reason} />
+        <ErrorDisplay error={loading.reason} />
       )}
     </>
   )

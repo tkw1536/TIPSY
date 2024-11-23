@@ -1,11 +1,7 @@
 import GraphBuilder, { type Element } from '.'
-import {
-  type Bundle,
-  type Field,
-  type PathTree,
-} from '../../pathbuilder/pathtree'
+import type { Bundle, Field, PathTree } from '../../pathbuilder/pathtree'
 import type NodeSelection from '../../pathbuilder/annotations/selection'
-import { type NamespaceMap } from '../../pathbuilder/namespace'
+import type { NamespaceMap } from '../../pathbuilder/namespace'
 import type ColorMap from '../../pathbuilder/annotations/colormap'
 
 type RenderMethod = (id: string, options: BundleOptions) => Element
@@ -57,7 +53,7 @@ export default class BundleGraphBuilder extends GraphBuilder<
     this.#selection = selection
   }
 
-  protected async doBuild(): Promise<void> {
+  protected doBuild(): void {
     for (const bundle of this.#tree.children()) {
       this.#addBundle(bundle, 0)
     }
@@ -65,7 +61,7 @@ export default class BundleGraphBuilder extends GraphBuilder<
   }
 
   #addBundle(bundle: Bundle, level: number): boolean {
-    const id = bundle.path.id
+    const { id } = bundle.path
 
     // add the node for this bundle
     const includeSelf = this.#selection.includes(bundle)

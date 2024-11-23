@@ -1,15 +1,12 @@
 import { type BoundState, loaders, resetters } from '.'
 
-import { type StateCreator } from 'zustand'
-import {
-  type PathTreeNode,
-  type PathTree,
-} from '../../../lib/pathbuilder/pathtree'
+import type { StateCreator } from 'zustand'
+import type { PathTreeNode, PathTree } from '../../../lib/pathbuilder/pathtree'
 import ColorMap, {
   type ColorMapExport,
 } from '../../../lib/pathbuilder/annotations/colormap'
 import { applyColorPreset, ColorPreset } from './datatypes/color'
-import { type Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
+import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 export type Slice = State & Actions
 
 interface State {

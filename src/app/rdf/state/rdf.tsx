@@ -1,9 +1,9 @@
-import { type Store } from 'rdflib'
+import type { Store } from 'rdflib'
 import { loaders, resetters, type BoundState } from '.'
 import { triples } from '../../../lib/drivers/collection'
 import { defaultLayout, type Snapshot } from '../../../lib/drivers/impl'
 
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import { nextInt } from '../../../lib/utils/prng'
 
 export type Slice = State & Actions

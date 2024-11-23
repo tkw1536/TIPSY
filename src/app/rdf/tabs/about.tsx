@@ -1,4 +1,4 @@
-import { type VNode } from 'preact'
+import type { VNode } from 'preact'
 import Legal from '../../../components/legal'
 
 export default function AboutTab(): VNode<any> {

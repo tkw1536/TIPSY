@@ -1,11 +1,7 @@
-import { type Statement, type Store } from 'rdflib'
+import type { Statement, Store } from 'rdflib'
 import GraphBuilder, { type Element } from '.'
-import {
-  type ObjectType,
-  type PredicateType,
-  type SubjectType,
-} from 'rdflib/lib/types'
-import { type NamespaceMap } from '../../pathbuilder/namespace'
+import type { ObjectType, PredicateType, SubjectType } from 'rdflib/lib/types'
+import type { NamespaceMap } from '../../pathbuilder/namespace'
 
 type RenderMethod = (id: string, options: RDFOptions) => Element
 
@@ -33,7 +29,7 @@ export default class RDFGraphBuilder extends GraphBuilder<
     this.#store = store
   }
 
-  protected async doBuild(): Promise<void> {
+  protected doBuild(): void {
     this.#store.statements.forEach(this.#addStatement)
   }
 
@@ -86,8 +82,9 @@ export default class RDFGraphBuilder extends GraphBuilder<
       case 'NamedNode':
       case 'Variable':
         return this.#subjectID(term)
+      default:
+        return undefined
     }
-    return undefined
   }
 }
 
@@ -140,8 +137,6 @@ function makeRenderMethod(
         element.color = 'white'
         element.shape = 'ellipse'
         break
-      default:
-        throw new Error('never reached')
     }
     if (edge) {
       element.shape = null

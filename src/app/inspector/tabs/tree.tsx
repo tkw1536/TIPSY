@@ -1,5 +1,5 @@
-import { type ComponentChildren, type JSX } from 'preact'
-import { type NamespaceMap } from '../../../lib/pathbuilder/namespace'
+import type { ComponentChildren, JSX } from 'preact'
+import type { NamespaceMap } from '../../../lib/pathbuilder/namespace'
 import {
   Bundle,
   Field,
@@ -29,12 +29,12 @@ import Checkbox, { Switch } from '../../../components/form/checkbox'
 import { Color } from '../../../components/form/value'
 import { memo } from 'preact/compat'
 import { useShallow } from 'zustand/react/shallow'
-import { type ModifierKeys } from '../../../components/form/generic/modifiers'
+import type { ModifierKeys } from '../../../components/form/generic/modifiers'
 
 export default function TreeTab(): JSX.Element {
   const tree = useInspectorStore(s => s.pathtree)
   const children = useMemo(() => Array.from(tree.children()), [tree])
-  const maxDepth = tree.maxDepth
+  const { maxDepth } = tree
 
   return (
     <Panel panel={<TreeTabPanel />} margin={5}>
@@ -470,11 +470,9 @@ function elementClass(element: PathElementT): string[] {
       return ['path_concept', 'path_disambiguation']
     return ['path_concept']
   }
-  if (element.type === 'property') {
-    if (element.role === 'datatype') {
-      return ['path_datatype']
-    }
-    return ['path_predicate']
+  // element.type === 'property'
+  if (element.role === 'datatype') {
+    return ['path_datatype']
   }
-  throw new Error('never reached')
+  return ['path_predicate']
 }

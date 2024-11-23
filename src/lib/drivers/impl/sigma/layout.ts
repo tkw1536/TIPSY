@@ -10,7 +10,7 @@ export class SigmaLayout {
   }
 
   #poller: NodeJS.Timeout | null = null
-  #running: boolean = false
+  #running = false
   start = (): void => {
     if (this.#running || this.#layout === null) return
     this.#running = true

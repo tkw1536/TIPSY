@@ -1,22 +1,18 @@
-import { type Renderable } from '../graph/builders'
-import {
-  type BundleOptions,
-  type BundleEdge,
-  type BundleNode,
+import type { Renderable } from '../graph/builders'
+import type {
+  BundleOptions,
+  BundleEdge,
+  BundleNode,
 } from '../graph/builders/bundle'
-import {
-  type ModelOptions,
-  type ModelEdge,
-  type ModelNode,
-  type ModelAttachmentKey,
+import type {
+  ModelOptions,
+  ModelEdge,
+  ModelNode,
+  ModelAttachmentKey,
 } from '../graph/builders/model/labels'
-import {
-  type RDFOptions,
-  type RDFEdge,
-  type RDFNode,
-} from '../graph/builders/rdf'
+import type { RDFOptions, RDFEdge, RDFNode } from '../graph/builders/rdf'
 import { Lazy } from '../utils/once'
-import { type DriverClass } from './impl'
+import type { DriverClass } from './impl'
 
 class DriverCollection<
   NodeLabel extends Renderable<Options, AttachmentKey>,

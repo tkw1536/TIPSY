@@ -1,4 +1,4 @@
-import { type ComponentChild, type JSX, type VNode } from 'preact'
+import type { ComponentChild, JSX, VNode } from 'preact'
 import { classes } from '../../lib/utils/classes'
 import * as styles from './drop-area.module.css'
 import { useCallback, useMemo, useRef, useState } from 'preact/hooks'
@@ -32,17 +32,18 @@ interface DropAreaProps {
 function validateFiles(
   types: string[] | undefined,
   multiple: boolean,
-  empty: boolean = false,
+  empty = false,
   items:
     | ArrayLike<{ readonly type: string; readonly kind?: string }>
     | undefined,
 ): items is ArrayLike<{ readonly type: string }> {
   // check that we have the right number of elements
   if (typeof items === 'undefined' || items.length === 0) return empty
-  if (!(multiple ?? false) && items.length > 1) return false
+  if (!multiple && items.length > 1) return false
 
   // check each item
   const allowed = new Set(types ?? [])
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of -- not implemented by type
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
 
@@ -130,7 +131,7 @@ export default function DropArea(props: DropAreaProps): JSX.Element {
     (event: Event): void => {
       event.preventDefault()
       if (disabled === true) return
-      callFileHandler(fileInput?.current?.files ?? undefined)
+      callFileHandler(fileInput.current?.files ?? undefined)
     },
     [disabled, callFileHandler],
   )

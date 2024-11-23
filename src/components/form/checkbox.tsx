@@ -7,7 +7,7 @@ import GenericInput, {
   type InputLikeProps,
 } from './generic'
 import useModifierRef from './generic/modifiers'
-import { type ComponentChildren } from 'preact'
+import type { ComponentChildren } from 'preact'
 import { useOptionalId } from '../hooks/id'
 import * as styles from './checkbox.module.css'
 

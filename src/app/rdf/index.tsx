@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import useRDFStore from './state'
 import Tabs, { TabLabel, Tab } from '../../components/tabs'
 import { lazy } from 'preact/compat'

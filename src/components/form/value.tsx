@@ -1,4 +1,4 @@
-import { type JSX } from 'preact/jsx-runtime'
+import type { JSX } from 'preact/jsx-runtime'
 import GenericInput, {
   ariaEntries,
   datasetEntries,
@@ -7,7 +7,7 @@ import GenericInput, {
 import { useCallback, useMemo } from 'preact/hooks'
 import useModifierRef from './generic/modifiers'
 import ColorInstance from 'color'
-import { type HTMLAttributes } from 'preact/compat'
+import type { HTMLAttributes } from 'preact/compat'
 import * as styles from './value.module.css'
 
 interface ValueBasedInputProps<T> extends InputLikeProps<T> {
@@ -50,6 +50,7 @@ function ValueBasedInput<T>({
     if (typeof value === 'undefined') {
       return undefined
     }
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- this is fine
     return setValue(value as T)
   }, [setValue, value])
 

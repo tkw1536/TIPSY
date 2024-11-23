@@ -4,8 +4,8 @@ import download from '../../lib/utils/download'
 import type Driver from '../../lib/drivers/impl'
 import Dropdown from '../form/dropdown'
 import { useCallback, useId } from 'preact/hooks'
-import { type Renderable } from '../../lib/graph/builders'
-import { type PanelProps } from '.'
+import type { Renderable } from '../../lib/graph/builders'
+import type { PanelProps } from '.'
 import Button, { ButtonGroup } from '../form/button'
 import { nextInt } from '../../lib/utils/prng'
 import { Label } from '../form/generic'
@@ -117,7 +117,7 @@ export function DriverControl<
               <Dropdown
                 disabled={controller === null}
                 value={layout}
-                values={controller?.instance?.driver?.layouts}
+                values={controller?.instance.driver.layouts}
                 onInput={onChangeLayout}
               />
             </td>
@@ -157,13 +157,13 @@ function SimulationControls<
         <ButtonGroup inline>
           <Button
             disabled={controller?.animating !== false}
-            onInput={controller?.instance?.startAnimation}
+            onInput={controller?.instance.startAnimation}
           >
             Start
           </Button>
           <Button
             disabled={controller?.animating !== true}
-            onInput={controller?.instance?.stopAnimation}
+            onInput={controller?.instance.stopAnimation}
           >
             Stop
           </Button>
@@ -174,7 +174,7 @@ function SimulationControls<
         <ButtonGroup inline>
           <Button
             disabled={controller === null}
-            onInput={controller?.instance?.remount}
+            onInput={controller?.instance.remount}
           >
             Reset
           </Button>
@@ -276,7 +276,7 @@ export function ExportControl<
   )
 
   // check that there are some export formats
-  const exportFormats = controller?.instance?.driver?.formats
+  const exportFormats = controller?.instance.driver.formats
   if (typeof exportFormats === 'undefined' || exportFormats.length === 0) {
     return null
   }

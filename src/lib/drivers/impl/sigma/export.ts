@@ -132,7 +132,7 @@ function getCanvasDimensions(sigma: Sigma): {
   // Indeed, for dimensions W and H, on a retina display, the canvases
   // dimensions actually are 2 * W and 2 * H. Sigma properly deals with it, but
   // we need to readapt here:
-  const pixelRatio = window.devicePixelRatio ?? 1
+  const { devicePixelRatio: pixelRatio } = window
   const { width, height } = sigma.getDimensions()
 
   return { width: width * pixelRatio, height: height * pixelRatio }

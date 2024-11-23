@@ -11,7 +11,7 @@ const eslintPluginReactHooks = await (async () => {
   return fixupPluginRules(broken)
 })()
 
-const files = ['**/*.mjs', '**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx']
+const files = ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx']
 const testFiles = [
   '**/*.test.js',
   '**/*.test.jsx',
@@ -30,6 +30,18 @@ export default [
   {
     rules: {
       '@typescript-eslint/no-invalid-void-type': ['off'],
+      '@typescript-eslint/no-unsafe-type-assertion': ['off'], // way too many false positives
+      '@typescript-eslint/no-explicit-any': ['off'], // sometimes 'any' is helpful
+      '@typescript-eslint/no-unsafe-assignment': ['off'], // sometimes 'any' is helpful
+
+      '@typescript-eslint/max-params': ['off'], // this is a bullshit rule that doesn't help
+
+      // these rules have too many false positives ...
+      '@typescript-eslint/no-magic-numbers': ['off'],
+      '@typescript-eslint/prefer-destructuring': ['off'],
+      '@typescript-eslint/class-methods-use-this': ['off'],
+      '@typescript-eslint/no-empty-function': ['off'],
+      '@typescript-eslint/init-declarations': ['off'],
     },
     files,
   },

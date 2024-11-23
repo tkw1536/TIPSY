@@ -9,12 +9,11 @@ import * as Selection from './selection'
 import * as Tab from './tab'
 import * as Tree from './tree'
 
-import { type PathTree } from '../../../lib/pathbuilder/pathtree'
-import { type Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
+import type { PathTree } from '../../../lib/pathbuilder/pathtree'
+import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 
 /** the set of all states */
 export type BoundState = Bundle.Slice &
-  Bundle.Slice &
   Color.Slice &
   File.Slice &
   Modal.Slice &

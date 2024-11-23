@@ -19,7 +19,7 @@ export default class Once {
         return
       }
       if (state === State.Rejected) {
-        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- must forward caught reason
         reject(this.#rejectReason)
         return
       }
@@ -41,7 +41,7 @@ export default class Once {
               resolve()
             })
           },
-          (err: any) => {
+          (err: unknown) => {
             this.#state = State.Rejected
             this.#rejectReason = err
             this.#waiters.forEach(({ reject }) => {

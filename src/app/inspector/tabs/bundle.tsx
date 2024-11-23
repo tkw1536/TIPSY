@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import GraphDisplay, {
   type PanelProps,
 } from '../../../components/graph-display'
@@ -16,7 +16,7 @@ import { bundles } from '../../../lib/drivers/collection'
 
 import { useCallback, useMemo } from 'preact/hooks'
 import useInspectorStore from '../state'
-import { type ContextFlags } from '../../../lib/drivers/impl'
+import type { ContextFlags } from '../../../lib/drivers/impl'
 
 export default function BundleGraphTab(): JSX.Element {
   const tree = useInspectorStore(s => s.pathtree)

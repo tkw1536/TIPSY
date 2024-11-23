@@ -1,5 +1,5 @@
-import { type ComponentChildren } from 'preact'
-import { type JSX } from 'preact/compat'
+import type { ComponentChildren } from 'preact'
+import type { JSX } from 'preact/compat'
 import { useCallback, useRef } from 'preact/hooks'
 import { ariaEntries, datasetEntries, type InputLikeProps } from './generic'
 import useModifierRef from './generic/modifiers'
@@ -15,8 +15,6 @@ type ButtonPropsWithValue<T> = Omit<
 > &
   InputLikeProps<T>
 
-function Button<T>(props: ButtonProps<T>): JSX.Element
-function Button<T>(props: ButtonPropsWithValue<T>): JSX.Element
 function Button<T>({
   onInput,
   id,

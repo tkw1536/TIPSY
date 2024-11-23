@@ -5,7 +5,7 @@ import * as NS from './ns'
 import * as RDF from './rdf'
 import * as Tab from './tab'
 
-import { type Store } from 'rdflib'
+import type { Store } from 'rdflib'
 
 /** the set of all states */
 export type BoundState = File.Slice &

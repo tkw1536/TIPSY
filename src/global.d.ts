@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference -- needed in d.ts
 /// <reference types="vite/client" />
 declare module '*.module.css' {
   const classes: Record<string, string>

@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import DropArea from '../../../components/form/drop-area'
 
 import ErrorDisplay from '../../../components/error'

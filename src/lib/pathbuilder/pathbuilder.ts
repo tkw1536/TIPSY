@@ -5,7 +5,7 @@ import {
   MIME_TYPE,
   type Node,
   XMLSerializer,
-  Document,
+  type Document,
 } from '@xmldom/xmldom'
 import { cloneNodeInDocument, isTag } from '../utils/fakedom'
 

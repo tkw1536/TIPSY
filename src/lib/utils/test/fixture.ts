@@ -13,5 +13,5 @@ export async function readFixture(...elements: string[]): Promise<string> {
 /** reads a fixture as JSON */
 export async function readFixtureJSON<T>(...elements: string[]): Promise<T> {
   const src = await readFixture(...elements)
-  return JSON.parse(src)
+  return JSON.parse(src) as T
 }

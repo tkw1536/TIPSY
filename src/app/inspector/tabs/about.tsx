@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import { BannerContents } from '../../../components/legal'
 
 import HTML from '../../../components/html'

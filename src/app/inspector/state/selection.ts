@@ -1,13 +1,10 @@
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import { loaders, resetters, type BoundState } from '.'
-import {
-  type PathTreeNode,
-  type PathTree,
-} from '../../../lib/pathbuilder/pathtree'
+import type { PathTreeNode, PathTree } from '../../../lib/pathbuilder/pathtree'
 import NodeSelection, {
   type NodeSelectionExport,
 } from '../../../lib/pathbuilder/annotations/selection'
-import { type Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
+import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 
 export type Slice = State & Actions
 

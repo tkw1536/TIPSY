@@ -1,6 +1,6 @@
 import { resetters, type BoundState, loaders } from '.'
 
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 import { PathTree } from '../../../lib/pathbuilder/pathtree'
 

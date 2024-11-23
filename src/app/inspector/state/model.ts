@@ -1,12 +1,12 @@
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import { loaders, resetters, type BoundState } from '.'
-import { type PathTree } from '../../../lib/pathbuilder/pathtree'
+import type { PathTree } from '../../../lib/pathbuilder/pathtree'
 import Deduplication from './datatypes/deduplication'
-import { type ModelDisplay } from '../../../lib/graph/builders/model/labels'
+import type { ModelDisplay } from '../../../lib/graph/builders/model/labels'
 import { models } from '../../../lib/drivers/collection'
 import { defaultLayout, type Snapshot } from '../../../lib/drivers/impl'
 import { nextInt } from '../../../lib/utils/prng'
-import { type Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
+import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 
 export type Slice = State & Actions
 
@@ -139,12 +139,16 @@ function validate(data: any): data is ModelExport {
     typeof data === 'object' &&
     data !== null &&
     'type' in data &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     data.type === 'model' &&
     'modelDriver' in data &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     typeof data.modelDriver === 'string' &&
     'modelSeed' in data &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     typeof data.modelSeed === 'number' &&
     'modelLayout' in data &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     typeof data.modelLayout === 'string' &&
     'modelDeduplication' in data &&
     'modelDisplay' in data &&

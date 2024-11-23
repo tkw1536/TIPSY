@@ -29,7 +29,6 @@ export function cloneNodeInDocument(document: Document, node: Node): Node {
 
   switch (node.nodeType) {
     case document.ELEMENT_NODE: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- did the typecheck
       const origElement = node as Element
 
       const element = document.createElement(origElement.nodeName)
@@ -42,18 +41,14 @@ export function cloneNodeInDocument(document: Document, node: Node): Node {
       return element
     }
     case document.TEXT_NODE:
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- did the typecheck
       return document.createTextNode((node as Text).data)
     case document.CDATA_SECTION_NODE:
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- did the typecheck
       return document.createCDATASection((node as CDATASection).data)
     case document.PROCESSING_INSTRUCTION_NODE: {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- did the typecheck
       const pi = node as ProcessingInstruction
       return document.createProcessingInstruction(pi.target, pi.data)
     }
     case document.COMMENT_NODE:
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- did the typecheck
       return document.createComment((node as Comment).data)
   }
 

@@ -1,4 +1,4 @@
-import { type RefObject } from 'preact'
+import type { RefObject } from 'preact'
 import { useEffect, useRef, useState } from 'preact/hooks'
 
 export interface Size {

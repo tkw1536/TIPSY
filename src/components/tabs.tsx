@@ -36,9 +36,11 @@ interface TabsProps {
 }
 export default function Tabs(props: TabsProps): JSX.Element {
   const children = useMemo((): TabChild[] => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- we want it explicitly here
     return toChildArray(props.children)
       .filter(
         (child): child is VNode<any> =>
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- needed by type inference
           child !== null &&
           typeof child === 'object' &&
           Object.prototype.hasOwnProperty.call(child, 'type') &&
@@ -46,9 +48,11 @@ export default function Tabs(props: TabsProps): JSX.Element {
       )
       .map(c => {
         if (c.type === Tab) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- this is fine
           return { type: 'tab', ...c.props }
         }
         if (c.type === TabLabel) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- this is fine
           return { type: 'label', ...c.props }
         }
         return null

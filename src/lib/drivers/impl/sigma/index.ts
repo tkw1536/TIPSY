@@ -10,32 +10,28 @@ import {
 } from '..'
 import Sigma from 'sigma'
 import Graph from 'graphology'
-import { type Settings } from 'sigma/dist/declarations/src/settings'
-import {
-  type BundleOptions,
-  type BundleEdge,
-  type BundleNode,
+import type { Settings } from 'sigma/dist/declarations/src/settings'
+import type {
+  BundleOptions,
+  BundleEdge,
+  BundleNode,
 } from '../../../graph/builders/bundle'
 import FA2Layout from 'graphology-layout-forceatlas2/worker'
 import { inferSettings } from 'graphology-layout-forceatlas2'
 import circular from 'graphology-layout/circular'
 import circlepack from 'graphology-layout/circlepack'
 import random from 'graphology-layout/random'
-import {
-  type ModelOptions,
-  type ModelEdge,
-  type ModelNode,
-  type ModelAttachmentKey,
+import type {
+  ModelOptions,
+  ModelEdge,
+  ModelNode,
+  ModelAttachmentKey,
 } from '../../../graph/builders/model/labels'
-import { type Attributes } from 'graphology-types'
+import type { Attributes } from 'graphology-types'
 import { prng } from '../../../utils/prng'
-import { type Element, type Renderable } from '../../../graph/builders'
-import {
-  type RDFEdge,
-  type RDFNode,
-  type RDFOptions,
-} from '../../../graph/builders/rdf'
-import { type Size } from '../../../../components/hooks/observer'
+import type { Element, Renderable } from '../../../graph/builders'
+import type { RDFEdge, RDFNode, RDFOptions } from '../../../graph/builders/rdf'
+import type { Size } from '../../../../components/hooks/observer'
 import { SigmaLayout } from './layout'
 import exportRaster from './export'
 import { Type } from '../../../utils/media'
@@ -166,35 +162,32 @@ abstract class SigmaDriver<
     layout?.stop()
   }
 
-  protected createCluster(
-    context: Graph<Attributes, Attributes, Attributes>,
-    id: string,
-  ): null {
+  protected createCluster(context: Graph, id: string): null {
     return null
   }
 
   protected placeCluster(
-    context: Graph<Attributes, Attributes, Attributes>,
+    context: Graph,
     id: string,
     cluster: null,
-  ): Graph<Attributes, Attributes, Attributes> | void {}
+  ): Graph | void {}
 
   protected placeNode(
-    graph: Graph<Attributes, Attributes, Attributes>,
+    graph: Graph,
     id: string,
     attributes: Attributes,
-    cluster?: null | undefined,
-  ): Graph<Attributes, Attributes, Attributes> | void {
+    cluster?: null,
+  ): Graph | void {
     graph.addNode(id, attributes)
   }
 
   protected placeEdge(
-    graph: Graph<Attributes, Attributes, Attributes>,
+    graph: Graph,
     id: string,
     from: string,
     to: string,
     attributes: Attributes,
-    cluster?: null | undefined,
+    cluster?: null,
   ): void {
     graph.addDirectedEdge(from, to, attributes)
   }
@@ -214,9 +207,7 @@ abstract class SigmaDriver<
   }
 
   protected getPositionsImpl(
-    {
-      context: graph,
-    }: ContextDetails<Graph<Attributes, Attributes, Attributes>, Options>,
+    { context: graph }: ContextDetails<Graph, Options>,
     { mount: { sigma } }: MountInfo<SigmaMount>,
   ): Snapshot['positions'] | null {
     const positions: Snapshot['positions'] = {}
@@ -230,9 +221,7 @@ abstract class SigmaDriver<
 
   protected readonly skipRestoreAnimating = true
   protected setPositionsImpl(
-    {
-      context: graph,
-    }: ContextDetails<Graph<Attributes, Attributes, Attributes>, Options>,
+    { context: graph }: ContextDetails<Graph, Options>,
     { mount: { sigma } }: MountInfo<SigmaMount>,
     positions: Snapshot['positions'],
   ): SigmaMount | void {
@@ -245,7 +234,7 @@ abstract class SigmaDriver<
   }
 
   protected getViewImpl(
-    details: ContextDetails<Graph<Attributes, Attributes, Attributes>, Options>,
+    details: ContextDetails<Graph, Options>,
     { mount: { sigma } }: MountInfo<SigmaMount>,
   ): View {
     const camera = sigma.getCamera().getState()
@@ -255,7 +244,7 @@ abstract class SigmaDriver<
     }
   }
   protected setViewImpl(
-    details: ContextDetails<Graph<Attributes, Attributes, Attributes>, Options>,
+    details: ContextDetails<Graph, Options>,
     { mount: { sigma } }: MountInfo<SigmaMount>,
     view: View,
   ): void {

@@ -11,25 +11,21 @@ import {
 import { type Data, Network, type Options as VisOptions } from 'vis-network'
 import { DataSet } from 'vis-data'
 import buttonCSS from 'vis-network/dist/dist/vis-network.min.css?inline'
-import {
-  type BundleOptions,
-  type BundleEdge,
-  type BundleNode,
+import type {
+  BundleOptions,
+  BundleEdge,
+  BundleNode,
 } from '../../graph/builders/bundle'
 import { Type } from '../../utils/media'
-import {
-  type ModelOptions,
-  type ModelEdge,
-  type ModelNode,
-  type ModelAttachmentKey,
+import type {
+  ModelOptions,
+  ModelEdge,
+  ModelNode,
+  ModelAttachmentKey,
 } from '../../graph/builders/model/labels'
-import { type Renderable, type Element } from '../../graph/builders'
-import {
-  type RDFEdge,
-  type RDFNode,
-  type RDFOptions,
-} from '../../graph/builders/rdf'
-import { type Size } from '../../../components/hooks/observer'
+import type { Renderable, Element } from '../../graph/builders'
+import type { RDFEdge, RDFNode, RDFOptions } from '../../graph/builders/rdf'
+import type { Size } from '../../../components/hooks/observer'
 
 type NodeAttributes = Omit<VisNode<string | number>, 'id'>
 type EdgeAttributes = Omit<VisEdge<string | number>, 'from' | 'to'>
@@ -203,7 +199,7 @@ abstract class VisNetworkDriver<
     dataset: Dataset,
     id: string,
     attributes: NodeAttributes,
-    cluster?: null | undefined,
+    cluster?: null,
   ): void {
     dataset.addNode({
       ...attributes,
@@ -217,7 +213,7 @@ abstract class VisNetworkDriver<
     from: string,
     to: string,
     attributes: EdgeAttributes,
-    cluster?: null | undefined,
+    cluster?: null,
   ): Dataset | void {
     dataset.addEdge({
       ...attributes,

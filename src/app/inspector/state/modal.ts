@@ -1,6 +1,6 @@
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 import { loaders, resetters, type BoundState } from '.'
-import { type PathTree } from '../../../lib/pathbuilder/pathtree'
+import type { PathTree } from '../../../lib/pathbuilder/pathtree'
 
 export type Slice = State & Actions
 

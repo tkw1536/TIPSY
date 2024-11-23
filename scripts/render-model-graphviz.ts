@@ -8,7 +8,7 @@ import ModelGraphBuilder from '../src/lib/graph/builders/model'
 import Deduplication from '../src/app/inspector/state/datatypes/deduplication'
 import { GraphVizModelDriver } from '../src/lib/drivers/impl/graphviz'
 import { nextInt } from '../src/lib/utils/prng'
-import { type ModelDisplay } from '../src/lib/graph/builders/model/labels'
+import type { ModelDisplay } from '../src/lib/graph/builders/model/labels'
 
 // Usage: node node_modules/vite-node/vite-node.mjs ./scripts/render-model-graphviz.ts -p pathbuilder
 
@@ -17,10 +17,10 @@ async function main(): Promise<void> {
 
   parser.add_argument('--pathbuilder', '-p', { required: true })
 
-  const config = parser.parse_args()
+  const config = parser.parse_args() as { pathbuilder: string }
 
   // parse the pathbuilder as xml
-  const pbXML = await readFile(config.pathbuilder as string)
+  const pbXML = await readFile(config.pathbuilder)
   const pb = Pathbuilder.parse(pbXML.toString())
 
   // create a tree
@@ -80,7 +80,7 @@ async function main(): Promise<void> {
   // write the actual blob to the console
   process.stdout.write(await blob.text())
 }
-main().catch(err => {
+main().catch((err: unknown) => {
   console.log(err)
 })
 

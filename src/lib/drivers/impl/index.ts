@@ -1,10 +1,10 @@
-import { type Size } from '../../../components/hooks/observer'
+import type { Size } from '../../../components/hooks/observer'
 import type Graph from '../../graph'
-import {
-  type Attachment,
-  type Element,
-  type ElementWithAttachments,
-  type Renderable,
+import type {
+  Attachment,
+  Element,
+  ElementWithAttachments,
+  Renderable,
 } from '../../graph/builders'
 import { IDPool } from '../../utils/id-pool'
 

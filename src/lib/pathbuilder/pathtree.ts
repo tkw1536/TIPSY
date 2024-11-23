@@ -1,4 +1,4 @@
-import { type Path, type Pathbuilder } from './pathbuilder'
+import type { Path, Pathbuilder } from './pathbuilder'
 
 interface MutableProtoBundle {
   type: 'bundle'
@@ -122,8 +122,8 @@ export abstract class PathTreeNode {
   /** iterates over the elements in the pathArray belonging to the path of this node (if any) */
   *elements(): IterableIterator<PathElement> {
     // get the path
-    const path = this.path
-    const elements = path?.pathArray?.slice(0)
+    const { path } = this
+    const elements = path?.pathArray.slice(0)
     if (path === null || typeof elements === 'undefined') return
 
     // ensure that we have a valid path
@@ -134,7 +134,7 @@ export abstract class PathTreeNode {
 
     // figure out what the index within the path is
     const ownPathIndex = this.#ownPathIndex(elements)
-    const disambiguationIndex = path.disambiguationIndex
+    const { disambiguationIndex } = path
 
     // add the datatype property (if any)
     const datatypeIndex = elements.length

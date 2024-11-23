@@ -1,4 +1,4 @@
-import { type VNode } from 'preact'
+import type { VNode } from 'preact'
 import HTML from '../../../components/html'
 import markdownDocument from '../../../../macros/markdown' with { type: 'macro' }
 

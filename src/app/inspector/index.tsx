@@ -1,4 +1,4 @@
-import { type JSX } from 'preact'
+import type { JSX } from 'preact'
 import Tabs, { TabLabel, Tab } from '../../components/tabs'
 import DebugTab from './tabs/debug'
 import useInspectorStore from './state'

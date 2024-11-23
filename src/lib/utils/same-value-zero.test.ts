@@ -1,3 +1,4 @@
+/* eslint-disable no-new-wrappers -- needed by the test cases */
 import { describe, expect, test } from 'vitest'
 import { sameValueZero } from './same-value-zero'
 
@@ -21,12 +22,12 @@ describe(sameValueZero, () => {
     ['0', 0, false],
     ['17', 17, false],
     [[1, 2], '1,2', false],
-    [new String('foo'), 'foo', false], // eslint-disable-line no-new-wrappers
+    [new String('foo'), 'foo', false],
     [null, undefined, false],
     [null, false, false],
     [undefined, false, false],
     [{ foo: 'bar' }, { foo: 'bar' }, false],
-    [new String('foo'), new String('foo'), false], // eslint-disable-line no-new-wrappers
+    [new String('foo'), new String('foo'), false],
     [0, null, false],
     [0, NaN, false],
     ['foo', NaN, false],

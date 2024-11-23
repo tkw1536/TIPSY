@@ -1,8 +1,8 @@
-import { type Store } from 'rdflib'
+import type { Store } from 'rdflib'
 import { type BoundState, loaders, resetters } from '.'
 import { NamespaceMap } from '../../../lib/pathbuilder/namespace'
 
-import { type StateCreator } from 'zustand'
+import type { StateCreator } from 'zustand'
 export type Slice = State & Actions
 
 interface State {

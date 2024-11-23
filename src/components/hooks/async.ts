@@ -37,7 +37,7 @@ function useAsyncState<V, R>(
         setState({ status: 'rejected', reason: theReason })
       },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- this is a custom hook
     inputs,
   )
 
@@ -79,7 +79,7 @@ export function useAsyncEffect<T>(
         if (!active || typeof onFulfilled !== 'function') return
         dynamicCleanup = onFulfilled(value)
       },
-      reason => {
+      (reason: unknown) => {
         if (!active || typeof onRejected !== 'function') return
         dynamicCleanup = onRejected(reason)
       },
@@ -94,7 +94,7 @@ export function useAsyncEffect<T>(
         cleanup()
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- this is a custom hook
   }, inputs)
 }
 
@@ -137,7 +137,7 @@ export function useAsyncLoad<T, R = unknown>(
           apply(value)
           setLoading({ status: 'fulfilled', value })
         },
-        reason => {
+        (reason: unknown) => {
           const theReason =
             typeof processReason === 'function'
               ? processReason(reason)

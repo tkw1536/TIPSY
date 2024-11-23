@@ -1,8 +1,8 @@
-import {
-  type Core,
-  type CytoscapeOptions as _Options,
-  type ElementDefinition,
-  type Layouts,
+import type {
+  Core,
+  CytoscapeOptions as _Options,
+  ElementDefinition,
+  Layouts,
 } from 'cytoscape'
 import {
   type ContextDetails,
@@ -14,25 +14,21 @@ import {
   type View,
   defaultLayout,
 } from '.'
-import {
-  type BundleOptions,
-  type BundleEdge,
-  type BundleNode,
+import type {
+  BundleOptions,
+  BundleEdge,
+  BundleNode,
 } from '../../graph/builders/bundle'
 import { LazyValue } from '../../utils/once'
-import {
-  type ModelOptions,
-  type ModelEdge,
-  type ModelNode,
-  type ModelAttachmentKey,
+import type {
+  ModelOptions,
+  ModelEdge,
+  ModelNode,
+  ModelAttachmentKey,
 } from '../../graph/builders/model/labels'
-import { type Renderable, type Element } from '../../graph/builders'
-import {
-  type RDFEdge,
-  type RDFNode,
-  type RDFOptions,
-} from '../../graph/builders/rdf'
-import { type Size } from '../../../components/hooks/observer'
+import type { Renderable, Element } from '../../graph/builders'
+import type { RDFEdge, RDFNode, RDFOptions } from '../../graph/builders/rdf'
+import type { Size } from '../../../components/hooks/observer'
 
 const Cytoscape = new LazyValue(async () => {
   const cytoscape = (await import('cytoscape')).default
@@ -113,16 +109,25 @@ abstract class CytoscapeDriver<
           name: 'cola',
           maxSimulationTime,
           nodeSpacing: () => 10,
-        } as unknown as any
+        } as unknown as CytoscapeOptions['layout']
       case 'elk':
-        return { name: 'elk', maxSimulationTime } as unknown as any
+        return {
+          name: 'elk',
+          maxSimulationTime,
+        } as unknown as CytoscapeOptions['layout']
       case 'fcose':
-        return { name: 'fcose', maxSimulationTime } as unknown as any
+        return {
+          name: 'fcose',
+          maxSimulationTime,
+        } as unknown as CytoscapeOptions['layout']
       case 'breadthfirst':
         return { name: 'breadthfirst' }
       case 'dagre': /* fallthrough */
       default:
-        return { name: 'dagre', padding: 100 } as unknown as any
+        return {
+          name: 'dagre',
+          padding: 100,
+        } as unknown as CytoscapeOptions['layout']
     }
   }
 
@@ -331,7 +336,7 @@ abstract class CytoscapeDriver<
     from: string,
     to: string,
     attributes: Attributes,
-    cluster?: string | undefined,
+    cluster?: string,
   ): void {
     elements.push({
       data: {

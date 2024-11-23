@@ -30,7 +30,7 @@ export default function useEffectWithSnapshot<S, I extends S | null = S | null>(
 
     return () => {
       // reset ref back to initial value
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- this is a custom hook
       ref.current = initialValueRef.current
 
       // no snapshot function => use nothing
@@ -41,7 +41,7 @@ export default function useEffectWithSnapshot<S, I extends S | null = S | null>(
         ref.current = snapshot
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- this is a custom hook
   }, inputs)
 
   return ref

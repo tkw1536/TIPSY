@@ -88,7 +88,7 @@ export abstract class DeduplicatingBuilder {
     const omitted = !this.#includesNode(node)
 
     const { parent } = node
-    const parentContext = parent !== null ? nodeContexts.get(parent) : undefined
+    const parentContext = nodeContexts.get(parent)
 
     const contexts: NodeContext[] = []
     let context: NodeContext = false
@@ -123,19 +123,16 @@ export abstract class DeduplicatingBuilder {
       // generate the string id for this node
       // and check if we already have it
       const str = this.#makeID(context, 'class', element.uri)
-      return this.graph.addOrUpdateNode(
-        str,
-        (label?: ModelNode | undefined): ModelNode => {
-          return (
-            label ??
-            new ConceptModelNode(
-              element.uri,
-              new ImmutableSet(),
-              new ImmutableSet(),
-            )
+      return this.graph.addOrUpdateNode(str, (label?: ModelNode): ModelNode => {
+        return (
+          label ??
+          new ConceptModelNode(
+            element.uri,
+            new ImmutableSet(),
+            new ImmutableSet(),
           )
-        },
-      )
+        )
+      })
     }
 
     // draw all of the concepts
@@ -242,7 +239,7 @@ export abstract class DeduplicatingBuilder {
         // add the datatype node
         const targetNode = this.graph.addOrUpdateNode(
           id,
-          (label?: ModelNode | undefined): ModelNode => {
+          (label?: ModelNode): ModelNode => {
             if (node instanceof ConceptModelNode) {
               throw new Error('never reached')
             }
@@ -412,7 +409,8 @@ export abstract class DeduplicatingBuilder {
     // (because of the -1)
     return [
       this.#specialDatatypeContext,
-      parentElement?.uri ?? this.#specialDatatypeContext,
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- TODO: not sure typescript is correct here
+      parentElement.uri ?? this.#specialDatatypeContext,
       this.#specialDatatypeContext,
       ...parentSlice,
       this.#specialDatatypeContext,
