@@ -2,20 +2,18 @@ import type { JSX } from 'preact/jsx-runtime'
 import GenericInput, {
   ariaEntries,
   datasetEntries,
+  type HTMLInputAttributes,
   type InputLikeProps,
 } from './generic'
 import { useCallback, useMemo } from 'preact/hooks'
 import useModifierRef from './generic/modifiers'
 import ColorInstance from 'color'
-import type { HTMLAttributes } from 'preact/compat'
 import * as styles from './value.module.css'
 
 interface ValueBasedInputProps<T> extends InputLikeProps<T> {
   style: string
-  extra: Partial<
-    Omit<HTMLAttributes<HTMLInputElement>, 'class' | 'className' | 'style'>
-  >
-  setValue: (value: T) => HTMLAttributes<HTMLInputElement>['value']
+  extra: Partial<Omit<HTMLInputAttributes, 'class' | 'className' | 'style'>>
+  setValue: (value: T) => HTMLInputAttributes['value']
   getValue: (element: HTMLInputElement) => T
 }
 
@@ -50,7 +48,6 @@ function ValueBasedInput<T>({
     if (typeof value === 'undefined') {
       return undefined
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- this is fine
     return setValue(value as T)
   }, [setValue, value])
 

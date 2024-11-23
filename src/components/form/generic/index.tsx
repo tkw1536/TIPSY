@@ -43,11 +43,17 @@ export interface ValidationProps {
   reportValidity?: boolean
 }
 
-type GenericInputProps = Omit<
-  HTMLAttributes<HTMLInputElement>,
-  keyof ValidationProps
-> &
+type GenericInputProps = Omit<HTMLInputAttributes, keyof ValidationProps> &
   ValidationProps
+
+export type HTMLInputAttributes = HTMLAttributes<HTMLInputElement> & {
+  type?: string
+  name?: string
+  form?: string
+  value?: string | number
+  autoComplete?: 'off'
+  checked?: boolean
+}
 
 const GenericInput = forwardRef(function GenericInputWithValidity(
   { customValidity, reportValidity, ...rest }: GenericInputProps,

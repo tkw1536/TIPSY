@@ -1,10 +1,11 @@
-import { type HTMLAttributes, type JSX, useCallback } from 'preact/compat'
+import { type JSX, useCallback } from 'preact/compat'
 import GenericInput, {
   ariaEntries,
   datasetEntries,
   Label,
   type ValidationProps,
   type InputLikeProps,
+  type HTMLInputAttributes,
 } from './generic'
 import useModifierRef from './generic/modifiers'
 import type { ComponentChildren } from 'preact'
@@ -52,7 +53,7 @@ function BooleanInput({
   )
 
   const ariaRoleThings: Partial<
-    Omit<HTMLAttributes<HTMLInputElement>, keyof ValidationProps>
+    Omit<HTMLInputAttributes, keyof ValidationProps>
   > = asSwitch
     ? { 'role': 'switch', 'aria-checked': value === true }
     : {
