@@ -45,18 +45,18 @@ describe(Pathbuilder, async () => {
       pb.toXML(),
       MIME_TYPE.XML_TEXT,
     )
-    const paths = xmlRT.childNodes.item(1).childNodes
-    expect(paths.length).toEqual(5)
+    const paths = xmlRT.childNodes.item(1)?.childNodes
+    expect(paths?.length).toEqual(5)
 
     // regular <path> node
     // (exactly tested in other code)
-    expect(paths.item(1).nodeName).toBe('path')
-    expect(paths.item(1).childNodes.length).toBe(19)
+    expect(paths?.item(1)?.nodeName).toBe('path')
+    expect(paths?.item(1)?.childNodes.length).toBe(19)
 
     // empty <path />
     // passed through from the input
-    expect(paths.item(3).nodeName).toBe('path')
-    expect(paths.item(3).childNodes.length).toBe(0)
+    expect(paths?.item(3)?.nodeName).toBe('path')
+    expect(paths?.item(3)?.childNodes.length).toBe(0)
   })
 })
 
@@ -116,7 +116,7 @@ describe(Path, async () => {
     const paths = samplePB.paths.slice(0)
 
     // clone all the paths
-    const doc = new DOMImplementation().createDocument(null, null, null)
+    const doc = new DOMImplementation().createDocument(null, 'doc', null)
     const clones = paths.map(p => Path.fromNode(p.toXML(doc)))
 
     // expect clones to be equal to the original

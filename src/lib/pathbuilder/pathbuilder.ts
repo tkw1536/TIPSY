@@ -1,8 +1,11 @@
 import {
   DOMImplementation,
   DOMParser,
+  type Element,
   MIME_TYPE,
+  type Node,
   XMLSerializer,
+  Document,
 } from '@xmldom/xmldom'
 import { cloneNodeInDocument, isTag } from '../utils/fakedom'
 
@@ -188,6 +191,10 @@ export class Pathbuilder {
 
     // add all the paths and extra nodes to the pb interface
     const pathbuilderinterface = xml.documentElement
+    if (pathbuilderinterface === null) {
+      throw new Error('Pathbuilder: returned invalid document element')
+    }
+
     this.#nodes
       .map(node => {
         // a gap is replaced by the appropriate path
@@ -479,7 +486,7 @@ export class Path {
   }
 
   static #serializeElement<T>(
-    xml: XMLDocument,
+    xml: Document,
     path: Element,
     name: string,
     serializer: (value: T) => string,
@@ -490,7 +497,7 @@ export class Path {
     path.appendChild(element)
   }
 
-  toXML(xml: XMLDocument): Element {
+  toXML(xml: Document): Element {
     const path = xml.createElement('path')
 
     const str = (value: string): string => value

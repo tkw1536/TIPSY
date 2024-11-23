@@ -33,7 +33,7 @@ import {
 } from '../../../graph/builders/model/labels'
 import { type Renderable, type Element } from '../../../graph/builders'
 import { type Size } from '../../../../components/hooks/observer'
-import { MIME_TYPE } from '@xmldom/xmldom'
+import { MIME_TYPE, Node } from '@xmldom/xmldom'
 
 type HammerManager = HammerStatic extends new (...vars: any[]) => infer T
   ? T
@@ -145,8 +145,13 @@ abstract class GraphvizDriver<
   static async #removeTitleHack(svg: string): Promise<string> {
     const { DOMParser, XMLSerializer } = await import('@xmldom/xmldom')
     const doc = new DOMParser().parseFromString(svg, MIME_TYPE.XML_SVG_IMAGE)
+    const { documentElement } = doc
+    if (documentElement === null) {
+      throw new Error('#removeTitleHack: invalid svg produced')
+    }
 
-    const nodes: Node[] = [doc.documentElement]
+    const nodes: Node[] = [documentElement]
+    // eslint-disable-next-line @typescript-eslint/no-magic-numbers -- 0 is not a magic number
     while (nodes.length > 0) {
       const node = nodes.shift()
       if (typeof node === 'undefined') {
@@ -157,7 +162,7 @@ abstract class GraphvizDriver<
         continue
       }
 
-      nodes.push(...Array.from(node.childNodes ?? []))
+      nodes.push(...Array.from(node.childNodes))
     }
 
     return new XMLSerializer().serializeToString(doc)
@@ -188,6 +193,7 @@ abstract class GraphvizDriver<
       worker.onmessage = e => {
         worker.terminate()
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- worker return type is known
         const data: GraphVizResponse = e.data
         if (!data.success) {
           reject(new Error(data.message))
