@@ -50,12 +50,21 @@ function WelcomeView(): JSX.Element {
         '../../../../fixtures/pathbuilder/example_file_in_ui.xml?raw'
       ).then(m => m.default)
       return new File([text], 'sample.xml', { type: Type.XML })
-    })
+    }, false)
   }, [loadFile])
 
   useEffect(() => {
-    return receiveFileFromParent(loadFile)
+    return receiveFileFromParent(file => {
+      loadFile(file, true)
+    })
   }, [loadFile])
+
+  const loadUserFile = useCallback(
+    (file: File) => {
+      loadFile(file, false)
+    },
+    [loadFile],
+  )
 
   if (loadStage === 'loading') {
     return <Spinner message='Loading pathbuilder' />
@@ -76,7 +85,7 @@ function WelcomeView(): JSX.Element {
         All processing happens on-device, meaning the server host can not access
         any data contained within your pathbuilder.
       </p>
-      <DropArea onInput={loadFile} types={[Type.XML]}>
+      <DropArea onInput={loadUserFile} types={[Type.XML]}>
         {dragContent}
       </DropArea>
       {typeof loadStage === 'object' && loadStage.error instanceof Error && (
@@ -94,6 +103,7 @@ function WelcomeView(): JSX.Element {
 function InfoView(): JSX.Element {
   const pathbuilder = useInspectorStore(s => s.pathbuilder)
   const filename = useInspectorStore(s => s.filename)
+  const embed = useInspectorStore(s => s.embed)
 
   const loadFile = useInspectorStore(s => s.loadFile)
   const closeFile = useInspectorStore(s => s.closeFile)
@@ -112,8 +122,8 @@ function InfoView(): JSX.Element {
 
     // close, then reload the file
     closeFile()
-    loadFile(file)
-  }, [closeFile, filename, loadFile, pathbuilder])
+    loadFile(file, embed)
+  }, [closeFile, embed, filename, loadFile, pathbuilder])
 
   const theFilename = filename !== '' ? filename : 'pathbuilder.xml'
 
@@ -130,9 +140,20 @@ function InfoView(): JSX.Element {
         This will forget any interface state, acting as if you had freshly
         exported the Pathbuilder from your WissKI.
       </p>
+
       <p>
-        You can also close <Button onInput={closeFile}>Close</Button> this
-        pathbuilder.
+        {embed ? (
+          <>
+            <code>{theFilename}</code> was provided to TIPSY by embedding the
+            interface into a different website. TIPSY neither controls, nor
+            endorses, the pathbuilder, its' contents, or the embedding website.
+          </>
+        ) : (
+          <>
+            You can also close <Button onInput={closeFile}>Close</Button> this
+            pathbuilder.
+          </>
+        )}
       </p>
     </>
   )

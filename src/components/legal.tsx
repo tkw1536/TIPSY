@@ -1,4 +1,4 @@
-import type { JSX, VNode } from 'preact'
+import { Fragment, type JSX, type VNode } from 'preact'
 import generateDisclaimer from '../../macros/disclaimer' with { type: 'macro' }
 import markdownDocument from '../../macros/markdown' with { type: 'macro' }
 import UnClosableModal from './layout/banner'
@@ -6,6 +6,7 @@ import HTML from './html'
 import { useCallback, useRef, useState } from 'preact/hooks'
 import { classes } from '../lib/utils/classes'
 import * as styles from './legal.module.css'
+import useInspectorStore from '../app/inspector/state'
 
 const disclaimer = generateDisclaimer()
 
@@ -117,13 +118,25 @@ export function LegalModal(props: {
 
 export function BannerContents(): VNode {
   return (
-    <HTML
-      html={bannerHTML}
-      trim={false}
-      noContainer
-      components={{ Legal: LegalDisclaimer, Copyable }}
-    />
+    <>
+      <HTML
+        html={bannerHTML}
+        trim={false}
+        noContainer
+        components={{ Legal: LegalDisclaimer, Copyable, Embedded }}
+      />
+    </>
   )
+}
+
+function Embedded(props: { children: VNode[] }): VNode {
+  const embed = useInspectorStore(s => s.embed)
+
+  if (!embed) {
+    return <Fragment />
+  }
+
+  return <Fragment>{props.children}</Fragment>
 }
 
 const skipBrowserCheckEnv = import.meta.env.VITE_SKIP_ALLOWED_BROWSER_CHECK

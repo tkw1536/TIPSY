@@ -9,19 +9,21 @@ export type Slice = State & Actions
 interface State {
   loadStage: false | 'loading' | true | { error: unknown } // boolean indicating if file has been loaded, string for error
   filename: string
+  embed: boolean
 
   pathbuilder: Pathbuilder
   pathtree: PathTree
 }
 
 interface Actions {
-  loadFile: (source: File | (() => Promise<File>)) => void
+  loadFile: (source: File | (() => Promise<File>), embed: boolean) => void
   closeFile: () => void
 }
 
 const initialState: State = {
   loadStage: false,
   filename: '',
+  embed: false,
   pathbuilder: new Pathbuilder([]),
   pathtree: new PathTree([]),
 }
@@ -37,9 +39,9 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
   return {
     ...initialState,
 
-    loadFile: (source: File | (() => Promise<File>)) => {
+    loadFile: (source: File | (() => Promise<File>), embed: boolean) => {
       // tell the caller that we're loading
-      set({ loadStage: 'loading' })
+      set({ loadStage: 'loading', embed })
 
       void (async () => {
         // parse the graph

@@ -3,7 +3,12 @@ The current version you are using exists for demo purposes only.
 It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
 It is explicitly <b>not</b> tested on Chrome and Chromium-based browsers, and some functionality is unavailable.
 
-It is made available to you free of charge given you comply with the following terms and conditions:
+<Embedded>
+    Please be aware that TIPSY has been preloaded with a specific (external) pathbuilder to inspect.
+    TIPSY neither controls, nor endorses, the pathbuilder, its' contents, or the embedding website.
+</Embedded>
+
+TIPSY is made available to you free of charge given you comply with the following terms and conditions:
 
 TIPSY provides functionality to export the created visualizations.
 You are granted a license to use the exported visualizations, provided you add the following attribution notice to any document, presentation, poster, image or other medium in which it appears:

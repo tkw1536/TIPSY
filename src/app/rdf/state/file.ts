@@ -9,6 +9,9 @@ interface State {
   loadStage: false | 'loading' | true | { error: unknown } // boolean indicating if file has been loaded, string for error
   filename: string
 
+  /** in embed mode it is not permitted to close the current pathbuilder */
+  embed: boolean
+
   store: Store
 }
 
@@ -21,6 +24,7 @@ const initialState: State = {
   loadStage: false,
   filename: '',
   store: new Store(),
+  embed: false,
 }
 const resetState: State = { ...initialState }
 
