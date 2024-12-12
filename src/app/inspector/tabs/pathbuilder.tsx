@@ -135,26 +135,25 @@ function InfoView(): JSX.Element {
         settings you have made. You can use the other tabs to inspect the
         pathbuilder.
       </p>
+      {embed && (
+        <p>
+          This file was provided to TIPSY by embedding the interface into a
+          different website. TIPSY neither controls nor endorses{' '}
+          <code>{theFilename}</code>, its' contents, or the embedding website.
+        </p>
+      )}
       <p>
         Click to <Button onInput={handleReset}>Reset The Interface</Button>.
         This will forget any interface state, acting as if you had freshly
         exported the Pathbuilder from your WissKI.
       </p>
 
-      <p>
-        {embed ? (
-          <>
-            <code>{theFilename}</code> was provided to TIPSY by embedding the
-            interface into a different website. TIPSY neither controls, nor
-            endorses, the pathbuilder, its' contents, or the embedding website.
-          </>
-        ) : (
-          <>
-            You can also close <Button onInput={closeFile}>Close</Button> this
-            pathbuilder.
-          </>
-        )}
-      </p>
+      {!embed && (
+        <p>
+          You can also close <Button onInput={closeFile}>Close</Button> this
+          pathbuilder.
+        </p>
+      )}
     </>
   )
 }

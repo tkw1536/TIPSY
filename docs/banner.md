@@ -5,7 +5,7 @@ It is explicitly <b>not</b> tested on Chrome and Chromium-based browsers, and so
 
 <Embedded>
     Please be aware that TIPSY has been preloaded with a specific (external) pathbuilder to inspect.
-    TIPSY neither controls, nor endorses, the pathbuilder, its' contents, or the embedding website.
+    TIPSY neither controls nor endorses this pathbuilder, its' contents, or the embedding website.
 </Embedded>
 
 TIPSY is made available to you free of charge given you comply with the following terms and conditions:
