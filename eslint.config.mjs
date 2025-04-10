@@ -29,10 +29,22 @@ export default [
   },
   {
     rules: {
+      // these may have made sense when optimization in js engines was worse
+      // but these days it's good enough
+      'complexity': ['off'],
+      'max-nested-callbacks': ['off'],
+      'max-lines': ['off'],
+
+      // used for a bunch of warnings and nags at the user
+      'no-console': ['off'],
+      'no-alert': ['off'],
+
       '@typescript-eslint/no-invalid-void-type': ['off'],
       '@typescript-eslint/no-unsafe-type-assertion': ['off'], // way too many false positives
       '@typescript-eslint/no-explicit-any': ['off'], // sometimes 'any' is helpful
       '@typescript-eslint/no-unsafe-assignment': ['off'], // sometimes 'any' is helpful
+
+      '@typescript-eslint/require-await': ['off'], // conflicts with some of the other rules
 
       '@typescript-eslint/max-params': ['off'], // this is a bullshit rule that doesn't help
 
@@ -42,6 +54,7 @@ export default [
       '@typescript-eslint/class-methods-use-this': ['off'],
       '@typescript-eslint/no-empty-function': ['off'],
       '@typescript-eslint/init-declarations': ['off'],
+      'promise/avoid-new': ['off'],
     },
     files,
   },
