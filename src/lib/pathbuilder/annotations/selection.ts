@@ -85,7 +85,7 @@ export default class NodeSelection {
       if (value === this.defaultValue) {
         updated = selection.delete(id) || updated
       } else {
-        updated = updated || !selection.has(id)
+        updated ||= !selection.has(id)
         selection.add(id)
       }
     }
