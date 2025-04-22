@@ -124,3 +124,32 @@ span.path_skip::after {
   content: '…';
   width: inherit;
 }
+
+span.badge {
+  display: block;
+  text-align: center;
+
+  font-size: small;
+
+  display: inline-block;
+  box-sizing: border-box;
+
+  margin-top: 0.2em;
+  padding: 2px;
+
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+
+  color: var(--theme-generic-dark);
+  background-color: var(--theme-active-light);
+  border-color: var(--theme-active-light);
+}
+
+.table tbody tr:hover span.badge {
+  border-color: var(--theme-active-dark);
+}
+
+span.badge::before {
+  content: '+';
+}

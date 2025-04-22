@@ -41,7 +41,7 @@ export default function TreeTab(): JSX.Element {
       <table class={styles.table}>
         <thead>
           <tr>
-            <th colSpan={2} />
+            <th colSpan={3} />
             <th colSpan={1 + maxDepth}>Title</th>
             <th>ID</th>
             <th>Path</th>
@@ -367,6 +367,9 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
   const selected = useInspectorStore(
     useShallow(s => s.selection.includes(node)),
   )
+  const count = useInspectorStore(
+    useShallow(s => s.selection.count(node, false)),
+  )
   const color = useInspectorStore(useShallow(c => c.cm.getDefault(node)))
 
   const { path, depth } = node
@@ -381,6 +384,9 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
     <tr class={classes(isMainBundle && styles.main_bundle)}>
       <td>
         <Checkbox value={selected} onInput={handleSelectionChange} />
+      </td>
+      <td>
+        <CountBadge count={count} />
       </td>
       <td>
         <Color value={color} onInput={handleColorChange} />
@@ -407,6 +413,13 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
     </tr>
   )
 })
+
+function CountBadge({ count }: { count: number }): JSX.Element | null {
+  if (count === 0) {
+    return null
+  }
+  return <span className={styles.badge}>{count}</span>
+}
 
 /** renders a single Path */
 const Path = memo(function Path(props: {

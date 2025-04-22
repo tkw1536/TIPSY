@@ -84,6 +84,7 @@ To save space, all parent elements can be collapsed into a single ellipse (`...`
 
 Paths can be selected using a checkbox. 
 These checkboxes determine if the selected path is included in the `Bundle Graph` and `Model Graph` views.
+The number next to the checkbox indicates how many children of the given path are currently selected. 
 Users can click a checkbox to toggle selection of a single path, or hold the shift key to toggle a path and all its' children.
 The side panel also holds buttons to select `All`, `None`, only `Bundles` or only `Fields`.
 These buttons overwrite any previously made selections.

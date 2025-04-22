@@ -74,6 +74,20 @@ export default class NodeSelection {
     return this.#selection.has(id) !== this.defaultValue
   }
 
+  /** counts how many children of the given node are selected */
+  count(element: PathTreeNode, includeSelf: boolean): number {
+    let count = 0
+    for (const elem of element.walk()) {
+      if (!includeSelf && elem === element) {
+        continue
+      }
+      if (this.includes(elem)) {
+        count++
+      }
+    }
+    return count
+  }
+
   /** with returns a new selection with the specified key set to the specified value */
   with(pairs: Iterable<[Key, boolean]>): NodeSelection {
     const selection = new Set(this.#selection)
