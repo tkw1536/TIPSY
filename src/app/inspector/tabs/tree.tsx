@@ -363,7 +363,7 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
     useShallow(s => (s.search === '' ? null : node.path.matches(s.search))),
   )
   const matchCount = useInspectorStore(
-    useShallow(s => node.count(n => n.path?.matches(s.search) ?? false, false)),
+    useShallow(s => node.count(n => n.path?.matches(s.search) ?? false, true)),
   )
   const ns = useInspectorStore(s => s.ns)
 
@@ -418,11 +418,11 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
         <Checkbox value={selected} onInput={handleSelectionChange} />
       </td>
       <>
-        <td>
-          <SelectCountBadge count={count} />
+        <td class={styles.select_count}>
+          {count > 0 && <span>{count.toString()}</span>}
         </td>
-        <td class={styles.match_spacing}>
-          {typeof matched === 'boolean' && <CountBadge count={matchCount} />}
+        <td class={styles.match_count}>
+          {typeof matched === 'boolean' && <span>{matchCount.toString()}</span>}
         </td>
       </>
       <td>
@@ -450,19 +450,6 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
     </tr>
   )
 })
-
-function SelectCountBadge({ count }: { count: number }): JSX.Element | null {
-  if (count === 0) {
-    return null
-  }
-  return (
-    <span className={classes(styles.badge, styles.select_badge)}>{count}</span>
-  )
-}
-
-function CountBadge({ count }: { count: number }): JSX.Element | null {
-  return <span className={classes(styles.badge)}>{count}</span>
-}
 
 /** renders a single Path */
 const Path = memo(function Path(props: {

@@ -82,12 +82,19 @@ Each type of path element is associated a color, a legend can be found in the si
 Importantly, path elements shared with the parent path (e.g. the bundle a field is found in) is displayed in gray.
 To save space, all parent elements can be collapsed into a single ellipse (`...`) by enabling a toggle in the sidebar. 
 
+Paths can be searched through using a text box.
+When entering text, paths are searched based on their title and ID. 
+Searching is case-insensitive and fuzzy.
+All paths matching a given query are highlighted, whereas those not matching the query are faded out.
+
 Paths can be selected using a checkbox. 
 These checkboxes determine if the selected path is included in the `Bundle Graph` and `Model Graph` views.
 The number next to the checkbox indicates how many children of the given path are currently selected. 
 Users can click a checkbox to toggle selection of a single path, or hold the shift key to toggle a path and all its' children.
 The side panel also holds buttons to select `All`, `None`, only `Bundles` or only `Fields`.
+You can additionally select only rows that match the current search.
 These buttons overwrite any previously made selections.
+
 
 Each path can be given a color to be used in the Graph Displays using a color input.
 

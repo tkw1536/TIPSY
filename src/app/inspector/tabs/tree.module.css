@@ -15,11 +15,12 @@
   border-top: var(--main-bundle-border);
 }
 
-.path_matched {
+.path_matched,
+.patch_match .path_matched td {
   background-color: var(--theme-active-light);
 }
 .path_not_matched {
-  filter: grayscale();
+  opacity: 0.5;
 }
 .matched .table tr:last-child {
   border-bottom: var(--main-bundle-border);
@@ -136,17 +137,25 @@ span.path_skip::after {
   width: inherit;
 }
 
-span.badge {
+.select_count,
+.match_count {
+  width: 2em;
+}
+
+.select_count span,
+.match_count span {
   display: block;
-  text-align: center;
 
   font-size: small;
 
-  display: inline-block;
   box-sizing: border-box;
 
   margin-top: 0.2em;
   padding: 2px;
+}
+
+.select_count span {
+  text-align: center;
 
   border-radius: 5px;
   border-width: 1px;
@@ -157,14 +166,15 @@ span.badge {
   border-color: var(--theme-active-light);
 }
 
-.table tbody tr:hover span.badge {
+.table tbody tr.select_count:hover {
   border-color: var(--theme-active-dark);
 }
 
-span.select_badge::before {
+.select_count span::before {
   content: '+';
 }
 
-.match_spacing {
-  min-width: 2em;
+.match_count span {
+  width: 100%;
+  text-align: right;
 }
