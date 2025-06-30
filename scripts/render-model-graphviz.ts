@@ -1,5 +1,5 @@
 import { ArgumentParser } from 'argparse'
-import { readFile } from 'fs/promises'
+import { readFile } from 'node:fs/promises'
 import { Pathbuilder } from '../src/lib/pathbuilder/pathbuilder'
 import { PathTree } from '../src/lib/pathbuilder/pathtree'
 import { NamespaceMap } from '../src/lib/pathbuilder/namespace'

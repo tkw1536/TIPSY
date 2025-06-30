@@ -18,22 +18,22 @@ export default class ImmutableMap<K, V> implements ReadonlyMap<K, V> {
   readonly #entries: Map<K, V>
 
   /** returns the key-value pairs in this map in insertion order */
-  public entries(): IterableIterator<[K, V]> {
+  public entries(): MapIterator<[K, V]> {
     return this.#entries.entries()
   }
 
   /** Returns an iterable of keys in the map */
-  public keys(): IterableIterator<K> {
+  public keys(): MapIterator<K> {
     return this.#entries.keys()
   }
 
   /** Returns an iterable of values in the map */
-  public values(): IterableIterator<V> {
+  public values(): MapIterator<V> {
     return this.#entries.values()
   }
 
   /** Returns an iterable of entries in the map. */
-  [Symbol.iterator](): IterableIterator<[K, V]> {
+  [Symbol.iterator](): MapIterator<[K, V]> {
     return this.entries()
   }
 

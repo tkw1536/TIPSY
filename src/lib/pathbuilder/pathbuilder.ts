@@ -261,6 +261,38 @@ export class Path {
     this.name = params.name
   }
 
+  /** matches this path against a search query */
+  matches(search: string): boolean {
+    if (search === '') {
+      return false
+    }
+
+    const query = search.toLowerCase()
+    for (const datum of [this.id.toLowerCase(), this.name.toLowerCase()]) {
+      if (Path.#match(query, datum)) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  static #match(needle: string, haystack: string): boolean {
+    if (needle.length === 0) {
+      return false
+    }
+    let needleIndex = 0
+    for (const char of haystack) {
+      if (needle[needleIndex] === char) {
+        needleIndex++
+        if (needleIndex >= needle.length) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+
   /** returns a clone of this path that can be modified without having to worry about the original */
   clone(): Path {
     return new Path(this.params)

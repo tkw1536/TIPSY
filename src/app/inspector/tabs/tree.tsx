@@ -26,14 +26,17 @@ import {
   ControlGroup,
 } from '../../../components/graph-display/controls'
 import Checkbox, { Switch } from '../../../components/form/checkbox'
-import { Color } from '../../../components/form/value'
-import { memo } from 'preact/compat'
+import Text, { Color } from '../../../components/form/value'
+import React, { memo } from 'preact/compat'
 import { useShallow } from 'zustand/react/shallow'
 import type { ModifierKeys } from '../../../components/form/generic/modifiers'
 
 export default function TreeTab(): JSX.Element {
   const tree = useInspectorStore(s => s.pathtree)
+  const search = useInspectorStore(s => s.search)
+  const setSearch = useInspectorStore(s => s.setSearch)
   const children = useMemo(() => Array.from(tree.children()), [tree])
+
   const { maxDepth } = tree
 
   return (
@@ -41,12 +44,19 @@ export default function TreeTab(): JSX.Element {
       <table class={styles.table}>
         <thead>
           <tr>
-            <th colSpan={3} />
+            <th colSpan={4} />
             <th colSpan={1 + maxDepth}>Title</th>
             <th>ID</th>
             <th>Path</th>
             <th>Field Type</th>
             <th>Cardinality</th>
+          </tr>
+          <tr>
+            <td colSpan={4} />
+            <td colSpan={2 + maxDepth}>
+              <Text value={search} onInput={setSearch} />
+            </td>
+            <td colSpan={3}></td>
           </tr>
         </thead>
         <tbody>
@@ -139,6 +149,7 @@ function OverviewControl(): JSX.Element {
 }
 
 function SelectionControl(): JSX.Element {
+  const search = useInspectorStore(s => s.search)
   const selectAll = useInspectorStore(s => s.selectAll)
   const selectNone = useInspectorStore(s => s.selectNone)
 
@@ -149,6 +160,9 @@ function SelectionControl(): JSX.Element {
   const selectFields = useCallback(() => {
     selectPredicate(x => x instanceof Field)
   }, [selectPredicate])
+  const selectMatched = useCallback(() => {
+    selectPredicate(x => x.path?.matches(search) ?? false)
+  }, [selectPredicate, search])
 
   return (
     <Control name='Selection'>
@@ -162,6 +176,12 @@ function SelectionControl(): JSX.Element {
         <Button onInput={selectNone}>Select None</Button>
         <Button onInput={selectBundles}>Select Bundles</Button>
         <Button onInput={selectFields}>Select Fields</Button>
+      </ButtonGroup>
+
+      <ButtonGroup>
+        <Button onInput={selectMatched} disabled={search === ''}>
+          Selected Matched
+        </Button>
       </ButtonGroup>
     </Control>
   )
@@ -339,6 +359,12 @@ interface PathRowProps {
 const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
   const { node, maxDepth } = props
 
+  const matched = useInspectorStore(
+    useShallow(s => (s.search === '' ? null : node.path.matches(s.search))),
+  )
+  const matchCount = useInspectorStore(
+    useShallow(s => node.count(n => n.path?.matches(s.search) ?? false, false)),
+  )
   const ns = useInspectorStore(s => s.ns)
 
   const hideParents = useInspectorStore(s => s.collapseParentPaths)
@@ -381,13 +407,24 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
   const isMainBundle = node instanceof Bundle && node.isMain
 
   return (
-    <tr class={classes(isMainBundle && styles.main_bundle)}>
+    <tr
+      class={classes(
+        isMainBundle && styles.main_bundle,
+        matched === true && styles.path_matched,
+        matched === false && styles.path_not_matched,
+      )}
+    >
       <td>
         <Checkbox value={selected} onInput={handleSelectionChange} />
       </td>
-      <td>
-        <CountBadge count={count} />
-      </td>
+      <>
+        <td>
+          <SelectCountBadge count={count} />
+        </td>
+        <td class={styles.match_spacing}>
+          {typeof matched === 'boolean' && <CountBadge count={matchCount} />}
+        </td>
+      </>
       <td>
         <Color value={color} onInput={handleColorChange} />
       </td>
@@ -414,11 +451,17 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
   )
 })
 
-function CountBadge({ count }: { count: number }): JSX.Element | null {
+function SelectCountBadge({ count }: { count: number }): JSX.Element | null {
   if (count === 0) {
     return null
   }
-  return <span className={styles.badge}>{count}</span>
+  return (
+    <span className={classes(styles.badge, styles.select_badge)}>{count}</span>
+  )
+}
+
+function CountBadge({ count }: { count: number }): JSX.Element | null {
+  return <span className={classes(styles.badge)}>{count}</span>
 }
 
 /** renders a single Path */

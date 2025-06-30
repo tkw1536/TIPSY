@@ -14,7 +14,14 @@
 .main_bundle {
   border-top: var(--main-bundle-border);
 }
-.table tr:last-child {
+
+.path_matched {
+  background-color: var(--theme-active-light);
+}
+.path_not_matched {
+  filter: grayscale();
+}
+.matched .table tr:last-child {
   border-bottom: var(--main-bundle-border);
 }
 
@@ -27,6 +34,10 @@
 
 .table tbody tr:hover {
   background-color: var(--theme-active-light);
+}
+
+table tbody tr.path_matched:hover {
+  background-color: var(--theme-active-medium);
 }
 
 td.tree_level {
@@ -150,6 +161,10 @@ span.badge {
   border-color: var(--theme-active-dark);
 }
 
-span.badge::before {
+span.select_badge::before {
   content: '+';
+}
+
+.match_spacing {
+  min-width: 2em;
 }

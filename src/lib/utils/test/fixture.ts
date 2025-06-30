@@ -1,13 +1,13 @@
-import { join } from 'path'
+import { join } from 'node:path'
 import { Fixtures } from '.'
-import { readFile } from 'fs/promises'
+import { readFile } from 'node:fs/promises'
 
 /** reads a fixture at the given path */
 export async function readFixture(...elements: string[]): Promise<string> {
   const path = join(Fixtures, ...elements)
 
   const buffer = await readFile(path, { encoding: 'utf8' })
-  return buffer.toString()
+  return buffer
 }
 
 /** reads a fixture as JSON */

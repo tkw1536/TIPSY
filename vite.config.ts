@@ -3,8 +3,9 @@
 import prefresh from '@prefresh/vite'
 import { defineConfig } from 'vite'
 import macros from 'unplugin-parcel-macros'
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- hack broke
 export default defineConfig({
   plugins: [prefresh(), macros.vite()],
   worker: {
@@ -38,4 +39,4 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
   },
-})
+} as unknown as any)

@@ -1,7 +1,7 @@
-import { readFileSync } from 'fs'
+import { readFileSync } from 'node:fs'
 import { Marked, type RendererObject, type Renderer } from 'marked'
 import markedFootnote from 'marked-footnote'
-import { join } from 'path'
+import { join } from 'node:path'
 
 const marked = new Marked()
 marked.use(markedFootnote())
@@ -39,6 +39,6 @@ export default function markdownDocument(
   const path = join(DOCS_DIR, name)
   this?.invalidateOnFileChange(path)
 
-  const contents = readFileSync(path, 'utf-8').toString()
+  const contents = readFileSync(path, 'utf-8')
   return marked.parse(contents) as string
 }

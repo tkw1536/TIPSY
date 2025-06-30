@@ -1,4 +1,4 @@
-import type { Path, Pathbuilder } from './pathbuilder'
+import type { Pathbuilder, Path } from './pathbuilder'
 
 interface MutableProtoBundle {
   type: 'bundle'
@@ -310,6 +310,23 @@ export abstract class PathTreeNode {
       current = current.parent
     }
     return null
+  }
+
+  /** counts all nodes matching a given predicate */
+  count(
+    predicate: (node: PathTreeNode) => boolean,
+    includeSelf = false,
+  ): number {
+    let count = 0
+    for (const elem of this.walk()) {
+      if (!includeSelf && elem === this) {
+        continue
+      }
+      if (predicate(elem)) {
+        count++
+      }
+    }
+    return count
   }
 }
 

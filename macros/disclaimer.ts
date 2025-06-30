@@ -1,5 +1,5 @@
-import { execSync } from 'child_process'
-import { join } from 'path'
+import { execSync } from 'node:child_process'
+import { join } from 'node:path'
 
 const PACKAGE_JSON = join(__dirname, '..', 'package.json')
 const YARN_LOCK = join(__dirname, '..', 'yarn.lock')

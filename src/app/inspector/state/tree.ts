@@ -9,11 +9,13 @@ import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 export type Slice = State & Actions
 
 interface State {
+  search: string
   collapse: NodeSelection
   collapseParentPaths: boolean
 }
 
 interface Actions {
+  setSearch: (value: string) => void
   setCollapseParentPaths: (value: boolean) => void
 
   toggleNode: (node: PathTreeNode) => void
@@ -22,6 +24,7 @@ interface Actions {
 }
 
 const initialState: State = {
+  search: '',
   collapse: NodeSelection.all(),
   collapseParentPaths: false,
 }
@@ -49,6 +52,11 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
   )
   return {
     ...initialState,
+
+    setSearch: (value: string) => {
+      set({ search: value })
+    },
+
     setCollapseParentPaths: (value: boolean) => {
       set({ collapseParentPaths: value })
     },
@@ -88,6 +96,9 @@ function validate(data: any): data is TreeExport {
     'type' in data &&
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     data.type === 'tree' &&
+    'search' in data &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
+    typeof data.search === 'string' &&
     'collapse' in data &&
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
     NodeSelection.isValidNodeSelection(data.collapse) &&

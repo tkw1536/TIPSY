@@ -11,8 +11,8 @@ describe(sameValueZero, () => {
     [true, false, false],
     ['foo', 'foo', true],
     [0, 0, true],
-    [+0, -0, true],
-    [+0, 0, true],
+    [+0, -0, true], // eslint-disable-line @typescript-eslint/no-unnecessary-type-conversion -- signed zero
+    [+0, 0, true], // eslint-disable-line @typescript-eslint/no-unnecessary-type-conversion -- signed zero
     [-0, 0, true],
     [0n, -0n, true],
     [0, false, false],
