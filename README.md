@@ -39,7 +39,7 @@ After starting a development server, access the app at `http://localhost:1234/`.
 
 ## Embedding
 
-To embed and directly load a file in tipsy, it is possible to embed tipsy via an iframe and [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to it.
+To embed and directly load a file in TIPSY, it is possible to embed tipsy via an iframe and [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) to it.
 TIPSY will inform the parent window when it is ready to receive such a message by sending a message with the contents of 'tipsy:ready'.
 
 You can use something like the following to create such an iframe.
