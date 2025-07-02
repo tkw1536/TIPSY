@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import { Pathbuilder } from './pathbuilder'
 import { readFixture } from '../utils/test/fixture'
-import { Bundle, PathTree, type PathTreeNode } from './pathtree'
+import { Bundle, type PathElement, PathTree, PathTreeNode } from './pathtree'
 
 const samplePB = Pathbuilder.parse(
   await readFixture('pathbuilder', 'sample.xml'),
@@ -246,5 +246,439 @@ describe(PathTree, async () => {
 
     // ensure that the main bundle resolves correctly
     expect(node.mainBundle).toBe(want)
+  })
+
+  test.each([
+    [
+      'publication',
+      [
+        {
+          common: null,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'publication',
+      [
+        {
+          common: null,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'title',
+      [
+        {
+          common: -1,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+        {
+          common: 0,
+          disambiguation: null,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P102_has_title',
+        },
+        {
+          common: 1,
+          conceptIndex: 1,
+          disambiguation: null,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E35_Title',
+        },
+        {
+          common: 2,
+          disambiguation: null,
+          index: 3,
+          propertyIndex: 1,
+          role: 'datatype',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P3_has_note',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'creation',
+      [
+        {
+          common: -1,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+        {
+          common: 0,
+          disambiguation: null,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P94i_was_created_by',
+        },
+        {
+          common: 1,
+          conceptIndex: 1,
+          disambiguation: null,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E65_Creation',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'date_of_writing',
+      [
+        {
+          common: -3,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+        {
+          common: -2,
+          disambiguation: null,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P94i_was_created_by',
+        },
+        {
+          common: -1,
+          conceptIndex: 1,
+          disambiguation: null,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E65_Creation',
+        },
+        {
+          common: 0,
+          disambiguation: null,
+          index: 3,
+          propertyIndex: 1,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P4_has_time-span',
+        },
+        {
+          common: 1,
+          conceptIndex: 2,
+          disambiguation: null,
+          index: 4,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E52_Time-Span',
+        },
+        {
+          common: 2,
+          disambiguation: null,
+          index: 5,
+          propertyIndex: 2,
+          role: 'datatype',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P82_at_some_time_within',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'author',
+      [
+        {
+          common: -3,
+          conceptIndex: 0,
+          disambiguation: -4,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+        {
+          common: -2,
+          disambiguation: -3,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P94i_was_created_by',
+        },
+        {
+          common: -1,
+          conceptIndex: 1,
+          disambiguation: -2,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E65_Creation',
+        },
+        {
+          common: 0,
+          disambiguation: -1,
+          index: 3,
+          propertyIndex: 1,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P14_carried_out_by',
+        },
+        {
+          common: 1,
+          conceptIndex: 2,
+          disambiguation: 0,
+          index: 4,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E21_Person',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'scientific_publication',
+      [
+        {
+          common: -1,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+        {
+          common: 0,
+          disambiguation: null,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P165_incorporates',
+        },
+        {
+          common: 1,
+          conceptIndex: 1,
+          disambiguation: null,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E90_Symbolic_Object',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'figure_image',
+      [
+        {
+          common: -3,
+          conceptIndex: 0,
+          disambiguation: -2,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E31_Document',
+        },
+        {
+          common: -2,
+          disambiguation: -1,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P165_incorporates',
+        },
+        {
+          common: -1,
+          conceptIndex: 1,
+          disambiguation: 0,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E90_Symbolic_Object',
+        },
+        {
+          common: 0,
+          disambiguation: 1,
+          index: 3,
+          propertyIndex: 1,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P138i_has_representation',
+        },
+        {
+          common: 1,
+          conceptIndex: 2,
+          disambiguation: 2,
+          index: 4,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E36_Visual_Item',
+        },
+        {
+          common: 2,
+          disambiguation: 3,
+          index: 5,
+          propertyIndex: 2,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P48_has_preferred_identifier',
+        },
+        {
+          common: 3,
+          conceptIndex: 3,
+          disambiguation: 4,
+          index: 6,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E42_Identifier',
+        },
+        {
+          common: 4,
+          disambiguation: 5,
+          index: 7,
+          propertyIndex: 3,
+          role: 'datatype',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P3_has_note',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'scientific_figure',
+      [
+        {
+          common: null,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E90_Symbolic_Object',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'image',
+      [
+        {
+          common: -1,
+          conceptIndex: 0,
+          disambiguation: -2,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E90_Symbolic_Object',
+        },
+        {
+          common: 0,
+          disambiguation: -1,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P138i_has_representation',
+        },
+        {
+          common: 1,
+          conceptIndex: 1,
+          disambiguation: 0,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E36_Visual_Item',
+        },
+        {
+          common: 2,
+          disambiguation: 1,
+          index: 3,
+          propertyIndex: 1,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P48_has_preferred_identifier',
+        },
+        {
+          common: 3,
+          conceptIndex: 2,
+          disambiguation: 2,
+          index: 4,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E42_Identifier',
+        },
+        {
+          common: 4,
+          disambiguation: 3,
+          index: 5,
+          propertyIndex: 2,
+          role: 'datatype',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P3_has_note',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'person',
+      [
+        {
+          common: null,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E21_Person',
+        },
+      ] as PathElement[],
+    ],
+    [
+      'name',
+      [
+        {
+          common: -1,
+          conceptIndex: 0,
+          disambiguation: null,
+          index: 0,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E21_Person',
+        },
+        {
+          common: 0,
+          disambiguation: null,
+          index: 1,
+          propertyIndex: 0,
+          role: 'relation',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P1_is_identified_by',
+        },
+        {
+          common: 1,
+          conceptIndex: 1,
+          disambiguation: null,
+          index: 2,
+          type: 'concept',
+          uri: 'http://erlangen-crm.org/240307/E35_Title',
+        },
+        {
+          common: 2,
+          disambiguation: null,
+          index: 3,
+          propertyIndex: 1,
+          role: 'datatype',
+          type: 'property',
+          uri: 'http://erlangen-crm.org/240307/P3_has_note',
+        },
+      ] as PathElement[],
+    ],
+  ])('elements(%1) -> %2', (tNode: string, wantElements: PathElement[]) => {
+    const node = typeof tNode === 'string' ? sampleTree.find(tNode) : sampleTree
+
+    if (!(node instanceof PathTreeNode)) {
+      throw new Error('test case: no such node')
+    }
+
+    const elements = Array.from(node.elements())
+    expect(elements).toStrictEqual(wantElements)
   })
 })
