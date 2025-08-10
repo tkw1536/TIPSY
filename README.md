@@ -1,6 +1,9 @@
 # TIPSY - Tom's Inspector for Pathbuilders <sub>Yaaaaaahs!</sub>
 
 This repository contains TIPSY, an advanced inspector for Pathbuilders produced by the [WissKI](https://wiss-ki.eu) software.
+For more information about the motivation behind TIPSY read Chapter VI.3.4 of my PhD dissertation "Towards A Commons Of Object-
+Centered Research Data" with doi [10.25593/open-fau-1825](https://doi.org/10.25593/open-fau-1825).
+
 This source code is made available for evaluation purposes only.
 
 It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
