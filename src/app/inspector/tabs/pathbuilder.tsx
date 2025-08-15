@@ -114,6 +114,13 @@ function InfoView(): JSX.Element {
     download(file, filename)
   }, [filename])
 
+  const handleSelectionExport = useCallback((): void => {
+    const { pathtree, selection } = useInspectorStore.getState()
+    const pathbuilder = selection.closure(pathtree).toPathbuilder(pathtree)
+    const file = new Blob([pathbuilder.toXML()], { type: 'application/xml' })
+    download(file, filename)
+  }, [filename])
+
   const handleReset = useCallback((): void => {
     // re-create the file
     const file = new File([pathbuilder.onlyPaths().toXML()], filename, {
@@ -142,6 +149,11 @@ function InfoView(): JSX.Element {
           <code>{theFilename}</code>, its' contents, or the embedding website.
         </p>
       )}
+      <p>
+        You can also export a{' '}
+        <Button onInput={handleSelectionExport}>new Pathbuilder</Button>{' '}
+        containing only the selected paths (and their closure).
+      </p>
       <p>
         Click to <Button onInput={handleReset}>Reset The Interface</Button>.
         This will forget any interface state, acting as if you had freshly

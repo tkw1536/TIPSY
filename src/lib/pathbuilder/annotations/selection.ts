@@ -123,6 +123,67 @@ export default class NodeSelection {
     return new NodeSelection(this.defaultValue, newSelection)
   }
 
+  /**
+   * Returns the closure of this NodeSelection.
+   * The closure of this NodeSelection is the smallest possible selection
+   * for which the parent of any node contained is also contained.
+   * The closure of this NodeSelection may be itself.
+   */
+  closure(root: PathTreeNode): NodeSelection {
+    const contained = new Set<string>()
+    const missing: string[] = []
+    const nodes: PathTreeNode[] = []
+
+    /** processes a node to be included */
+    const selectNode = (node: PathTreeNode): void => {
+      const path = node.path
+      if (path === null) {
+        return
+      }
+
+      nodes.push(node)
+      contained.add(path.id)
+
+      const parentId = toID(node.parent ?? undefined)
+      if (typeof parentId !== 'string') {
+        return
+      }
+
+      missing.push(parentId)
+    }
+
+    const map = new Map<string, PathTreeNode>()
+    for (const node of root.walk()) {
+      const id = toID(node)
+      if (typeof id === 'string') {
+        map.set(id, node)
+      }
+      if (this.includes(node)) {
+        selectNode(node)
+      }
+    }
+
+    while (true) {
+      const next = missing.pop()
+      if (typeof next === 'undefined') {
+        break
+      }
+
+      if (contained.has(next)) {
+        continue
+      }
+
+      const node = map.get(next)
+      if (typeof node === 'undefined') {
+        console.warn('node', next, 'referenced, but missing from pathtree')
+        continue
+      }
+      selectNode(node)
+    }
+
+    return this.with(nodes.map(x => [x, true]))
+  }
+
   /** returns a new pathbuilder consisting of the paths of the given node */
   toPathbuilder(node: PathTreeNode): Pathbuilder {
     return new Pathbuilder(

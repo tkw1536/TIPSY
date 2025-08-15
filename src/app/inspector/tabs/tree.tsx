@@ -152,6 +152,7 @@ function SelectionControl(): JSX.Element {
   const search = useInspectorStore(s => s.search)
   const selectAll = useInspectorStore(s => s.selectAll)
   const selectNone = useInspectorStore(s => s.selectNone)
+  const selectClosure = useInspectorStore(s => s.selectClosure)
 
   const selectPredicate = useInspectorStore(s => s.selectPredicate)
   const selectBundles = useCallback(() => {
@@ -179,8 +180,9 @@ function SelectionControl(): JSX.Element {
       </ButtonGroup>
 
       <ButtonGroup>
+        <Button onInput={selectClosure}>Select Closure</Button>
         <Button onInput={selectMatched} disabled={search === ''}>
-          Selected Matched
+          Select Matched
         </Button>
       </ButtonGroup>
     </Control>

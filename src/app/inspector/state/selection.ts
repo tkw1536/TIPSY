@@ -15,6 +15,7 @@ interface State {
 interface Actions {
   selectAll: () => void
   selectNone: () => void
+  selectClosure: () => void
   selectPredicate: (predicate: (node: PathTreeNode) => boolean) => void
   updateSelection: (pairs: Array<[PathTreeNode, boolean]>) => void
 }
@@ -67,6 +68,11 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
     },
     updateSelection(pairs) {
       set(({ selection }) => ({ selection: selection.with(pairs) }))
+    },
+    selectClosure() {
+      set(({ selection, pathtree }) => ({
+        selection: selection.closure(pathtree),
+      }))
     },
   }
 }
