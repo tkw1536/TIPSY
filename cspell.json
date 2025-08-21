@@ -29,7 +29,8 @@
         "csslint",
         "fakedom",
         "rankdir",
-        "Yaaaaaahs"
+        "Yaaaaaahs",
+        "zenodo"
     ],
     "ignorePaths": ["package.json", "node_modules/**", "dist/**", "**/*.svg", "**/*.xml"],
     // flagWords - list of words to be always considered incorrect
