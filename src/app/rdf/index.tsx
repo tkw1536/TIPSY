@@ -6,7 +6,7 @@ import { LegalModal } from '../../components/legal'
 
 const RDFTab = lazy(async () => await import('./tabs/rdf'))
 const MapTab = lazy(async () => await import('./tabs/map'))
-const GraphTab = lazy(async () => await import('./tabs/graph'))
+const VisualTab = lazy(async () => await import('./tabs/visual'))
 const DocsTab = lazy(async () => await import('./tabs/docs'))
 const AboutTab = lazy(async () => await import('./tabs/about'))
 
@@ -30,8 +30,8 @@ export default function RDFViewerApp(): JSX.Element {
         <Tab title='RDF File' id=''>
           <RDFTab />
         </Tab>
-        <Tab title='Graph' disabled={!loaded} id='graph'>
-          <GraphTab />
+        <Tab title='Visual' disabled={!loaded} id='visual'>
+          <VisualTab />
         </Tab>
         <Tab title='Namespace Map &#9881;&#65039;' disabled={!loaded} id='ns'>
           <MapTab />

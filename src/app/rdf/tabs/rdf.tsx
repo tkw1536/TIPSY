@@ -30,7 +30,7 @@ function WelcomeView(): JSX.Element {
         any data contained within your statements.
       </p>
       <DropArea onInput={openFile}>
-        Click or drag an <code>RDF/XML</code> file here
+        Click or drag a file containing RDF here
       </DropArea>
       {typeof loadStage === 'object' && loadStage.error instanceof Error && (
         <>
@@ -50,10 +50,13 @@ function InfoView(): JSX.Element {
   const filename = useRDFStore(s => s.filename)
   const theFilename = filename !== '' ? filename : 'statements.rdf'
 
+  const count = useRDFStore(s => s.store).length
+
   return (
     <>
       <p>
-        RDF <code>{theFilename}</code> successfully loaded.
+        RDF <code>{theFilename}</code> with <code>{count}</code> statement
+        {count !== 1 && 's'} successfully loaded.
       </p>
       <p>
         You can also <Button onInput={closeFile}>Close</Button> this file.

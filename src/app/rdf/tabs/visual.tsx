@@ -17,7 +17,7 @@ import useRDFStore from '../state'
 import { useCallback, useMemo } from 'preact/hooks'
 import type { ContextFlags } from '../../../lib/drivers/impl'
 
-export default function GraphTab(): JSX.Element {
+export default function VisualTab(): JSX.Element {
   const store = useRDFStore(s => s.store)
   const layout = useRDFStore(s => s.rdfGraphLayout)
   const driver = useRDFStore(s => s.rdfGraphDriver)
@@ -26,7 +26,7 @@ export default function GraphTab(): JSX.Element {
   const setSnapshot = useRDFStore(s => s.setRDFSnapshot)
   const ns = useRDFStore(s => s.ns)
 
-  const makeGraph = useCallback(() => {
+  const makeVisual = useCallback(() => {
     const builder = new RDFGraphBuilder(store)
     return builder.build()
   }, [store])
@@ -41,15 +41,15 @@ export default function GraphTab(): JSX.Element {
       loader={triples}
       name={driver}
       flags={flags}
-      makeGraph={makeGraph}
-      panel={GraphTabPanel}
+      makeGraph={makeVisual}
+      panel={VisualTabPanel}
       snapshot={snapshot}
       setSnapshot={setSnapshot}
     />
   )
 }
 
-function GraphTabPanel(
+function VisualTabPanel(
   props: PanelProps<RDFNode, RDFEdge, RDFOptions, never>,
 ): JSX.Element {
   const driver = useRDFStore(s => s.rdfGraphDriver)

@@ -2,6 +2,10 @@ import { graph, parse, Store } from 'rdflib'
 import { resetters, type BoundState, loaders } from '.'
 
 import type { StateCreator } from 'zustand'
+import {
+  contentTypeToExtension,
+  guessContentType,
+} from '../../../lib/rdf/guesser'
 
 export type Slice = State & Actions
 
@@ -46,14 +50,18 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
         // parse the graph
         const store: Store = graph()
         let states: Array<Partial<BoundState>>
+        let filename: string
         try {
           const source = await file.text()
-          const filename = file.name
-          const format = 'application/rdf+xml'
-          const base = 'file://' + (filename !== '' ? filename : 'upload.xml') // TODO: allow user to set this
+          const contentType = guessContentType(file)
+          filename =
+            file.name !== ''
+              ? file.name
+              : 'upload.' + contentTypeToExtension(contentType)
+          const base = 'file://' + filename
 
           // parse in the graph
-          parse(source, store, base, format)
+          parse(source, store, base, contentType)
 
           // load the entire initial state
           states = await Promise.all(
@@ -68,6 +76,7 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
         const state: Partial<State> = Object.assign({}, ...states, {
           store,
           loadStage: true,
+          filename,
         })
         set(state)
       })()
