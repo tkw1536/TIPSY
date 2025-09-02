@@ -12,6 +12,7 @@ interface State {
   search: string
   collapse: NodeSelection
   collapseParentPaths: boolean
+  showFieldId: boolean
 }
 
 interface Actions {
@@ -21,12 +22,14 @@ interface Actions {
   toggleNode: (node: PathTreeNode) => void
   collapseAll: () => void
   expandAll: () => void
+  setShowFieldId: (value: boolean) => void
 }
 
 const initialState: State = {
   search: '',
   collapse: NodeSelection.all(),
   collapseParentPaths: false,
+  showFieldId: false,
 }
 const resetState: State = { ...initialState }
 
@@ -70,6 +73,10 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
     },
     expandAll() {
       set({ collapse: NodeSelection.none() })
+    },
+
+    setShowFieldId: (value: boolean) => {
+      set({ showFieldId: value })
     },
   }
 }

@@ -34,6 +34,7 @@ import type { ModifierKeys } from '../../../components/form/generic/modifiers'
 export default function TreeTab(): JSX.Element {
   const tree = useInspectorStore(s => s.pathtree)
   const search = useInspectorStore(s => s.search)
+  const showFieldId = useInspectorStore(s => s.showFieldId)
   const setSearch = useInspectorStore(s => s.setSearch)
   const children = useMemo(() => Array.from(tree.children()), [tree])
 
@@ -49,6 +50,7 @@ export default function TreeTab(): JSX.Element {
             <th>ID</th>
             <th>Path</th>
             <th>Field Type</th>
+            {showFieldId && <th>Field ID</th>}
             <th>Cardinality</th>
           </tr>
           <tr>
@@ -56,7 +58,7 @@ export default function TreeTab(): JSX.Element {
             <td colSpan={2 + maxDepth}>
               <Text value={search} onInput={setSearch} />
             </td>
-            <td colSpan={3}></td>
+            <td colSpan={3 + (showFieldId ? 1 : 0)}></td>
           </tr>
         </thead>
         <tbody>
@@ -75,6 +77,7 @@ function TreeTabPanel(): JSX.Element {
       <OverviewControl />
       <SelectionControl />
       <ColorMapControl />
+      <SarahControl />
     </ControlGroup>
   )
 }
@@ -142,6 +145,21 @@ function OverviewControl(): JSX.Element {
       <p>
         <Switch value={hideParents} onInput={setCollapseParentPaths}>
           Collapse shared paths into ellipses
+        </Switch>
+      </p>
+    </Control>
+  )
+}
+
+function SarahControl(): JSX.Element {
+  const showFieldId = useInspectorStore(s => s.showFieldId)
+  const setShowFieldId = useInspectorStore(s => s.setShowFieldId)
+
+  return (
+    <Control name='Features requested by Sarah'>
+      <p>
+        <Switch value={showFieldId} onInput={setShowFieldId}>
+          Field ID Column
         </Switch>
       </p>
     </Control>
@@ -408,6 +426,8 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
 
   const isMainBundle = node instanceof Bundle && node.isMain
 
+  const showFieldId = useInspectorStore(s => s.showFieldId)
+
   return (
     <tr
       class={classes(
@@ -448,6 +468,11 @@ const PathRow = memo(function PathRow(props: PathRowProps): JSX.Element {
         <Path hideEqualParentPaths={hideParents} node={node} ns={ns} />
       </td>
       <td>{path.informativeFieldType}</td>
+      {showFieldId && (
+        <td>
+          <code>{path.field}</code>
+        </td>
+      )}
       <td>{path.cardinality > 0 ? path.cardinality : 'unlimited'}</td>
     </tr>
   )
