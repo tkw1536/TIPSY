@@ -329,7 +329,8 @@ export function ExportControl<
       </p>
       <p>
         You can use this field to set the width for the image to be generated in
-        pixels. This setting might not be respected by all formats.
+        pixels. Leave at <code>0</code> to auto-size. This setting might not be
+        respected by all renderers.
       </p>
     </Control>
   )
