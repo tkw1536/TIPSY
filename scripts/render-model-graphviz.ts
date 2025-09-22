@@ -67,10 +67,15 @@ async function main(): Promise<void> {
     },
   }
 
+  const format = GraphVizModelDriver.formats.keys().next().value
+  if (typeof format !== 'string') {
+    throw new Error('No format found')
+  }
+
   // load the driver and setup flags to use
   const driver = new GraphVizModelDriver(graph, {
     options: { ns, cm, display },
-    layout: GraphVizModelDriver.formats[0],
+    layout: format,
     seed: nextInt(),
   })
   // initialize and create blob

@@ -33,8 +33,8 @@ export interface DriverClass<
   /** list of supported layouts to be passed to {@link new} */
   readonly layouts: string[]
 
-  /** list of formats allowed as an argument to {@link Driver.export} */
-  readonly formats: string[]
+  /** list of formats allowed as an argument to {@link Driver.export} and if they need a size argument */
+  readonly formats: Map<string, boolean>
 }
 
 export interface Refs {
@@ -93,9 +93,9 @@ export default interface Driver<
    * @param ctx Context returned from {@link initialize} to be rendered into a blob
    * @param flags Flags used to create the context
    * @param format Format to be exported in. One of {@link exportFormats}.
-   * @param mount Options used for mounting on the page.
+   * @param size Size of the exported image.
    */
-  export: (format: string) => Promise<Blob>
+  export: (format: string, size?: number) => Promise<Blob>
 }
 
 interface Position {
@@ -363,7 +363,7 @@ export abstract class DriverImpl<
     }
   }
 
-  readonly export = async (format: string): Promise<Blob> => {
+  readonly export = async (format: string, size?: number): Promise<Blob> => {
     if (this.#mountData !== null) {
       throw new Error('Driver error: export called before initial resize')
     }
@@ -371,12 +371,30 @@ export abstract class DriverImpl<
       throw new Error('Driver error: export called out of order')
     }
 
-    return await this.exportImpl(this.#context, this.#mount, format)
+    const wantSize = this.driver.formats.get(format)
+    if (typeof wantSize !== 'boolean') {
+      throw new Error('Driver error: export called with invalid format')
+    }
+
+    const hasSize = typeof size !== 'undefined'
+    if (wantSize && !hasSize) {
+      throw new Error(
+        `Driver error: missing size argument for format ${format}`,
+      )
+    }
+    if (hasSize && !wantSize) {
+      console.warn(
+        `Driver warning: ignoring extra size argument for format ${format}`,
+      )
+      size = undefined
+    }
+    return await this.exportImpl(this.#context, this.#mount, format, size)
   }
   protected abstract exportImpl(
     details: ContextDetails<Context, Options>,
     info: MountInfo<Mount> | null,
     format: string,
+    size?: number,
   ): Promise<Blob>
 
   readonly startAnimation = (): void => {

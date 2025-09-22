@@ -13,6 +13,7 @@ interface State {
   rdfGraphSeed: number
   rdfGraphLayout: string
   rdfGraphSnapshot: Snapshot | null
+  rdfGraphSize: number
 }
 
 interface Actions {
@@ -20,6 +21,7 @@ interface Actions {
   setRDFLayout: (name: string) => void
   setRDFSeed: (seed: number) => void
   setRDFSnapshot: (snapshot: Snapshot | null) => void
+  setRDFSize: (size: number) => void
 }
 
 const initialState: State = {
@@ -27,6 +29,7 @@ const initialState: State = {
   rdfGraphLayout: defaultLayout,
   rdfGraphSeed: nextInt(),
   rdfGraphSnapshot: null,
+  rdfGraphSize: 0,
 }
 const resetState: State = { ...initialState }
 
@@ -58,6 +61,10 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
 
     setRDFSnapshot(snapshot) {
       set({ rdfGraphSnapshot: snapshot })
+    },
+
+    setRDFSize(size) {
+      set({ rdfGraphSize: size })
     },
   }
 }

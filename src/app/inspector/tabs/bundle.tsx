@@ -29,6 +29,8 @@ export default function BundleGraphTab(): JSX.Element {
 
   const snapshot = useInspectorStore(s => s.bundleSnapshot)
   const setSnapshot = useInspectorStore(s => s.setBundleSnapshot)
+  const size = useInspectorStore(s => s.bundleSize)
+  const setSize = useInspectorStore(s => s.setBundleSize)
 
   const makeGraph = useCallback(() => {
     const builder = new BundleGraphBuilder(tree, selection)
@@ -50,6 +52,8 @@ export default function BundleGraphTab(): JSX.Element {
       handle='Customize'
       snapshot={snapshot}
       setSnapshot={setSnapshot}
+      size={size}
+      onChangeSize={setSize}
     />
   )
 }

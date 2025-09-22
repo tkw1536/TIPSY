@@ -13,6 +13,7 @@ interface State {
   bundleSeed: number
   bundleGraphLayout: string
   bundleSnapshot: Snapshot | null
+  bundleSize: number
 }
 
 interface Actions {
@@ -20,6 +21,7 @@ interface Actions {
   setBundleLayout: (layout: string) => void
   setBundleSeed: (seed: number) => void
   setBundleSnapshot: (snapshot: Snapshot | null) => void
+  setBundleSize: (size: number) => void
 }
 
 const initialState: State = {
@@ -27,6 +29,7 @@ const initialState: State = {
   bundleGraphLayout: defaultLayout,
   bundleSeed: nextInt(),
   bundleSnapshot: null,
+  bundleSize: 0,
 }
 const resetState: State = { ...initialState }
 
@@ -66,6 +69,9 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
     setBundleSnapshot(snapshot) {
       set({ bundleSnapshot: snapshot })
     },
+    setBundleSize(size) {
+      set({ bundleSize: size })
+    },
   }
 }
 
@@ -75,13 +81,20 @@ interface BundleExport extends State {
 
 export const snapshotKey = 'v1/bundle'
 export function snapshot(state: State): BundleExport {
-  const { bundleDriver, bundleSeed, bundleGraphLayout, bundleSnapshot } = state
+  const {
+    bundleDriver,
+    bundleSeed,
+    bundleGraphLayout,
+    bundleSnapshot,
+    bundleSize,
+  } = state
   return {
     type: 'bundle',
     bundleDriver,
     bundleSeed,
     bundleGraphLayout,
     bundleSnapshot,
+    bundleSize,
   }
 }
 function validate(data: any): data is BundleExport {

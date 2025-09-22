@@ -136,11 +136,12 @@ abstract class SigmaDriver<
     sigma.kill()
   }
 
-  static readonly formats = ['png']
+  static readonly formats = new Map<string, boolean>([['png', false]])
   protected async exportImpl(
     details: ContextDetails<Graph, Options>,
     info: MountInfo<SigmaMount> | null,
     format: string,
+    size?: number,
   ): Promise<Blob> {
     if (info === null) {
       throw ErrorUnsupported

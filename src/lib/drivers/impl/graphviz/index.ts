@@ -340,16 +340,24 @@ abstract class GraphvizDriver<
     element.removeChild(svg)
   }
 
-  static readonly formats = ['svg', 'gv', 'png']
+  static readonly formats = new Map<string, boolean>([
+    ['svg', false],
+    ['gv', false],
+    ['png', true],
+  ])
   protected async exportImpl(
     { context: { canon, svg } }: ContextDetails<Context, Options>,
     info: MountInfo<Mount> | null,
     format: string,
+    size?: number,
   ): Promise<Blob> {
     switch (format) {
       case 'png': {
         const SVG2Image = (await import('../../../utils/svg2image')).default
-        return await SVG2Image(svg, 10000, 10000, Type.PNG)
+        if (typeof size === 'undefined' || size <= 0) {
+          size = 10000
+        }
+        return await SVG2Image(svg, size, size, Type.PNG)
       }
       case 'svg': {
         return new Blob([svg], { type: Type.SVG })

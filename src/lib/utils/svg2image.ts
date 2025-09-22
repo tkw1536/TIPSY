@@ -1,7 +1,7 @@
 // spellchecker:words canvg
 import { Canvg, type IOptions, presets } from 'canvg'
 
-const preset = presets.offscreen()
+const preset = presets.offscreen() as unknown as IOptions
 export default async function SVG2Image(
   source: string,
   width: number,
@@ -15,7 +15,8 @@ export default async function SVG2Image(
   }
 
   // the type casting here is needed because OffScreenCanvas may return null
-  const v = Canvg.fromString(ctx, source, preset as unknown as IOptions)
+  const v = Canvg.fromString(ctx, source, preset)
+  v.resize(width, height, true)
   await v.render()
 
   return await canvas.convertToBlob()

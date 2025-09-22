@@ -164,17 +164,21 @@ abstract class VisNetworkDriver<
     network.destroy()
   }
 
-  static readonly formats = ['png']
+  static readonly formats = new Map<string, boolean>([['png', true]])
   protected async exportImpl(
     { context: dataset }: ContextDetails<Dataset, Options>,
     info: MountInfo<NetworkContext> | null,
     format: string,
+    size?: number,
   ): Promise<Blob> {
     if (info === null) throw ErrorUnsupported
+    if (typeof size === 'undefined' || size <= 0) {
+      size = 1000
+    }
     return await dataset.drawNetworkClone(
       info.mount.network,
-      1000,
-      1000,
+      Math.round(size / 2),
+      Math.round(size / 2),
       Type.PNG,
       1,
     )

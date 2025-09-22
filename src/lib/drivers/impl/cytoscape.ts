@@ -275,11 +275,12 @@ abstract class CytoscapeDriver<
     c.destroy()
   }
 
-  static readonly formats = []
+  static readonly formats = new Map<string, boolean>()
   protected async exportImpl(
     details: ContextDetails<Elements, Options>,
     info: MountInfo<CytoMount> | null,
     format: string,
+    size?: number,
   ): Promise<Blob> {
     throw ErrorUnsupported
   }

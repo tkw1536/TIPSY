@@ -238,9 +238,23 @@ export function ExportControl<
   Options,
   AttachmentKey extends string,
 >(
-  props: PanelProps<NodeLabel, EdgeLabel, Options, AttachmentKey>,
+  props: PanelProps<NodeLabel, EdgeLabel, Options, AttachmentKey> & {
+    size: number
+    onChangeSize: (size: number) => void
+  },
 ): JSX.Element | null {
-  const { controller } = props
+  const { controller, onChangeSize, size } = props
+
+  const id = useId()
+  const handleChangeSize = useCallback(
+    (value: number): void => {
+      if (isNaN(value) || value < 0) {
+        return
+      }
+      onChangeSize(value)
+    },
+    [onChangeSize],
+  )
 
   const handleExport = useCallback(
     (format: string): void => {
@@ -250,7 +264,7 @@ export function ExportControl<
       }
 
       const { instance } = controller
-      if (!instance.driver.formats.includes(format)) {
+      if (!instance.driver.formats.has(format)) {
         console.warn('handleExport clicked on invalid element')
         return
       }
@@ -263,7 +277,7 @@ export function ExportControl<
       }
 
       instance
-        .export(format)
+        .export(format, size)
         .then(async (blob): Promise<void> => {
           download(blob, undefined, format)
         })
@@ -272,12 +286,12 @@ export function ExportControl<
           alert('Download has failed: ' + JSON.stringify(e))
         })
     },
-    [controller],
+    [controller, size],
   )
 
   // check that there are some export formats
   const exportFormats = controller?.instance.driver.formats
-  if (typeof exportFormats === 'undefined' || exportFormats.length === 0) {
+  if (typeof exportFormats === 'undefined' || exportFormats.size === 0) {
     return null
   }
   return (
@@ -285,15 +299,37 @@ export function ExportControl<
       <p>
         Click the button below to export the graph. Depending on the format and
         graph size, this might take a few seconds to generate.
+        <p>
+          <ButtonGroup inline>
+            {Array.from(exportFormats.keys()).map(format => (
+              <Button key={format} value={format} onInput={handleExport}>
+                {format}
+              </Button>
+            ))}
+          </ButtonGroup>
+        </p>
       </p>
       <p>
-        <ButtonGroup inline>
-          {exportFormats.map(format => (
-            <Button key={format} value={format} onInput={handleExport}>
-              {format}
-            </Button>
-          ))}
-        </ButtonGroup>
+        <table>
+          <tr>
+            <td>
+              <Label id={`${id}-size`}>Export Width</Label>
+            </td>
+            <td>
+              <Numeric
+                id={`${id}-size`}
+                value={size}
+                disabled={controller === null}
+                onInput={handleChangeSize}
+                min={0}
+              />
+            </td>
+          </tr>
+        </table>
+      </p>
+      <p>
+        You can use this field to set the width for the image to be generated in
+        pixels. This setting might not be respected by all formats.
       </p>
     </Control>
   )

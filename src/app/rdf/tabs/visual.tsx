@@ -24,6 +24,8 @@ export default function VisualTab(): JSX.Element {
   const seed = useRDFStore(s => s.rdfGraphSeed)
   const snapshot = useRDFStore(s => s.rdfGraphSnapshot)
   const setSnapshot = useRDFStore(s => s.setRDFSnapshot)
+  const size = useRDFStore(s => s.rdfGraphSize)
+  const setSize = useRDFStore(s => s.setRDFSize)
   const ns = useRDFStore(s => s.ns)
 
   const makeVisual = useCallback(() => {
@@ -45,6 +47,8 @@ export default function VisualTab(): JSX.Element {
       panel={VisualTabPanel}
       snapshot={snapshot}
       setSnapshot={setSnapshot}
+      size={size}
+      onChangeSize={setSize}
     />
   )
 }

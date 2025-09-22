@@ -17,6 +17,7 @@ interface State {
   modelDeduplication: Deduplication
   modelDisplay: ModelDisplay
   modelSnapshot: Snapshot | null
+  modelSize: number
 }
 
 interface Actions {
@@ -26,6 +27,7 @@ interface Actions {
   setModelDeduplication: (deduplication: Deduplication) => void
   setModelDisplay: (display: ModelDisplay) => void
   setModelSnapshot: (snapshot: Snapshot | null) => void
+  setModelSize: (size: number) => void
 }
 
 const initialState: State = {
@@ -61,6 +63,7 @@ const initialState: State = {
     },
   },
   modelSnapshot: null,
+  modelSize: 0,
 }
 const resetState: State = { ...initialState }
 
@@ -107,6 +110,9 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
     setModelSnapshot(snapshot) {
       set({ modelSnapshot: snapshot })
     },
+    setModelSize(size) {
+      set({ modelSize: size })
+    },
   }
 }
 
@@ -123,6 +129,7 @@ export function snapshot(state: State): ModelExport {
     modelDeduplication,
     modelDisplay,
     modelSnapshot,
+    modelSize,
   } = state
   return {
     type: 'model',
@@ -132,6 +139,7 @@ export function snapshot(state: State): ModelExport {
     modelDeduplication,
     modelDisplay,
     modelSnapshot,
+    modelSize,
   }
 }
 function validate(data: any): data is ModelExport {

@@ -39,6 +39,9 @@ export default function ModelGraphView(): JSX.Element {
   const snapshot = useInspectorStore(s => s.modelSnapshot)
   const setSnapshot = useInspectorStore(s => s.setModelSnapshot)
 
+  const size = useInspectorStore(s => s.modelSize)
+  const setSize = useInspectorStore(s => s.setModelSize)
+
   const ns = useInspectorStore(s => s.ns)
 
   const builder = useCallback(() => {
@@ -64,6 +67,8 @@ export default function ModelGraphView(): JSX.Element {
       handle='Customize'
       snapshot={snapshot}
       setSnapshot={setSnapshot}
+      size={size}
+      onChangeSize={setSize}
     />
   )
 }

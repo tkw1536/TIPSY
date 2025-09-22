@@ -32,6 +32,9 @@ interface GraphProps<
   snapshot: Snapshot | null
   setSnapshot: (value: Snapshot | null) => void
 
+  size: number
+  onChangeSize: (size: number) => void
+
   flags: ContextFlags<Options>
 
   handle?: string
@@ -50,6 +53,8 @@ export interface PanelProps<
     Options,
     AttachmentKey
   > | null
+  size: number
+  onChangeSize: (size: number) => void
 }
 
 export default function GraphDisplay<
@@ -69,6 +74,8 @@ export default function GraphDisplay<
     setSnapshot,
     makeGraph,
     panel: GraphDisplayPanel,
+    size,
+    onChangeSize,
   } = props
 
   // we use async state here, but it's actually synchronous!
@@ -100,7 +107,13 @@ export default function GraphDisplay<
 
   return (
     <Panel
-      panel={<GraphDisplayPanel controller={controller} />}
+      panel={
+        <GraphDisplayPanel
+          controller={controller}
+          size={size}
+          onChangeSize={onChangeSize}
+        />
+      }
       open={open}
       setOpen={setOpen}
       handle={handle}
