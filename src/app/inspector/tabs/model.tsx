@@ -173,12 +173,20 @@ function ModelGraphDisplayControl(
             </tr>
 
             <tr>
-              <td colspan={2}>
+              <td>
                 <DisplayCheckbox
                   a='Compounds'
                   b='Bundles'
                   {...props}
                   label='Bundles'
+                />
+              </td>
+              <td>
+                <DisplayCheckbox
+                  a='Compounds'
+                  b='Datatypes'
+                  {...props}
+                  label='Datatype Nodes'
                 />
               </td>
             </tr>

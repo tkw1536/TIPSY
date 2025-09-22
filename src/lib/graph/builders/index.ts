@@ -26,7 +26,7 @@ export default abstract class GraphBuilder<
 
 /** Something that can be rendered onto the page */
 export interface Renderable<Options, Key extends string> {
-  render: (id: string, options: Options) => ElementWithAttachments<Key>
+  render: (id: string, options: Options) => ElementWithAttachments<Key> | null
 }
 
 /** A unit that can be rendered onto a page  */

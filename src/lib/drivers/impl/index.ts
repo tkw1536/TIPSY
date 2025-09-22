@@ -182,21 +182,25 @@ export abstract class DriverImpl<
     for (const [id, node] of this.graph.getNodes()) {
       const nodeID = ids.for(id)
       const element = node.render(nodeID, this.flags.options)
-      hot = this.addNodeImpl(hot, this.flags, nodeID, node, element) ?? hot
+      if (element !== null) {
+        hot = this.addNodeImpl(hot, this.flags, nodeID, node, element) ?? hot
+      }
     }
     for (const [id, from, to, edge] of this.graph.getEdges()) {
       const edgeID = ids.for(id)
       const element = edge.render(edgeID, this.flags.options)
-      hot =
-        this.addEdgeImpl(
-          hot,
-          this.flags,
-          ids.for(id),
-          ids.for(from),
-          ids.for(to),
-          edge,
-          element,
-        ) ?? hot
+      if (element !== null) {
+        hot =
+          this.addEdgeImpl(
+            hot,
+            this.flags,
+            ids.for(id),
+            ids.for(from),
+            ids.for(to),
+            edge,
+            element,
+          ) ?? hot
+      }
     }
     this.#hot = hot
   }

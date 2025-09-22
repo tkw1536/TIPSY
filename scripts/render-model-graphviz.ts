@@ -44,6 +44,7 @@ async function main(): Promise<void> {
       Bundles: true,
       ConceptFields: true,
       DataFields: true,
+      Datatypes: true,
     },
     Concept: {
       complex: true,

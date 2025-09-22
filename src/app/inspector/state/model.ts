@@ -38,6 +38,7 @@ const initialState: State = {
   modelDisplay: {
     Compounds: {
       Bundles: true,
+      Datatypes: true,
       DataFields: true,
       ConceptFields: true,
     },

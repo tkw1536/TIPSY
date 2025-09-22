@@ -31,7 +31,7 @@ export class ConceptModelNode
   public render(
     id: string,
     options: ModelOptions,
-  ): ElementWithAttachments<ModelAttachmentKey> {
+  ): ElementWithAttachments<ModelAttachmentKey> | null {
     const fields = options.display.Compounds.ConceptFields
       ? Array.from(this.fields)
       : []
@@ -43,11 +43,12 @@ export class ConceptModelNode
       return this.#renderSimple(id, options, fields, bundles)
     }
 
-    const {
-      element,
-      bundles: bundleRenders,
-      fields: fieldRenders,
-    } = this.#renderComplex(id, options, fields, bundles)
+    const complex = this.#renderComplex(id, options, fields, bundles)
+    if (complex === null) {
+      return null
+    }
+
+    const { element, bundles: bundleRenders, fields: fieldRenders } = complex
     if (bundleRenders.length === 0 && fieldRenders.length === 0) {
       return element
     }
@@ -110,7 +111,7 @@ export class ConceptModelNode
     element: Element
     bundles: Attachment[]
     fields: Attachment[]
-  } {
+  } | null {
     const element: Element = {
       id,
       label: options.display.Labels.Concept ? options.ns.apply(this.clz) : null,
@@ -181,7 +182,7 @@ export class LiteralModelNode {
   public render(
     id: string,
     options: ModelOptions,
-  ): ElementWithAttachments<ModelAttachmentKey> {
+  ): ElementWithAttachments<ModelAttachmentKey> | null {
     const fields = options.display.Compounds.DataFields
       ? Array.from(this.fields)
       : []
@@ -190,11 +191,12 @@ export class LiteralModelNode {
       return LiteralModelNode.#renderSimple(id, options, fields)
     }
 
-    const { element, fields: fieldRenders } = LiteralModelNode.#renderComplex(
-      id,
-      options,
-      fields,
-    )
+    const complex = LiteralModelNode.#renderComplex(id, options, fields)
+    if (complex === null) {
+      return null
+    }
+
+    const { element, fields: fieldRenders } = complex
     if (fieldRenders.length === 0) {
       return element
     }
@@ -235,13 +237,16 @@ export class LiteralModelNode {
   ): {
     element: Element
     fields: Attachment[]
-  } {
+  } | null {
     const {
       Labels: {
         DatatypeField: DatatypeFieldLabels,
         DatatypeFieldType: DatatypeFieldTypes,
       },
     } = options.display
+    if (!options.display.Compounds.Datatypes) {
+      return null
+    }
     return {
       element: {
         id,
@@ -301,7 +306,10 @@ export class DataModelEdge {
     public property: string,
   ) {}
 
-  render(id: string, options: ModelOptions): Element {
+  render(id: string, options: ModelOptions): Element | null {
+    if (!options.display.Compounds.Datatypes) {
+      return null
+    }
     return {
       id,
       label: options.display.Labels.DatatypeProperty
@@ -323,6 +331,7 @@ export interface ModelOptions {
 export interface ModelDisplay {
   Compounds: {
     Bundles: boolean
+    Datatypes: boolean
     ConceptFields: boolean
     DataFields: boolean
   }
