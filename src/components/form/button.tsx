@@ -7,6 +7,7 @@ import * as styles from './button.module.css'
 
 interface ButtonProps<T> extends InputLikeProps<T | undefined> {
   children?: ComponentChildren
+  className?: string
 }
 
 type ButtonPropsWithValue<T> = Omit<
@@ -24,6 +25,7 @@ function Button<T>({
   form,
   customValidity,
   reportValidity,
+  className,
   ...rest
 }: ButtonProps<T> | ButtonPropsWithValue<T>): JSX.Element {
   const modifiers = useModifierRef()
@@ -60,7 +62,9 @@ function Button<T>({
       {...ariaEntries({ disabled, customValidity, reportValidity })}
       form={form}
       ref={buttonRef}
-      class={styles.button}
+      class={
+        styles.button + (typeof className === 'string' ? ` ${className}` : '')
+      }
       disabled={disabled}
     >
       {children}

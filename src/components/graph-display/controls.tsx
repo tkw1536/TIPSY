@@ -255,6 +255,9 @@ export function ExportControl<
     },
     [onChangeSize],
   )
+  const handleResetSize = useCallback((): void => {
+    onChangeSize(0)
+  }, [onChangeSize])
 
   const handleExport = useCallback(
     (format: string): void => {
@@ -301,8 +304,13 @@ export function ExportControl<
         graph size, this might take a few seconds to generate.
         <p>
           <ButtonGroup inline>
-            {Array.from(exportFormats.keys()).map(format => (
-              <Button key={format} value={format} onInput={handleExport}>
+            {Array.from(exportFormats).map(([format, hasSize]) => (
+              <Button
+                key={format}
+                value={format}
+                onInput={handleExport}
+                className={hasSize ? styles.supported : ''}
+              >
                 {format}
               </Button>
             ))}
@@ -324,13 +332,17 @@ export function ExportControl<
                 min={0}
               />
             </td>
+            <td>
+              <Button onInput={handleResetSize}>Reset</Button>
+            </td>
           </tr>
         </table>
       </p>
       <p>
         You can use this field to set the width for the image to be generated in
-        pixels. Leave at <code>0</code> to auto-size. This setting might not be
-        respected by all renderers.
+        pixels. Leave at <code>0</code> to auto-size. Only works formats marked
+        with <span className={styles.supported} /> and even then might be
+        tweaked to maintain aspect ratio.
       </p>
     </Control>
   )
