@@ -1,4 +1,5 @@
 import type Graph from '../..'
+import type { InverseMap } from '../../../pathbuilder/inversemap'
 import {
   Bundle,
   Field,
@@ -21,6 +22,7 @@ import {
 
 export interface DedupOptions {
   include?: (node: PathTreeNode) => boolean
+  inverses: InverseMap
 }
 
 /**
@@ -78,6 +80,23 @@ export abstract class DeduplicatingBuilder {
     if (this.#options.include == null) return true
 
     return this.#options.include(node)
+  }
+
+  /** inverts an edge and returns (source, target, uri, inverseURI) if it is in the inverse map */
+  #maybeInvertEdge(
+    source: number,
+    target: number,
+    uri: string,
+  ): [number, number, string, string | undefined] {
+    const info = this.#options.inverses.check(uri)
+    if (typeof info === 'undefined') {
+      return [source, target, uri, undefined]
+    }
+
+    if (!info.is_inverted) {
+      return [source, target, info.canonical, info.inverse]
+    }
+    return [target, source, info.canonical, info.inverse]
   }
 
   buildNode(
@@ -165,16 +184,20 @@ export abstract class DeduplicatingBuilder {
         continue
       }
 
+      // invert the node if needed
+      const [theSourceNode, theTargetNode, theURI, theInverseURI] =
+        this.#maybeInvertEdge(sourceNode, targetNode, element.uri)
+
       // If we already have this node, don't add it again
-      if (!this.tracker.add([sourceNode, targetNode, element.uri])) {
+      if (!this.tracker.add([theSourceNode, theTargetNode, theURI])) {
         continue
       }
 
       // and add the edge
       this.graph.addEdge(
-        sourceNode,
-        targetNode,
-        new PropertyModelEdge(element.uri),
+        theSourceNode,
+        theTargetNode,
+        new PropertyModelEdge(theURI, theInverseURI),
       )
     }
 
@@ -262,16 +285,20 @@ export abstract class DeduplicatingBuilder {
           return
         }
 
+        // Invert the edge if needed
+        const [theSourceNode, theTargetNode, theURI, theInverseURI] =
+          this.#maybeInvertEdge(sourceNode, targetNode, dataElement.uri)
+
         // if we've already added the arrow, don't redraw
-        if (!this.tracker.add([sourceNode, targetNode])) {
+        if (!this.tracker.add([theSourceNode, theTargetNode])) {
           return
         }
 
         // draw the new edge
         this.graph.addEdge(
-          sourceNode,
-          targetNode,
-          new DataModelEdge(dataElement.uri),
+          theSourceNode,
+          theTargetNode,
+          new DataModelEdge(theURI, theInverseURI),
         )
       })()
     }

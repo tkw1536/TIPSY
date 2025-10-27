@@ -285,6 +285,8 @@ export class PropertyModelEdge {
   constructor(
     /** the actual property */
     public property: string,
+    /** the inverse property (if any) */
+    public inverse_property?: string,
   ) {}
 
   render(id: string, options: ModelOptions): Element {
@@ -304,6 +306,9 @@ export class DataModelEdge {
   constructor(
     /** the actual property */
     public property: string,
+
+    /** the inverted property */
+    public inverse_property?: string,
   ) {}
 
   render(id: string, options: ModelOptions): Element | null {

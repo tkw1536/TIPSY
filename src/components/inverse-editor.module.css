@@ -1,0 +1,18 @@
+.stretch {
+  width: 100%;
+}
+
+.table tr td:nth-child(1),
+.table tr td:nth-child(2) {
+  width: 40%;
+}
+
+input.stretch {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input.validate:invalid {
+  background-color: red;
+}

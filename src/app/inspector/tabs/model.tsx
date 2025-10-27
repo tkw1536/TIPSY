@@ -43,14 +43,16 @@ export default function ModelGraphView(): JSX.Element {
   const setSize = useInspectorStore(s => s.setModelSize)
 
   const ns = useInspectorStore(s => s.ns)
+  const inverses = useInspectorStore(s => s.inverses)
 
   const builder = useCallback(() => {
     const builder = new ModelGraphBuilder(tree, {
       include: selection.includes.bind(selection),
       deduplication,
+      inverses,
     })
     return builder.build()
-  }, [tree, selection, deduplication])
+  }, [tree, selection, inverses, deduplication])
 
   const flags = useMemo<ContextFlags<ModelOptions>>(
     () => ({ options: { ns, cm, display }, layout, seed }),

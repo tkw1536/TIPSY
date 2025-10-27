@@ -5,6 +5,7 @@ import * as File from './file'
 import * as Modal from './modal'
 import * as Model from './model'
 import * as NS from './ns'
+import * as Inverses from './inverses'
 import * as Selection from './selection'
 import * as Tab from './tab'
 import * as Tree from './tree'
@@ -19,6 +20,7 @@ export type BoundState = Bundle.Slice &
   Modal.Slice &
   Model.Slice &
   NS.Slice &
+  Inverses.Slice &
   Selection.Slice &
   Tab.Slice &
   Tree.Slice
@@ -39,6 +41,7 @@ const useInspectorStore = create<BoundState>()((...a) => ({
   ...Modal.create(...a),
   ...Model.create(...a),
   ...NS.create(...a),
+  ...Inverses.create(...a),
   ...Selection.create(...a),
   ...Tab.create(...a),
   ...Tree.create(...a),

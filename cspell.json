@@ -17,6 +17,7 @@
         "endregion",
         "fakedom",
         "graphviz",
+        "inversemap",
         "pathbuilder",
         "pathbuilders",
         "pathtree",

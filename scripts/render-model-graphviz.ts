@@ -9,6 +9,7 @@ import Deduplication from '../src/app/inspector/state/datatypes/deduplication'
 import { GraphVizModelDriver } from '../src/lib/drivers/impl/graphviz'
 import { nextInt } from '../src/lib/utils/prng'
 import type { ModelDisplay } from '../src/lib/graph/builders/model/labels'
+import { InverseMap } from '../src/lib/pathbuilder/inversemap'
 
 // Usage: node node_modules/vite-node/vite-node.mjs ./scripts/render-model-graphviz.ts -p pathbuilder
 
@@ -33,10 +34,12 @@ async function main(): Promise<void> {
     NamespaceMap.KnownPrefixes,
   )
   const cm = ColorMap.generate(tree, { field: '#f6b73c', bundle: '#add8e6' })
+  const inverses = new InverseMap([])
 
   // build the actual graph
   const graph = new ModelGraphBuilder(tree, {
     deduplication: Deduplication.Full,
+    inverses,
   }).build()
 
   const display: ModelDisplay = {

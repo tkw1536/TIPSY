@@ -10,6 +10,7 @@ const TreeTab = lazy(async () => await import('./tabs/tree'))
 const BundleGraphTab = lazy(async () => await import('./tabs/bundle'))
 const ModelGraphTab = lazy(async () => await import('./tabs/model'))
 const MapTab = lazy(async () => await import('./tabs/map'))
+const InverseTab = lazy(async () => await import('./tabs/inverses'))
 const AboutTab = lazy(async () => await import('./tabs/about'))
 
 export default function InspectorApp(): JSX.Element {
@@ -45,6 +46,9 @@ export default function InspectorApp(): JSX.Element {
         </Tab>
         <Tab title='Namespace Map &#9881;&#65039;' disabled={!loaded} id='ns'>
           <MapTab />
+        </Tab>
+        <Tab title='Inverse Map' disabled={!loaded} id='inverses'>
+          <InverseTab />
         </Tab>
         <Tab title='About' id='about'>
           <AboutTab />
