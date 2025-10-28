@@ -82,7 +82,7 @@ export default function InverseEditor(props: InverseEditorProps): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {Array.from(inverses.pairs()).map(([canon, inverse]) => (
+          {Array.from(inverses).map(([canon, inverse]) => (
             <MappingRow
               inverses={inverses}
               canon={canon}
@@ -337,7 +337,7 @@ function isURLValid(
     return undefined
   }
 
-  if (typeof inverses.check(url) !== 'undefined') {
+  if (inverses.has(url)) {
     return 'url already contained in inverse map'
   }
 

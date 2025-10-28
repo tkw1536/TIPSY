@@ -82,23 +82,6 @@ export abstract class DeduplicatingBuilder {
     return this.#options.include(node)
   }
 
-  /** inverts an edge and returns (source, target, uri, inverseURI) if it is in the inverse map */
-  #maybeInvertEdge(
-    source: number,
-    target: number,
-    uri: string,
-  ): [number, number, string, string | undefined] {
-    const info = this.#options.inverses.check(uri)
-    if (typeof info === 'undefined') {
-      return [source, target, uri, undefined]
-    }
-
-    if (!info.is_inverted) {
-      return [source, target, info.canonical, info.inverse]
-    }
-    return [target, source, info.canonical, info.inverse]
-  }
-
   buildNode(
     nodeContexts: Map<PathTreeNode, NodeContext[]>,
     node: Bundle | Field,
@@ -185,8 +168,12 @@ export abstract class DeduplicatingBuilder {
       }
 
       // invert the node if needed
-      const [theSourceNode, theTargetNode, theURI, theInverseURI] =
-        this.#maybeInvertEdge(sourceNode, targetNode, element.uri)
+      const [theURI, theInverseURI, theSourceNode, theTargetNode] =
+        this.#options.inverses.canonicalizeEdge(
+          element.uri,
+          sourceNode,
+          targetNode,
+        )
 
       // If we already have this node, don't add it again
       if (!this.tracker.add([theSourceNode, theTargetNode, theURI])) {
@@ -197,7 +184,7 @@ export abstract class DeduplicatingBuilder {
       this.graph.addEdge(
         theSourceNode,
         theTargetNode,
-        new PropertyModelEdge(theURI, theInverseURI),
+        new PropertyModelEdge(theURI, theInverseURI ?? undefined),
       )
     }
 
@@ -286,8 +273,12 @@ export abstract class DeduplicatingBuilder {
         }
 
         // Invert the edge if needed
-        const [theSourceNode, theTargetNode, theURI, theInverseURI] =
-          this.#maybeInvertEdge(sourceNode, targetNode, dataElement.uri)
+        const [theURI, theInverseURI, theSourceNode, theTargetNode] =
+          this.#options.inverses.canonicalizeEdge(
+            dataElement.uri,
+            sourceNode,
+            targetNode,
+          )
 
         // if we've already added the arrow, don't redraw
         if (!this.tracker.add([theSourceNode, theTargetNode])) {
@@ -298,7 +289,7 @@ export abstract class DeduplicatingBuilder {
         this.graph.addEdge(
           theSourceNode,
           theTargetNode,
-          new DataModelEdge(theURI, theInverseURI),
+          new DataModelEdge(theURI, theInverseURI ?? undefined),
         )
       })()
     }
