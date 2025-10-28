@@ -166,6 +166,17 @@ function ModelGraphDisplayControl(
                 />
               </td>
             </tr>
+            <tr>
+              <td>
+                <DisplayCheckbox
+                  a='Labels'
+                  b='Inverse'
+                  {...props}
+                  label='Inverted URIs'
+                />
+              </td>
+              <td></td>
+            </tr>
 
             <tr>
               <td colSpan={2}>

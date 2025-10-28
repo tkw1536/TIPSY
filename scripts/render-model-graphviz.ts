@@ -60,6 +60,7 @@ async function main(): Promise<void> {
     Labels: {
       Concept: true,
       Property: true,
+      Inverse: true,
 
       Bundle: true,
       ConceptField: true,

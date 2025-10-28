@@ -96,6 +96,7 @@ export class ConceptModelNode
     return {
       id,
       label: labelParts.length > 0 ? labelParts.join('\n\n') : null,
+      inverseLabel: null,
       tooltip: tooltipParts.length > 0 ? tooltipParts.join('\n\n') : null,
       color: options.cm.get(...fields, ...bundles),
       shape: 'ellipse',
@@ -115,6 +116,7 @@ export class ConceptModelNode
     const element: Element = {
       id,
       label: options.display.Labels.Concept ? options.ns.apply(this.clz) : null,
+      inverseLabel: null,
       tooltip: options.display.Labels.Concept ? this.clz : null,
       color: null,
       shape: 'ellipse',
@@ -133,12 +135,14 @@ export class ConceptModelNode
         node: {
           id: bundleID + '-node',
           label: BundleLabels ? bundle.path.name : null,
+          inverseLabel: null,
           tooltip: BundleLabels ? bundle.path.id : null,
           color,
           shape: 'diamond',
         },
         edge: {
           id: bundleID + '-edge',
+          inverseLabel: null,
           label: null,
           tooltip: null,
           color,
@@ -155,6 +159,7 @@ export class ConceptModelNode
         node: {
           id: fieldID + '-node',
           label: ConceptFieldLabels ? field.path.name : null,
+          inverseLabel: null,
           tooltip: ConceptFieldLabels ? field.path.id : null,
           color,
           shape: 'diamond',
@@ -162,6 +167,7 @@ export class ConceptModelNode
         edge: {
           id: fieldID + '-edge',
           label: ConceptFieldTypes ? field.path.informativeFieldType : null,
+          inverseLabel: null,
           tooltip: ConceptFieldTypes ? field.path.fieldType : null,
           color,
           shape: null,
@@ -224,6 +230,7 @@ export class LiteralModelNode {
     return {
       id,
       label,
+      inverseLabel: null,
       tooltip: null,
       color: options.cm.get(...fields),
       shape: 'box',
@@ -251,6 +258,7 @@ export class LiteralModelNode {
       element: {
         id,
         label: null,
+        inverseLabel: null,
         tooltip: null,
         color: null,
         shape: 'box',
@@ -262,6 +270,7 @@ export class LiteralModelNode {
           node: {
             id: fieldID + '-node',
             label: DatatypeFieldLabels ? field.path.name : null,
+            inverseLabel: null,
             tooltip: DatatypeFieldLabels ? field.path.id : null,
             color,
             shape: 'diamond',
@@ -269,6 +278,7 @@ export class LiteralModelNode {
           edge: {
             id: fieldID + '-edge',
             label: DatatypeFieldTypes ? field.path.informativeFieldType : null,
+            inverseLabel: null,
             tooltip: DatatypeFieldTypes ? field.path.fieldType : null,
             color,
             shape: null,
@@ -290,11 +300,20 @@ export class PropertyModelEdge {
   ) {}
 
   render(id: string, options: ModelOptions): Element {
+    const label = options.display.Labels.Property
+      ? options.ns.apply(this.property)
+      : null
+    const inverseLabel =
+      options.display.Labels.Inverse &&
+      options.display.Labels.Property &&
+      typeof this.inverse_property === 'string'
+        ? options.ns.apply(this.inverse_property)
+        : null
+
     return {
       id,
-      label: options.display.Labels.Property
-        ? options.ns.apply(this.property)
-        : null,
+      label,
+      inverseLabel,
       tooltip: options.display.Labels.Property ? this.property : null,
       color: null,
       shape: null,
@@ -315,11 +334,19 @@ export class DataModelEdge {
     if (!options.display.Compounds.Datatypes) {
       return null
     }
+
+    const inverseLabel =
+      options.display.Labels.Inverse &&
+      options.display.Labels.DatatypeProperty &&
+      typeof this.inverse_property === 'string'
+        ? options.ns.apply(this.inverse_property)
+        : null
     return {
       id,
       label: options.display.Labels.DatatypeProperty
         ? options.ns.apply(this.property)
         : null,
+      inverseLabel,
       tooltip: options.display.Labels.DatatypeProperty ? this.property : null,
       color: null,
       shape: null,
@@ -345,6 +372,7 @@ export interface ModelDisplay {
   Labels: {
     Concept: boolean
     Property: boolean
+    Inverse: boolean
 
     Bundle: boolean
     ConceptField: boolean

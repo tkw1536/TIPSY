@@ -381,7 +381,7 @@ abstract class GraphvizDriver<
 
   protected attributes(
     type: 'node' | 'edge',
-    { color, label, tooltip, shape }: Element,
+    { color, label, inverseLabel, tooltip, shape }: Element,
   ): Attributes {
     const attributes: Attributes = {}
     if (typeof color === 'string') {
@@ -395,7 +395,7 @@ abstract class GraphvizDriver<
     if (type === 'node' && shape !== null) {
       attributes.shape = shape === 'diamond' ? 'octagon' : shape
     }
-    attributes.label = label ?? ''
+    attributes.label = [label, inverseLabel].filter(Boolean).join('\n')
     attributes.tooltip = tooltip ?? ''
     return attributes
   }

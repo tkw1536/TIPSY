@@ -53,6 +53,7 @@ const initialState: State = {
     Labels: {
       Concept: true,
       Property: true,
+      Inverse: true,
 
       Bundle: true,
       ConceptField: true,
