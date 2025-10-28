@@ -143,6 +143,17 @@ export class NamespaceMap {
     if (ns === null) return uri
     return ns + ':' + uri.substring(prefix.length)
   }
+  /** Applies the reverse of this namespace-map to a string, that is it replaces and shortened namespace with the long-form version */
+  applyReverse(url: string): string {
+    for (const [s, l] of this.#entries) {
+      if (url.startsWith(s + ':')) {
+        return l + url.substring(s.length + 1)
+      }
+    }
+
+    // return URL unchanged
+    return url
+  }
 
   /** match matches the given uri against the prefixes known to this NamespaceMap */
   #match(uri: string): [string, string] | [null, null] {

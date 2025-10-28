@@ -169,7 +169,7 @@ describe(NamespaceMap, () => {
     ['https://example.com/abc/deep', 'abc:deep'],
     ['https://unrelated.example.com/', 'https://unrelated.example.com/'],
   ])(
-    'prefix(%1) === %2 && apply(%1) === %3',
+    'apply(%1) === %2 && applyReverse(%2) === %1',
     (url: string, wantApply: string) => {
       const mp = NamespaceMap.empty()
         .add('example', 'https://example.com/')
@@ -178,6 +178,7 @@ describe(NamespaceMap, () => {
         .add('also_other', 'https://other.example.com/')
 
       expect(mp.apply(url)).toEqual(wantApply)
+      expect(mp.applyReverse(wantApply)).toEqual(url)
     },
   )
 })
