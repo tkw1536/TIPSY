@@ -8,10 +8,7 @@
     "target": "ES2022",
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "lib": [
-      "es2022",
-      "DOM",
-    ],
+    "lib": ["es2022", "DOM"],
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
@@ -25,12 +22,12 @@
     },
     "skipLibCheck": true
   },
-  
+
   "include": [
     "vite.config.ts",
     "eslint.config.mjs",
     "./src/**/*",
     "./macros/**/*",
     "./scripts/**/*"
-  ],
+  ]
 }

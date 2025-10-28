@@ -22,7 +22,7 @@ You are granted a license to use the exported visualizations, provided you add t
 You also agree to use the visualizations created by TIPSY by using built-in export functionality, and only falling back to using screenshots when necessary.  
 This clause does not apply if you chose to show the entirety of the TIPSY user interface (including header and footer), for example during screen sharing sessions and the like.
 
-Please also be aware that even though the code to this project is open source and you may inspect it to your heart's content, the source code does not have a license. 
+Please also be aware that even though the code to this project is open source and you may inspect it to your heart's content, the source code does not have a license.
 This means that you may not publicly perform, create derivative works of or distribute this code.
 
 <code>
@@ -31,7 +31,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 This app makes use of several JavaScript libraries.
 Some of these require that attribution is given to their authors.
-You can look at these notices below, as well as the __About__ Tab in the running app.
+You can look at these notices below, as well as the **About** Tab in the running app.
 
 <details>
     <summary>Attribution Notices</summary>
