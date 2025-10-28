@@ -80,7 +80,7 @@ async function main(): Promise<void> {
   // load the driver and setup flags to use
   const driver = new GraphVizModelDriver(graph, {
     options: { ns, cm, display },
-    layout: format,
+    layout: 'dot',
     seed: nextInt(),
   })
   // initialize and create blob
