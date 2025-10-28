@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference -- needed for vitest config
 /// <reference types="vitest" />
 import prefresh from '@prefresh/vite'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import macros from 'unplugin-parcel-macros'
 import { resolve } from 'node:path'
 
