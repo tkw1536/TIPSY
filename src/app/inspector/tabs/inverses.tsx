@@ -4,6 +4,7 @@ import useInspectorStore from '../state'
 
 export default function InverseTab(): JSX.Element {
   const inverses = useInspectorStore(s => s.inverses)
+  const ns = useInspectorStore(s => s.ns)
   const resetInverseMap = useInspectorStore(s => s.resetInverseMap)
   const setInverseMap = useInspectorStore(s => s.setInverseMap)
 
@@ -15,6 +16,7 @@ export default function InverseTab(): JSX.Element {
       </p>
       <InverseEditor
         inverses={inverses}
+        ns={ns}
         onReset={resetInverseMap}
         onUpdate={setInverseMap}
       />

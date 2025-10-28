@@ -10,15 +10,17 @@ import { type AsyncLoadState, reasonAsError, useAsyncLoad } from './hooks/async'
 import Button, { ButtonGroup, ButtonGroupText } from './form/button'
 import Text from './form/value'
 import { InverseMap } from '../lib/pathbuilder/inversemap'
+import type { NamespaceMap } from '../lib/pathbuilder/namespace'
 
 interface InverseEditorProps {
   inverses: InverseMap
+  ns: NamespaceMap
   onReset: () => void
   onUpdate: (inverses: InverseMap) => void
 }
 
 export default function InverseEditor(props: InverseEditorProps): JSX.Element {
-  const { onUpdate, inverses, onReset } = props
+  const { onUpdate, inverses, ns, onReset } = props
   const [loading, load, clearLoading] = useAsyncLoad(
     onUpdate,
     2000,
@@ -85,6 +87,7 @@ export default function InverseEditor(props: InverseEditorProps): JSX.Element {
           {Array.from(inverses).map(([canon, inverse]) => (
             <MappingRow
               inverses={inverses}
+              ns={ns}
               canon={canon}
               inverse={inverse}
               key={canon}
@@ -92,7 +95,7 @@ export default function InverseEditor(props: InverseEditorProps): JSX.Element {
               onDelete={handleDelete}
             />
           ))}
-          <AddRow inverses={inverses} onAdd={handleAdd} />
+          <AddRow inverses={inverses} ns={ns} onAdd={handleAdd} />
           <ControlsRow
             loading={loading}
             clearLoading={clearLoading}
@@ -111,13 +114,20 @@ export default function InverseEditor(props: InverseEditorProps): JSX.Element {
 
 interface AddRowProps {
   inverses: InverseMap
+  ns: NamespaceMap
   onAdd: (canon: string, inverse: string) => void
 }
 
 function AddRow(props: AddRowProps): JSX.Element {
-  const { inverses, onAdd } = props
+  const { inverses, ns, onAdd } = props
 
   const [canonValue, setCanon] = useState('')
+  const setCanonMapped = useCallback(
+    (value: string): void => {
+      setCanon(ns.applyReverse(value))
+    },
+    [ns],
+  )
   const canonValidity = useMemo(
     () => isURLValid(canonValue, inverses),
     [canonValue, inverses],
@@ -125,6 +135,12 @@ function AddRow(props: AddRowProps): JSX.Element {
   const canonValid = typeof canonValidity === 'undefined'
 
   const [inverseValue, setInverse] = useState('')
+  const setInverseMapped = useCallback(
+    (value: string): void => {
+      setInverse(ns.applyReverse(value))
+    },
+    [ns],
+  )
   const inverseValidity = useMemo(
     () => isURLValid(inverseValue, inverses),
     [inverseValue, inverses],
@@ -150,18 +166,18 @@ function AddRow(props: AddRowProps): JSX.Element {
       <td>
         <Text
           form={id}
-          value={canonValue}
+          value={ns.apply(canonValue)}
           placeholder='http://example.org/ontology#parentOf'
-          onInput={setCanon}
+          onInput={setCanonMapped}
           customValidity={canonValidity ?? ''}
         />
       </td>
       <td>
         <Text
           form={id}
-          value={inverseValue}
+          value={ns.apply(inverseValue)}
           placeholder='http://example.org/ontology#childOf'
-          onInput={setInverse}
+          onInput={setInverseMapped}
           customValidity={inverseValidity ?? ''}
         />
       </td>
@@ -238,6 +254,7 @@ function ControlsRow(props: {
 
 interface MappingRowProps {
   inverses: InverseMap
+  ns: NamespaceMap
   canon: string
   inverse: string
   onUpdate: (
@@ -249,9 +266,15 @@ interface MappingRowProps {
 }
 
 function MappingRow(props: MappingRowProps): JSX.Element {
-  const { canon, inverse, inverses, onUpdate, onDelete } = props
+  const { canon, inverse, ns, inverses, onUpdate, onDelete } = props
 
   const [canonValue, setCanon] = useState(canon)
+  const setCanonMapped = useCallback(
+    (value: string): void => {
+      setCanon(ns.applyReverse(value))
+    },
+    [ns],
+  )
   const canonValidity = useMemo(
     () => isURLValid(canonValue, inverses, canon),
     [canonValue, inverses, canon],
@@ -259,6 +282,12 @@ function MappingRow(props: MappingRowProps): JSX.Element {
   const canonValid = typeof canonValidity === 'undefined'
 
   const [inverseValue, setInverse] = useState(inverse)
+  const setInverseMapped = useCallback(
+    (value: string): void => {
+      setInverse(ns.applyReverse(value))
+    },
+    [ns],
+  )
   const inverseValidity = useMemo(
     () => isURLValid(inverseValue, inverses, inverse),
     [inverseValue, inverses, inverse],
@@ -298,18 +327,18 @@ function MappingRow(props: MappingRowProps): JSX.Element {
       <td>
         <form onSubmit={handleApply}>
           <Text
-            value={canonValue}
+            value={ns.apply(canonValue)}
             customValidity={canonValidity}
-            onInput={setCanon}
+            onInput={setCanonMapped}
           />
         </form>
       </td>
       <td>
         <form onSubmit={handleApply}>
           <Text
-            value={inverseValue}
+            value={ns.apply(inverseValue)}
             customValidity={inverseValidity}
-            onInput={setInverse}
+            onInput={setInverseMapped}
           />
         </form>
       </td>
