@@ -195,11 +195,10 @@ abstract class SigmaDriver<
 
   protected attributes(
     type: 'node' | 'edge',
-    { color, label, inverseLabel, tooltip }: Element,
+    { color, label, tooltip }: Element,
   ): Attributes {
-    const labels = [label, inverseLabel].filter(Boolean).join('\n')
     return {
-      label: labels,
+      label: label ?? undefined,
       color: color ?? 'black',
 
       type: type === 'edge' ? 'arrow' : undefined,

@@ -47,9 +47,6 @@ export interface Element {
   /** rendered label attached to this element */
   label: string | null
 
-  /** rendered label attached to the inverse of this element */
-  inverseLabel: string | null
-
   /** tooltip to be shown on hovering this element */
   tooltip: string | null
 

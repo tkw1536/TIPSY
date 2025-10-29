@@ -235,10 +235,8 @@ abstract class VisNetworkDriver<
 
   protected attributes(
     type: 'node' | 'edge',
-    { color, label, inverseLabel, tooltip, shape }: Element,
+    { color, label, tooltip, shape }: Element,
   ): NodeAttributes | EdgeAttributes {
-    const labels = [label, inverseLabel].filter(Boolean).join('\n')
-
     if (type === 'node') {
       return {
         color: {
@@ -247,13 +245,13 @@ abstract class VisNetworkDriver<
         },
         shape: shape ?? undefined,
         title: tooltip ?? undefined,
-        label: labels,
+        label: label ?? undefined,
       }
     }
 
     return {
       color: color ?? undefined,
-      label: labels,
+      label: label ?? undefined,
       title: tooltip ?? undefined,
 
       arrows: 'to',

@@ -351,11 +351,10 @@ abstract class CytoscapeDriver<
 
   protected attributes(
     type: 'node' | 'edge',
-    { color, label, inverseLabel, tooltip, shape }: Element,
+    { color, label, tooltip, shape }: Element,
   ): Attributes {
-    const labels = [label, inverseLabel].filter(Boolean).join('\n')
     return {
-      label: labels,
+      label: label ?? undefined,
       color: color ?? 'black',
       shape: (shape === 'box' ? 'rectangle' : shape) ?? undefined,
     }

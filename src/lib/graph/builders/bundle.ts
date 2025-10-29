@@ -74,7 +74,6 @@ export default class BundleGraphBuilder extends GraphBuilder<
           render: (id: string, options: BundleOptions): Element => ({
             id,
             label: bundle.path.name,
-            inverseLabel: null,
             tooltip: bundle.path.id,
             color: options.cm.get(bundle),
             shape: 'ellipse',
@@ -94,7 +93,6 @@ export default class BundleGraphBuilder extends GraphBuilder<
         render: (id: string) => ({
           id,
           label: null,
-          inverseLabel: null,
           tooltip: null,
           color: null,
           shape: null,
@@ -116,7 +114,6 @@ export default class BundleGraphBuilder extends GraphBuilder<
           render: (id: string, options: BundleOptions): Element => ({
             id,
             label: cf.path.name,
-            inverseLabel: null,
             tooltip: cf.path.id,
             color: options.cm.get(cf),
             shape: 'ellipse',
@@ -131,7 +128,6 @@ export default class BundleGraphBuilder extends GraphBuilder<
         render: (id: string) => ({
           id,
           label: null,
-          inverseLabel: null,
           tooltip: null,
           color: null,
           shape: null,

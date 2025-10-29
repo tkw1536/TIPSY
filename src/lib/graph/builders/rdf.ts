@@ -96,7 +96,6 @@ function makeRenderMethod(
     const element: Element = {
       id,
       label: null,
-      inverseLabel: null,
       tooltip: null,
       color: null,
       shape: null,
