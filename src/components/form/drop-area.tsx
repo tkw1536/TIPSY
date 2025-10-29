@@ -44,7 +44,7 @@ function validateFiles(
   // check each item
   const allowed = new Set(types ?? [])
   // eslint-disable-next-line @typescript-eslint/prefer-for-of -- not implemented by type
-  for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i < items.length; i += 1) {
     const item = items[i]
 
     // kind === 'file' (skipped if already a file)

@@ -94,7 +94,10 @@ describe(Lazy, () => {
 describe(LazyValue, () => {
   test('lazyValue calls the getter only once', async () => {
     let counter = 0
-    const lazy = new LazyValue(async () => ++counter)
+    const lazy = new LazyValue(async () => {
+      counter += 1
+      return counter
+    })
 
     const first = await lazy.lazyValue
     const second = await lazy.lazyValue
@@ -105,7 +108,10 @@ describe(LazyValue, () => {
 
   test('value holds the value after load', async () => {
     let counter = 0
-    const lazy = new LazyValue(async () => ++counter)
+    const lazy = new LazyValue(async () => {
+      counter += 1
+      return counter
+    })
 
     // no value before the first call
     expect(() => lazy.value).toThrow()

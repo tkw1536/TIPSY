@@ -6,7 +6,8 @@ export function* entries<T>(
 ): IterableIterator<[number, T]> {
   let index = 0
   for (const value of iterable) {
-    yield [index++, value]
+    yield [index, value]
+    index += 1
   }
 }
 

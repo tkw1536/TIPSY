@@ -284,7 +284,7 @@ export class Path {
     let needleIndex = 0
     for (const char of haystack) {
       if (needle[needleIndex] === char) {
-        needleIndex++
+        needleIndex += 1
         if (needleIndex >= needle.length) {
           return true
         }

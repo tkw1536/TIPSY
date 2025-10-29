@@ -27,7 +27,7 @@ export default class BundleBuilder extends DeduplicatingBuilder {
         const path = node.path.pathArray
         let index = path.length - 1
         if (index % 2 === 1) {
-          index--
+          index -= 1
         }
         if (index < 0) continue
 

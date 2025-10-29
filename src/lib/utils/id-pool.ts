@@ -34,7 +34,8 @@ export class IDPool<T = any> {
    * Numerical ids are integers, starting at 1.
    */
   public nextInt(): number {
-    return ++this.#state
+    this.#state += 1
+    return this.#state
   }
 
   /**

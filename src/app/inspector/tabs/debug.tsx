@@ -13,7 +13,7 @@ import Dropdown, { Radio } from '../../../components/form/dropdown'
 
 export default function DebugTab(): JSX.Element {
   const panel = []
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 100; i += 1) {
     panel.push(
       <Fragment key={i}>
         Line {i} in panel
@@ -23,7 +23,7 @@ export default function DebugTab(): JSX.Element {
   }
 
   const main = []
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i += 1) {
     main.push(
       <Fragment key={i}>
         Line {i} in main

@@ -139,7 +139,7 @@ export abstract class DeduplicatingBuilder {
 
     // draw all of the concepts
     const nodes = new Array<number | undefined>(elements.length)
-    for (let i = 0; i < elements.length; i++) {
+    for (let i = 0; i < elements.length; i += 1) {
       const element = elements[i]
       if (element.type === 'property') continue
 
@@ -459,6 +459,7 @@ export abstract class DeduplicatingBuilder {
 
   #nextContextID = 0
   readonly #newContext = (): number => {
-    return ++this.#nextContextID
+    this.#nextContextID += 1
+    return this.#nextContextID
   }
 }

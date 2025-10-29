@@ -160,7 +160,7 @@ export abstract class PathTreeNode {
             common,
             disambiguation,
           }
-          conceptIndex++
+          conceptIndex += 1
           break
         case 1:
           yield {
@@ -172,7 +172,7 @@ export abstract class PathTreeNode {
             common,
             disambiguation,
           }
-          propertyIndex++
+          propertyIndex += 1
           break
         default:
           throw new Error('never reached')
@@ -323,7 +323,7 @@ export abstract class PathTreeNode {
         continue
       }
       if (predicate(elem)) {
-        count++
+        count += 1
       }
     }
     return count

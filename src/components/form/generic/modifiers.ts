@@ -29,7 +29,8 @@ class ModifierKeyObserver {
     }
 
     // get the next id and add the ref
-    const id = this.#nextID++
+    this.#nextID += 1
+    const id = this.#nextID
     this.#refs.set(id, ref)
 
     // if we have a current status, notify the listener now

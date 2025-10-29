@@ -82,7 +82,7 @@ export default class NodeSelection {
         continue
       }
       if (this.includes(elem)) {
-        count++
+        count += 1
       }
     }
     return count

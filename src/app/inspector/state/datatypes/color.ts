@@ -95,8 +95,9 @@ function colorPerAssocPreset(
     // get or set the color of the id
     let color = colors.get(id)
     if (typeof color !== 'string') {
-      color = colorOf(index++)
+      color = colorOf(index)
       colors.set(id, color)
+      index += 1
     }
 
     // set the color of the path
