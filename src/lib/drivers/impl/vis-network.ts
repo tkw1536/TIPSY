@@ -10,7 +10,7 @@ import {
 } from '.'
 import { type Data, Network, type Options as VisOptions } from 'vis-network'
 import { DataSet } from 'vis-data'
-import buttonCSS from 'vis-network/dist/dist/vis-network.min.css?inline'
+import buttonCSS from 'vis-network/styles/vis-network.css?inline'
 import type {
   BundleOptions,
   BundleEdge,

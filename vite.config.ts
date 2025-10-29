@@ -28,9 +28,7 @@ export default defineConfig({
           // define a couple smaller chunks for vis-network
           'vis-network': ['vis-network'],
           'vis-data': ['vis-data'],
-          'vis-network-css': [
-            'vis-network/dist/dist/vis-network.min.css?inline',
-          ],
+          'vis-network-css': ['vis-network/styles/vis-network.css?inline'],
         },
       },
     },
