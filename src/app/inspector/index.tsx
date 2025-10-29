@@ -9,7 +9,7 @@ const PathbuilderTab = lazy(async () => await import('./tabs/pathbuilder'))
 const TreeTab = lazy(async () => await import('./tabs/tree'))
 const BundleGraphTab = lazy(async () => await import('./tabs/bundle'))
 const ModelGraphTab = lazy(async () => await import('./tabs/model'))
-const URIsTab = lazy(async () => await import('./tabs/uris'))
+const URIConfigTab = lazy(async () => await import('./tabs/uri_config'))
 const AboutTab = lazy(async () => await import('./tabs/about'))
 
 export default function InspectorApp(): JSX.Element {
@@ -44,7 +44,7 @@ export default function InspectorApp(): JSX.Element {
           <ModelGraphTab />
         </Tab>
         <Tab title='URI Config &#9881;&#65039;' disabled={!loaded} id='uris'>
-          <URIsTab />
+          <URIConfigTab />
         </Tab>
         <Tab title='About' id='about'>
           <AboutTab />

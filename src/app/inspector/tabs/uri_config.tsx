@@ -3,7 +3,7 @@ import NamespaceEditor from '../../../components/namespace-editor'
 import InverseEditor from '../../../components/inverse-editor'
 import useInspectorStore from '../state'
 
-export default function MapTab(): JSX.Element {
+export default function URIConfigTab(): JSX.Element {
   const ns = useInspectorStore(s => s.ns)
   const inverses = useInspectorStore(s => s.inverses)
   const resetNamespaceMap = useInspectorStore(s => s.resetNamespaceMap)
