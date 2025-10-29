@@ -211,10 +211,8 @@ export abstract class DeduplicatingBuilder {
         }
 
         const sourceConcept = elements[lastConcept]
-        if (
-          typeof sourceConcept === 'undefined' ||
-          sourceConcept.type !== 'concept'
-        ) {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive as index may not exist
+        if (sourceConcept?.type !== 'concept') {
           console.warn(
             'Final concept element not a concept, skipping datatype annotation',
             node,

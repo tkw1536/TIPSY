@@ -159,8 +159,7 @@ export function useAsyncLoad<T, R = unknown>(
   // clear success state after a specific timeout
   useEffect(() => {
     if (
-      loading === null ||
-      loading.status !== 'fulfilled' ||
+      loading?.status !== 'fulfilled' ||
       typeof fulfilledClear === 'undefined'
     ) {
       return
@@ -175,8 +174,7 @@ export function useAsyncLoad<T, R = unknown>(
   // clear failure state after a specific timeout
   useEffect(() => {
     if (
-      loading === null ||
-      loading.status !== 'rejected' ||
+      loading?.status !== 'rejected' ||
       typeof rejectedClear === 'undefined'
     ) {
       return

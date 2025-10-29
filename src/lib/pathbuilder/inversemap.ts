@@ -115,7 +115,7 @@ export class InverseMap {
   add(canonical: string, inverse: string): InverseMap {
     // nothing changed
     const theInverse = this.check(canonical)
-    if (typeof theInverse !== 'undefined' && theInverse.inverse === inverse) {
+    if (theInverse?.inverse === inverse) {
       return this
     }
 
