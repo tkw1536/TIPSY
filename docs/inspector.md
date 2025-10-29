@@ -150,6 +150,7 @@ Individual URLs can be added, adjusted or deleted.
 
 - To adjust a URI, type the new URI into the URI field.
   Changes are only applied once the `Apply` button is pressed; unapplied changes are discarded when navigating to another tab.
+- To swap a pair around, click the `Swap` button. This is only saved once you hit `Apply`. 
 - To delete a URI, click the `Delete` button.
 - To add an additional , fill out the `NS` and `URI` fields, and then click the `Add` button.
   Namespaces may only consist of letters, numbers, `-` and `_`s.

@@ -135,6 +135,8 @@ function AddRow(props: AddRowProps): JSX.Element {
   const { inverses, normalizeURI, denormalizeURI, onAdd } = props
 
   const [canonValue, setCanon] = useState('')
+  const [inverseValue, setInverse] = useState('')
+
   const setCanonMapped = useCallback(
     (value: string): void => {
       setCanon(denormalizeURI(value))
@@ -142,12 +144,11 @@ function AddRow(props: AddRowProps): JSX.Element {
     [denormalizeURI],
   )
   const canonValidity = useMemo(
-    () => isURLValid(canonValue, inverses),
-    [canonValue, inverses],
+    () => isURLValid(canonValue, inverseValue, inverses),
+    [canonValue, inverseValue, inverses],
   )
   const canonValid = typeof canonValidity === 'undefined'
 
-  const [inverseValue, setInverse] = useState('')
   const setInverseMapped = useCallback(
     (value: string): void => {
       setInverse(denormalizeURI(value))
@@ -155,8 +156,8 @@ function AddRow(props: AddRowProps): JSX.Element {
     [denormalizeURI],
   )
   const inverseValidity = useMemo(
-    () => isURLValid(inverseValue, inverses),
-    [inverseValue, inverses],
+    () => isURLValid(inverseValue, canonValue, inverses),
+    [inverseValue, canonValue, inverses],
   )
   const inverseValid = typeof inverseValidity === 'undefined'
 
@@ -291,6 +292,8 @@ function MappingRow(props: MappingRowProps): JSX.Element {
   } = props
 
   const [canonValue, setCanon] = useState(canon)
+  const [inverseValue, setInverse] = useState(inverse)
+
   const setCanonMapped = useCallback(
     (value: string): void => {
       setCanon(denormalizeURI(value))
@@ -298,12 +301,11 @@ function MappingRow(props: MappingRowProps): JSX.Element {
     [denormalizeURI],
   )
   const canonValidity = useMemo(
-    () => isURLValid(canonValue, inverses, canon),
-    [canonValue, inverses, canon],
+    () => isURLValid(canonValue, inverseValue, inverses, canon),
+    [canonValue, inverseValue, inverses, canon],
   )
   const canonValid = typeof canonValidity === 'undefined'
 
-  const [inverseValue, setInverse] = useState(inverse)
   const setInverseMapped = useCallback(
     (value: string): void => {
       setInverse(denormalizeURI(value))
@@ -311,8 +313,8 @@ function MappingRow(props: MappingRowProps): JSX.Element {
     [denormalizeURI],
   )
   const inverseValidity = useMemo(
-    () => isURLValid(inverseValue, inverses, inverse),
-    [inverseValue, inverses, inverse],
+    () => isURLValid(inverseValue, canonValue, inverses, canon),
+    [inverseValue, canonValue, inverses, canon],
   )
   const inverseValid = typeof inverseValidity === 'undefined'
 
@@ -335,6 +337,11 @@ function MappingRow(props: MappingRowProps): JSX.Element {
     inverseValue,
     onUpdate,
   ])
+
+  const handleSwap = useCallback((): void => {
+    setCanon(inverseValue)
+    setInverse(canonValue)
+  }, [canonValue, inverseValue])
 
   const handleDelete = useCallback((): void => {
     onDelete(canon)
@@ -369,6 +376,7 @@ function MappingRow(props: MappingRowProps): JSX.Element {
           <Button onInput={handleApply} disabled={!enabled}>
             Apply
           </Button>
+          <Button onInput={handleSwap}>Swap</Button>
           <Button onInput={handleDelete}>Delete</Button>
         </ButtonGroup>
       </td>
@@ -378,17 +386,25 @@ function MappingRow(props: MappingRowProps): JSX.Element {
 
 function isURLValid(
   url: string,
+  otherURL: string,
   inverses: InverseMap,
   oldURL?: string,
 ): string | undefined {
   if (url === '') {
     return 'invalid characters in canonical URL'
   }
+  if (url === otherURL) {
+    return 'URLs cannot be the same'
+  }
   if (typeof oldURL === 'string' && url === oldURL) {
     return undefined
   }
 
-  if (inverses.has(url)) {
+  let map = inverses
+  if (typeof oldURL === 'string') {
+    map = map.remove(oldURL)
+  }
+  if (map.has(url)) {
     return 'url already contained in inverse map'
   }
 
