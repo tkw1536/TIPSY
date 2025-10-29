@@ -2,7 +2,10 @@ import type { StateCreator } from 'zustand'
 import { loaders, resetters, type BoundState } from '.'
 import type { PathTree } from '../../../lib/pathbuilder/pathtree'
 import Deduplication from './datatypes/deduplication'
-import type { ModelDisplay } from '../../../lib/graph/builders/model/labels'
+import {
+  isModelDisplay,
+  type ModelDisplay,
+} from '../../../lib/graph/builders/model/labels'
 import { models } from '../../../lib/drivers/collection'
 import { defaultLayout, type Snapshot } from '../../../lib/drivers/impl'
 import { nextInt } from '../../../lib/utils/prng'
@@ -81,10 +84,27 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
       tree: PathTree,
       pathbuilder: Pathbuilder,
     ): Promise<Partial<State>> => {
-      const snapshot = pathbuilder.getSnapshotData(snapshotKey, validate)
-      if (snapshot === null) return {}
+      let snapshot2 = pathbuilder.getSnapshotData<ModelExport>(
+        snapshotKey,
+        validateVersion2,
+      )
+      if (snapshot2 === null) {
+        const snapshot1 = pathbuilder.getSnapshotData<ModelExportVersion1>(
+          snapshotKeyVersion1,
+          validateVersion1,
+        )
+        if (snapshot1 === null) return {}
 
-      const { type, ...rest } = snapshot
+        snapshot2 = {
+          ...snapshot1,
+          modelDisplay: {
+            ...snapshot1.modelDisplay,
+            Inverses: { Show: true },
+          },
+        }
+      }
+
+      const { type, ...rest } = snapshot2
       return rest
     },
   )
@@ -124,7 +144,12 @@ interface ModelExport extends State {
   type: 'model'
 }
 
-export const snapshotKey = 'v1/model'
+interface ModelExportVersion1 extends Exclude<ModelExport, 'modelDisplay'> {
+  modelDisplay: Exclude<ModelDisplay, 'Inverses'>
+}
+
+export const snapshotKey = 'v2/model'
+const snapshotKeyVersion1 = 'v1/model'
 export function snapshot(state: State): ModelExport {
   const {
     modelDriver,
@@ -146,24 +171,36 @@ export function snapshot(state: State): ModelExport {
     modelSize,
   }
 }
-function validate(data: any): data is ModelExport {
-  return (
-    typeof data === 'object' &&
-    data !== null &&
-    'type' in data &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
-    data.type === 'model' &&
-    'modelDriver' in data &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
-    typeof data.modelDriver === 'string' &&
-    'modelSeed' in data &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
-    typeof data.modelSeed === 'number' &&
-    'modelLayout' in data &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
-    typeof data.modelLayout === 'string' &&
-    'modelDeduplication' in data &&
-    'modelDisplay' in data &&
-    'modelSnapshot' in data
-  )
+function validateVersion1(data: any): data is ModelExportVersion1 {
+  if (
+    !(
+      typeof data === 'object' &&
+      data !== null &&
+      'type' in data &&
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
+      data.type === 'model' &&
+      'modelDriver' in data &&
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
+      typeof data.modelDriver === 'string' &&
+      'modelSeed' in data &&
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
+      typeof data.modelSeed === 'number' &&
+      'modelLayout' in data &&
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- guarded
+      typeof data.modelLayout === 'string' &&
+      'modelDeduplication' in data &&
+      'modelDisplay' in data &&
+      'modelSnapshot' in data
+    )
+  ) {
+    return false
+  }
+  const { modelDisplay } = data as unknown as { modelDisplay: unknown }
+  if (typeof modelDisplay !== 'object' || modelDisplay === null) {
+    return false
+  }
+  return isModelDisplay({ ...modelDisplay, Inverses: { Show: true } })
+}
+function validateVersion2(data: any): data is ModelExport {
+  return validateVersion1(data) && isModelDisplay(data.modelDisplay)
 }

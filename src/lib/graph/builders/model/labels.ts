@@ -376,6 +376,23 @@ export interface ModelDisplay {
   }
 }
 
+export function isModelDisplay(data: unknown): data is ModelDisplay {
+  return (
+    typeof data === 'object' &&
+    data !== null &&
+    'Compounds' in data &&
+    typeof data.Compounds === 'object' &&
+    'Concept' in data &&
+    typeof data.Concept === 'object' &&
+    'Literal' in data &&
+    typeof data.Literal === 'object' &&
+    'Labels' in data &&
+    typeof data.Labels === 'object' &&
+    'Inverses' in data &&
+    typeof data.Inverses === 'object'
+  )
+}
+
 interface ModelCompoundDisplay {
   complex: boolean
   boxed: boolean
