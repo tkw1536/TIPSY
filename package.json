@@ -20,6 +20,7 @@
     "eslint": "^9.38.0",
     "eslint-config-love": "^133.0.0",
     "eslint-config-prettier": "^10.1.5",
+    "eslint-formatter-unix": "^9.0.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-n": "^17.20.0",
     "eslint-plugin-prettier": "^5.5.1",
@@ -80,7 +81,7 @@
     "start": "vite dev --port 1234 --strict-port",
     "build": "vite build",
     "ci": "yarn tsc && yarn lint && yarn csslint && yarn spellcheck && yarn test",
-    "lint": "eslint .",
+    "lint": "eslint . -f unix",
     "csslint": "prettier 'src/**/*.css' --check",
     "spellcheck": "cspell lint . --config cspell.json --quiet",
     "test": "vitest run"
