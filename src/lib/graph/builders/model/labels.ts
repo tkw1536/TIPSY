@@ -279,17 +279,19 @@ export class LiteralModelNode {
   }
 }
 
-export type ModelEdge = PropertyModelEdge | DataModelEdge
+export type ModelEdge =
+  | PropertyModelEdge
+  | InversePropertyModelEdge
+  | DataModelEdge
+  | InverseDataModelEdge
 
 export class PropertyModelEdge {
   constructor(
     /** the actual property */
     public property: string,
-    /** the inverse property (if any) */
-    public inverse_property?: string,
   ) {}
 
-  render(id: string, options: ModelOptions): Element {
+  render(id: string, options: ModelOptions): Element | null {
     return {
       id,
       label: options.display.Labels.Property
@@ -302,13 +304,19 @@ export class PropertyModelEdge {
   }
 }
 
+export class InversePropertyModelEdge extends PropertyModelEdge {
+  render(id: string, options: ModelOptions): Element | null {
+    if (!options.display.Inverses.Show) {
+      return null
+    }
+    return super.render(id, options)
+  }
+}
+
 export class DataModelEdge {
   constructor(
     /** the actual property */
     public property: string,
-
-    /** the inverted property */
-    public inverse_property?: string,
   ) {}
 
   render(id: string, options: ModelOptions): Element | null {
@@ -324,6 +332,15 @@ export class DataModelEdge {
       color: null,
       shape: null,
     }
+  }
+}
+
+export class InverseDataModelEdge extends DataModelEdge {
+  render(id: string, options: ModelOptions): Element | null {
+    if (!options.display.Inverses.Show) {
+      return null
+    }
+    return super.render(id, options)
   }
 }
 
@@ -353,6 +370,9 @@ export interface ModelDisplay {
     DatatypeFieldType: boolean
     DatatypeField: boolean
     DatatypeProperty: boolean
+  }
+  Inverses: {
+    Show: boolean
   }
 }
 

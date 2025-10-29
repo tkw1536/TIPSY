@@ -345,6 +345,30 @@ function ModelGraphDisplayControl(
           </tbody>
         </table>
       </Control>
+
+      <Control name='Inverses' nested>
+        <table>
+          <tbody>
+            <tr>
+              <td colSpan={2}>
+                By default, if a property has an inverse, an additional edge is
+                rendered to show the inverse property. This can be disabled.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <DisplayCheckbox
+                  a='Inverses'
+                  b='Show'
+                  {...props}
+                  label='Display Inverse Edges'
+                />
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </Control>
     </Control>
   )
 }

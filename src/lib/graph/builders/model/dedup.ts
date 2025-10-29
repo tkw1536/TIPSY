@@ -14,6 +14,8 @@ import ImmutableSet from '../../../utils/immutable-set'
 import {
   ConceptModelNode,
   DataModelEdge,
+  InverseDataModelEdge,
+  InversePropertyModelEdge,
   LiteralModelNode,
   PropertyModelEdge,
   type ModelEdge,
@@ -184,8 +186,17 @@ export abstract class DeduplicatingBuilder {
       this.graph.addEdge(
         theSourceNode,
         theTargetNode,
-        new PropertyModelEdge(theURI, theInverseURI ?? undefined),
+        new PropertyModelEdge(theURI),
       )
+
+      // add an inverse edge if available
+      if (theInverseURI !== null) {
+        this.graph.addEdge(
+          theTargetNode,
+          theSourceNode,
+          new InversePropertyModelEdge(theInverseURI),
+        )
+      }
     }
 
     // draw the datatype property (if any)
@@ -287,8 +298,17 @@ export abstract class DeduplicatingBuilder {
         this.graph.addEdge(
           theSourceNode,
           theTargetNode,
-          new DataModelEdge(theURI, theInverseURI ?? undefined),
+          new DataModelEdge(theURI),
         )
+
+        // draw the inverse edge if available
+        if (theInverseURI !== null) {
+          this.graph.addEdge(
+            theTargetNode,
+            theSourceNode,
+            new InverseDataModelEdge(theInverseURI),
+          )
+        }
       })()
     }
 

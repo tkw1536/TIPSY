@@ -69,6 +69,9 @@ async function main(): Promise<void> {
       DatatypeField: true,
       DatatypeProperty: true,
     },
+    Inverses: {
+      Show: true,
+    },
   }
 
   const format = GraphVizModelDriver.formats.keys().next().value

@@ -62,6 +62,9 @@ const initialState: State = {
       DatatypeField: true,
       DatatypeProperty: true,
     },
+    Inverses: {
+      Show: true,
+    },
   },
   modelSnapshot: null,
   modelSize: 0,
