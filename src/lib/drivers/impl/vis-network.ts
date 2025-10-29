@@ -172,13 +172,11 @@ abstract class VisNetworkDriver<
     size?: number,
   ): Promise<Blob> {
     if (info === null) throw ErrorUnsupported
-    if (typeof size === 'undefined' || size <= 0) {
-      size = 1000
-    }
+    const theSize = typeof size === 'undefined' || size <= 0 ? 1000 : size
     return await dataset.drawNetworkClone(
       info.mount.network,
-      Math.round(size / 2),
-      Math.round(size / 2),
+      Math.round(theSize / 2),
+      Math.round(theSize / 2),
       Type.PNG,
       1,
     )

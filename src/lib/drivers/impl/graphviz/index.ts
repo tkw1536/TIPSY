@@ -208,6 +208,7 @@ abstract class GraphvizDriver<
     size?: Size,
   ): Mount {
     // mount the svg we have already rendered
+    // eslint-disable-next-line no-param-reassign -- need to mount things
     element.innerHTML = context.svg
 
     const svg = element.querySelector('svg')
@@ -326,7 +327,9 @@ abstract class GraphvizDriver<
     { mount: { svg, zoom } }: MountInfo<Mount>,
     { width, height }: Size,
   ): void {
+    // eslint-disable-next-line no-param-reassign -- intentional side effect
     svg.style.height = `${height}px`
+    // eslint-disable-next-line no-param-reassign -- intentional side effect
     svg.style.width = `${width}px`
     zoom.resize()
     return undefined
@@ -354,10 +357,8 @@ abstract class GraphvizDriver<
     switch (format) {
       case 'png': {
         const SVG2Image = (await import('../../../utils/svg2image')).default
-        if (typeof size === 'undefined' || size <= 0) {
-          size = 10000
-        }
-        return await SVG2Image(svg, size, size, Type.PNG)
+        const theSize = typeof size === 'undefined' || size <= 0 ? 10000 : size
+        return await SVG2Image(svg, theSize, theSize, Type.PNG)
       }
       case 'svg': {
         return new Blob([svg], { type: Type.SVG })

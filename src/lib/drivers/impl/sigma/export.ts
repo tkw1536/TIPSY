@@ -72,6 +72,7 @@ function renderContext(
   const { width: cWidth, height: cHeight } = getCanvasDimensions(sigma)
 
   // draw a background
+  // eslint-disable-next-line no-param-reassign -- intentional side effect
   ctx.fillStyle = '#fff'
   ctx.fillRect(0, 0, cWidth, cHeight)
 

@@ -13,6 +13,7 @@ export function setRef<T>(ref: RefLike<T>, value: T | null): void {
       ref(value)
       return
     default:
+      // eslint-disable-next-line no-param-reassign -- intentional side effect
       ref.current = value
   }
 }

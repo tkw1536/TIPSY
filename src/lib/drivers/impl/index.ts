@@ -386,13 +386,14 @@ export abstract class DriverImpl<
         `Driver error: missing size argument for format ${format}`,
       )
     }
+    let theSize = size
     if (hasSize && !wantSize) {
       console.warn(
         `Driver warning: ignoring extra size argument for format ${format}`,
       )
-      size = undefined
+      theSize = undefined
     }
-    return await this.exportImpl(this.#context, this.#mount, format, size)
+    return await this.exportImpl(this.#context, this.#mount, format, theSize)
   }
   protected abstract exportImpl(
     details: ContextDetails<Context, Options>,
