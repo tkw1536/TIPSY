@@ -10,7 +10,9 @@ describe(Once, () => {
     const once = new Once()
 
     const p1 = once.Do(async () => {
-      await new Promise(resolve => setTimeout(resolve, THE_TIMEOUT))
+      await new Promise(resolve => {
+        setTimeout(resolve, THE_TIMEOUT)
+      })
     })
     const p2 = once.Do(async () => {
       throw new Error('this should never be called')
@@ -25,7 +27,9 @@ describe(Once, () => {
     const once = new Once()
 
     const p1 = once.Do(async () => {
-      await new Promise(resolve => setTimeout(resolve, THE_TIMEOUT))
+      await new Promise(resolve => {
+        setTimeout(resolve, THE_TIMEOUT)
+      })
     })
     vi.runAllTimers()
     await expect(p1).resolves.toBeUndefined()
@@ -39,7 +43,9 @@ describe(Once, () => {
   test('rejection in concurrent mode', async () => {
     const once = new Once()
     const p1 = once.Do(async () => {
-      await new Promise(resolve => setTimeout(resolve, THE_TIMEOUT))
+      await new Promise(resolve => {
+        setTimeout(resolve, THE_TIMEOUT)
+      })
       throw new Error('debug rejection')
     })
     const p2 = once.Do(async () => {})
@@ -53,7 +59,9 @@ describe(Once, () => {
   test('rejection in sequential mode', async () => {
     const once = new Once()
     const p1 = once.Do(async () => {
-      await new Promise(resolve => setTimeout(resolve, THE_TIMEOUT))
+      await new Promise(resolve => {
+        setTimeout(resolve, THE_TIMEOUT)
+      })
       throw new Error('debug rejection')
     })
     vi.runAllTimers()
