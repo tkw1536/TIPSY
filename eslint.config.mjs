@@ -39,6 +39,9 @@ export default [
       'no-console': ['off'],
       'no-alert': ['off'],
 
+      // typeof x !== 'undefined' is much more readable.
+      'no-negated-condition': ['off'],
+
       '@typescript-eslint/no-invalid-void-type': ['off'],
       '@typescript-eslint/no-unsafe-type-assertion': ['off'], // way too many false positives
       '@typescript-eslint/no-explicit-any': ['off'], // sometimes 'any' is helpful
