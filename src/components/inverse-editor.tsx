@@ -390,7 +390,7 @@ function isURLValid(
   inverses: InverseMap,
   oldURL?: string,
 ): string | undefined {
-  if (url === '') {
+  if (url === '' || url.startsWith('^')) {
     return 'invalid characters in canonical URL'
   }
   if (url === otherURL) {
