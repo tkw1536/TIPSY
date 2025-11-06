@@ -24,9 +24,7 @@ export class InverseMap {
     return this.#entries.size / 2
   }
 
-  constructor(
-    pairs: Iterable<[string, string]>,
-  ) {
+  constructor(pairs: Iterable<[string, string]>) {
     const mp = new Map<string, InverseInfo>()
     for (const [canonical, inverse] of pairs) {
       const canonConflict = mp.get(canonical)
@@ -61,7 +59,7 @@ export class InverseMap {
         return {
           canonical: inverseInfo.canonical,
           inverse: inverseInfo.inverse,
-          is_inverted: invertedUri == inverseInfo.canonical,
+          is_inverted: invertedUri === inverseInfo.canonical,
         }
       }
 
@@ -76,7 +74,7 @@ export class InverseMap {
   /**
    * Canonicalizes a URI, removing a ^ if it exists, and using the appropriate inverse instead.
    *
-   * @param uri the URI to canonicalized 
+   * @param uri the URI to canonicalized
    * @returns the canonicalized URI
    */
   canonicalize(uri: string): string {
@@ -99,9 +97,7 @@ export class InverseMap {
    * @returns if the uri was inverted
    */
   has(uri: string): boolean {
-    return (
-      this.#entries.has(uri) || uri.startsWith('^')
-    )
+    return this.#entries.has(uri) || uri.startsWith('^')
   }
 
   /**
@@ -157,9 +153,7 @@ export class InverseMap {
    * @returns
    */
   add(canonical: string, inverse: string): InverseMap {
-    if (
-      (canonical.startsWith('^') || inverse.startsWith('^'))
-    ) {
+    if (canonical.startsWith('^') || inverse.startsWith('^')) {
       throw new Error('Cannot add inverted pattern to InverseMap')
     }
 

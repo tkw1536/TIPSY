@@ -141,7 +141,12 @@ export class NamespaceMap {
   apply(uri: string): string {
     const [ns, prefix, inverse] = this.#match(uri)
     if (ns === null) return uri
-    return (inverse ? '^' : '') + ns + ':' + uri.substring(prefix.length + (inverse ? 1 : 0))
+    return (
+      (inverse ? '^' : '') +
+      ns +
+      ':' +
+      uri.substring(prefix.length + (inverse ? 1 : 0))
+    )
   }
   /** Applies the reverse of this namespace-map to a string, that is it replaces and shortened namespace with the long-form version */
   applyReverse(uri: string): string {
@@ -156,7 +161,7 @@ export class NamespaceMap {
     }
     for (const [s, l] of this.#entries) {
       if (theURI.startsWith(s + ':')) {
-        return ( inverse ? '^' : '') + l + theURI.substring(s.length + 1)
+        return (inverse ? '^' : '') + l + theURI.substring(s.length + 1)
       }
     }
 
@@ -168,7 +173,7 @@ export class NamespaceMap {
   #match(uri: string): [string, string, boolean] | [null, null, null] {
     let prefix = ''
     let ns: string | null = null
-    
+
     let inverse: boolean
     let theURI: string
     if (uri.startsWith('^')) {

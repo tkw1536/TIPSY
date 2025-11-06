@@ -6,20 +6,18 @@ describe(InverseMap, () => {
     ['empty map', new InverseMap([]), [], 0],
     [
       'single pair',
-      new InverseMap(
-        [['https://example.com/parent', 'https://example.com/child']],
-      ),
+      new InverseMap([
+        ['https://example.com/parent', 'https://example.com/child'],
+      ]),
       [['https://example.com/parent', 'https://example.com/child']],
       1,
     ],
     [
       'multiple disjoint pairs',
-      new InverseMap(
-        [
-          ['https://a.com/p', 'https://a.com/c'],
-          ['https://b.com/p', 'https://b.com/c'],
-        ],
-      ),
+      new InverseMap([
+        ['https://a.com/p', 'https://a.com/c'],
+        ['https://b.com/p', 'https://b.com/c'],
+      ]),
       [
         ['https://a.com/p', 'https://a.com/c'],
         ['https://b.com/p', 'https://b.com/c'],
@@ -28,23 +26,19 @@ describe(InverseMap, () => {
     ],
     [
       'conflict on canonical removes previous',
-      new InverseMap(
-        [
-          ['https://conflict.com/p', 'https://conflict.com/c1'],
-          ['https://conflict.com/p', 'https://conflict.com/c2'],
-        ],
-      ),
+      new InverseMap([
+        ['https://conflict.com/p', 'https://conflict.com/c1'],
+        ['https://conflict.com/p', 'https://conflict.com/c2'],
+      ]),
       [['https://conflict.com/p', 'https://conflict.com/c2']],
       1,
     ],
     [
       'conflict on inverse removes previous',
-      new InverseMap(
-        [
-          ['https://conflict.com/p1', 'https://conflict.com/i'],
-          ['https://conflict.com/p2', 'https://conflict.com/i'],
-        ],
-      ),
+      new InverseMap([
+        ['https://conflict.com/p1', 'https://conflict.com/i'],
+        ['https://conflict.com/p2', 'https://conflict.com/i'],
+      ]),
       [['https://conflict.com/p2', 'https://conflict.com/i']],
       1,
     ],

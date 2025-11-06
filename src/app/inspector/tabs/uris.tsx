@@ -151,7 +151,7 @@ function URIList(): VNode<any> {
       }
     }
     return nodes
-  }, [tree])
+  }, [tree, inverses])
 
   const sortedURIEntries = useMemo(() => {
     let getField: (uri: string, stats: URIStats) => string | number
@@ -190,11 +190,9 @@ function URIList(): VNode<any> {
             URI
             <SortControl column='uri' />
           </th>
-          { uriShowInverses && (
+          {uriShowInverses && (
             <Fragment>
-              <th colspan={2}>
-                Inverse URI
-              </th>
+              <th colspan={2}>Inverse URI</th>
             </Fragment>
           )}
           <th colSpan={3}>Stats</th>
@@ -203,9 +201,7 @@ function URIList(): VNode<any> {
           <th>
             <Text value={search} onInput={setSearch} />
           </th>
-          { uriShowInverses && (
-            <th colspan={2} />
-          )}
+          {uriShowInverses && <th colspan={2} />}
           <th>
             Concept
             <SortControl column='concept' />
@@ -245,11 +241,20 @@ function URInfoRow({
   const inverseInfo = inverses.check(uri)
 
   // determine if the URI is inverted
-  const isInverted = typeof inverseInfo !== 'undefined' ? inverseInfo.is_inverted : null
+  const isInverted =
+    typeof inverseInfo !== 'undefined' ? inverseInfo.is_inverted : null
 
   // determine the inverse URI (if one exists)
-  let inverseURI = typeof inverseInfo !== 'undefined' ? (inverseInfo.is_inverted ? inverseInfo.canonical : inverseInfo.inverse) : null
-  inverseURI = typeof inverseURI === 'string' && uriUseNamespaces ? ns.apply(inverseURI) : inverseURI
+  let inverseURI =
+    typeof inverseInfo !== 'undefined'
+      ? inverseInfo.is_inverted
+        ? inverseInfo.canonical
+        : inverseInfo.inverse
+      : null
+  inverseURI =
+    typeof inverseURI === 'string' && uriUseNamespaces
+      ? ns.apply(inverseURI)
+      : inverseURI
 
   const search = useInspectorStore(s => s.uriSearch)
   const matched = useMemo(() => {
@@ -269,16 +274,14 @@ function URInfoRow({
       <td>
         <code>{uriUseNamespaces ? nsURI : uri}</code>
       </td>
-      { uriShowInverses && (
-          <Fragment>
-            <td>
-              <code>{inverseURI}</code>
-            </td>
-            <td>
-              { isInverted && "inverted"}
-            </td>
-          </Fragment>
-        )}
+      {uriShowInverses && (
+        <Fragment>
+          <td>
+            <code>{inverseURI}</code>
+          </td>
+          <td>{isInverted === true && 'inverted'}</td>
+        </Fragment>
+      )}
       <td>{stats.concept}</td>
       <td>{stats.property.relation}</td>
       <td>{stats.property.datatype}</td>
