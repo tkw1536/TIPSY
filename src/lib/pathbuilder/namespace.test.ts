@@ -164,10 +164,13 @@ describe(NamespaceMap, () => {
 
   test.each([
     ['https://example.com/', 'example:'],
+    ['^https://example.com/', '^example:'],
     ['https://example.com/123', 'example:123'],
+    ['^https://example.com/123', '^example:123'],
     ['https://example.com/abc/', 'abc:'],
     ['https://example.com/abc/deep', 'abc:deep'],
     ['https://unrelated.example.com/', 'https://unrelated.example.com/'],
+    ['^https://unrelated.example.com/', '^https://unrelated.example.com/'],
   ])(
     'apply(%1) === %2 && applyReverse(%2) === %1',
     (url: string, wantApply: string) => {

@@ -139,29 +139,49 @@ export class NamespaceMap {
 
   /** apply applies this namespace-map to a string */
   apply(uri: string): string {
-    const [ns, prefix] = this.#match(uri)
+    const [ns, prefix, inverse] = this.#match(uri)
     if (ns === null) return uri
-    return ns + ':' + uri.substring(prefix.length)
+    return (inverse ? '^' : '') + ns + ':' + uri.substring(prefix.length + (inverse ? 1 : 0))
   }
   /** Applies the reverse of this namespace-map to a string, that is it replaces and shortened namespace with the long-form version */
-  applyReverse(url: string): string {
+  applyReverse(uri: string): string {
+    let inverse: boolean
+    let theURI: string
+    if (uri.startsWith('^')) {
+      inverse = true
+      theURI = uri.slice(1)
+    } else {
+      inverse = false
+      theURI = uri
+    }
     for (const [s, l] of this.#entries) {
-      if (url.startsWith(s + ':')) {
-        return l + url.substring(s.length + 1)
+      if (theURI.startsWith(s + ':')) {
+        return ( inverse ? '^' : '') + l + theURI.substring(s.length + 1)
       }
     }
 
     // return URL unchanged
-    return url
+    return uri
   }
 
   /** match matches the given uri against the prefixes known to this NamespaceMap */
-  #match(uri: string): [string, string] | [null, null] {
+  #match(uri: string): [string, string, boolean] | [null, null, null] {
     let prefix = ''
     let ns: string | null = null
+    
+    let inverse: boolean
+    let theURI: string
+    if (uri.startsWith('^')) {
+      inverse = true
+      theURI = uri.slice(1)
+    } else {
+      inverse = false
+      theURI = uri
+    }
+
     this.#entries.forEach((l, s) => {
       // must actually be a prefix
-      if (!uri.startsWith(l)) {
+      if (!theURI.startsWith(l)) {
         return
       }
 
@@ -175,9 +195,9 @@ export class NamespaceMap {
     })
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive because closure
     if (ns === null) {
-      return [null, null]
+      return [null, null, null]
     }
-    return [ns, prefix]
+    return [ns, prefix, inverse]
   }
 
   /** empty returns an empty NamespaceMap */

@@ -17,7 +17,7 @@ interface Actions {
 }
 
 const initialState: State = {
-  inverses: new InverseMap([], true),
+  inverses: new InverseMap([]),
 }
 const resetState: State = { ...initialState }
 
@@ -34,7 +34,7 @@ export const create: StateCreator<BoundState, [], [], Slice> = (set, get) => {
       const inverses =
         InverseMap.fromJSON(
           pathbuilder.getSnapshotData(snapshotKey, validate),
-        ) ?? new InverseMap([], true)
+        ) ?? new InverseMap([])
       return {
         inverses,
       }
@@ -46,7 +46,7 @@ export const create: StateCreator<BoundState, [], [], Slice> = (set, get) => {
 
     resetInverseMap: () => {
       const { setInverseMap } = get()
-      setInverseMap(new InverseMap([], true))
+      setInverseMap(new InverseMap([]))
     },
 
     setInverseMap: (inverses: InverseMap): void => {

@@ -341,6 +341,10 @@ function isShortValid(
     return undefined
   }
 
+  if (short.startsWith('^')) {
+    return 'invalid characters in value'
+  }
+
   if (ns.has(short)) {
     return 'duplicate namespace'
   }
@@ -355,6 +359,9 @@ function isLongValid(
 ): string | undefined {
   if (long === '') {
     return 'URI is empty'
+  }
+  if (long.startsWith('^')) {
+    return 'invalid characters in value'
   }
   return undefined
 }

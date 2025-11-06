@@ -38,24 +38,22 @@ export default function InspectorApp(): JSX.Element {
         <Tab title='Tree' disabled={!loaded} id='tree'>
           <TreeTab />
         </Tab>
-        <Tab title='URIs' id='uris' disabled={!loaded}>
-          <URIsTab />
-        </Tab>
         <Tab title='Bundle Graph' disabled={!loaded} id='bundle'>
           <BundleGraphTab />
         </Tab>
         <Tab title='Model Graph' disabled={!loaded} id='model'>
           <ModelGraphTab />
         </Tab>
-        {import.meta.env.DEV && (
-          <Tab
-            title='URI Config &#9881;&#65039;'
-            disabled={!loaded}
-            id='uris_config'
-          >
-            <URIConfigTab />
-          </Tab>
-        )}
+        <Tab title='URI List' id='uris' disabled={!loaded}>
+          <URIsTab />
+        </Tab>
+        <Tab
+          title='URI Config &#9881;&#65039;'
+          disabled={!loaded}
+          id='uris_config'
+        >
+          <URIConfigTab />
+        </Tab>
         <Tab title='About' id='about'>
           <AboutTab />
         </Tab>

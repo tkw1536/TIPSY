@@ -3,12 +3,11 @@ import { InverseMap } from './inversemap'
 
 describe(InverseMap, () => {
   test.each<[string, InverseMap, Array<[string, string]>, number]>([
-    ['empty map', new InverseMap([], true), [], 0],
+    ['empty map', new InverseMap([]), [], 0],
     [
       'single pair',
       new InverseMap(
         [['https://example.com/parent', 'https://example.com/child']],
-        true,
       ),
       [['https://example.com/parent', 'https://example.com/child']],
       1,
@@ -20,7 +19,6 @@ describe(InverseMap, () => {
           ['https://a.com/p', 'https://a.com/c'],
           ['https://b.com/p', 'https://b.com/c'],
         ],
-        true,
       ),
       [
         ['https://a.com/p', 'https://a.com/c'],
@@ -35,7 +33,6 @@ describe(InverseMap, () => {
           ['https://conflict.com/p', 'https://conflict.com/c1'],
           ['https://conflict.com/p', 'https://conflict.com/c2'],
         ],
-        true,
       ),
       [['https://conflict.com/p', 'https://conflict.com/c2']],
       1,
@@ -47,7 +44,6 @@ describe(InverseMap, () => {
           ['https://conflict.com/p1', 'https://conflict.com/i'],
           ['https://conflict.com/p2', 'https://conflict.com/i'],
         ],
-        true,
       ),
       [['https://conflict.com/p2', 'https://conflict.com/i']],
       1,
@@ -60,7 +56,7 @@ describe(InverseMap, () => {
   test('has/check semantics', () => {
     const p = 'https://example.com/parent'
     const i = 'https://example.com/child'
-    const mp = new InverseMap([[p, i]], true)
+    const mp = new InverseMap([[p, i]])
 
     expect(mp.has(p)).toBe(true)
     expect(mp.has(i)).toBe(true)
@@ -102,13 +98,13 @@ describe(InverseMap, () => {
       [['https://x/p', 'https://x/i']],
     ],
   ])('canonicalizeEdge: %1', (_name, args, want, pairs) => {
-    const mp = new InverseMap(pairs as Array<[string, string]>, true)
+    const mp = new InverseMap(pairs as Array<[string, string]>)
     const got = mp.canonicalizeEdge(args[0], args[1], args[2])
     expect(got).toEqual(want)
   })
 
   test('inverse lookup', () => {
-    const mapWithInverse = new InverseMap([['https://a', 'https://b']], true)
+    const mapWithInverse = new InverseMap([['https://a', 'https://b']])
 
     const lookup1 = mapWithInverse.check('^https://a')
     expect(lookup1).toBeDefined()
@@ -129,16 +125,25 @@ describe(InverseMap, () => {
     expect(lookup3?.inverse).toBe('^https://c')
     expect(lookup3?.is_inverted).toBe(true)
 
-
-
     const contains = mapWithInverse.has('^https://a')
     expect(contains).toBe(true)
+  })
+
+  test.each([
+    ['canonical A unchanged', 'https://a', 'https://a'],
+    ['canonical B unchanged', 'https://b', 'https://b'],
+    ['inverse A returns B', '^https://a', 'https://b'],
+    ['inverse B returns A', '^https://b', 'https://a'],
+    ['unknown inverse unchanged', '^https://c', '^https://c'],
+  ])('canonicalize: %s', (_name, input, expected) => {
+    const mp = new InverseMap([['https://a', 'https://b']])
+    expect(mp.canonicalize(input)).toBe(expected)
   })
 
   test('add/remove idempotence and immutability', () => {
     const p = 'https://e/p'
     const i = 'https://e/i'
-    const m0 = new InverseMap([], true)
+    const m0 = new InverseMap([])
     const m1 = m0.add(p, i)
     const m2 = m1.add(p, i) // no change
     expect(m1).not.toBe(m0)
@@ -158,7 +163,7 @@ describe(InverseMap, () => {
       ['https://a/p', 'https://a/i'],
       ['https://b/p', 'https://b/i'],
     ]
-    const mp = new InverseMap(pairs, true)
+    const mp = new InverseMap(pairs)
     const json = mp.toJSON()
 
     expect(json.type).toBe('inverse-map')

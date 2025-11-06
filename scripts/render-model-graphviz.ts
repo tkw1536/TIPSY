@@ -34,7 +34,7 @@ async function main(): Promise<void> {
     NamespaceMap.KnownPrefixes,
   )
   const cm = ColorMap.generate(tree, { field: '#f6b73c', bundle: '#add8e6' })
-  const inverses = new InverseMap([], true)
+  const inverses = new InverseMap([])
 
   // build the actual graph
   const graph = new ModelGraphBuilder(tree, {

@@ -26,7 +26,6 @@ export class InverseMap {
 
   constructor(
     pairs: Iterable<[string, string]>,
-    public readonly inversePatterns: boolean,
   ) {
     const mp = new Map<string, InverseInfo>()
     for (const [canonical, inverse] of pairs) {
@@ -54,7 +53,7 @@ export class InverseMap {
    */
   check(uri: string): InverseInfo | undefined {
     // If it is an inverse pattern, and we have info about the inverse, return it!
-    if (this.inversePatterns && uri.startsWith('^')) {
+    if (uri.startsWith('^')) {
       const invertedUri = uri.slice(1)
 
       const inverseInfo = this.#entries.get(uri.slice(1))
@@ -75,6 +74,25 @@ export class InverseMap {
   }
 
   /**
+   * Canonicalizes a URI, removing a ^ if it exists, and using the appropriate inverse instead.
+   *
+   * @param uri the URI to canonicalized 
+   * @returns the canonicalized URI
+   */
+  canonicalize(uri: string): string {
+    if (!uri.startsWith('^')) {
+      return uri
+    }
+
+    const inverseInfo = this.check(uri)
+    if (typeof inverseInfo === 'undefined') {
+      throw new Error(`never reached: inverse info without an inverse`)
+    }
+
+    return inverseInfo.is_inverted ? inverseInfo.inverse : inverseInfo.canonical
+  }
+
+  /**
    * Checks if the given URI is contained in the inverse map.
    *
    * @param uri uri to check
@@ -82,7 +100,7 @@ export class InverseMap {
    */
   has(uri: string): boolean {
     return (
-      this.#entries.has(uri) || (this.inversePatterns && uri.startsWith('^'))
+      this.#entries.has(uri) || uri.startsWith('^')
     )
   }
 
@@ -132,7 +150,7 @@ export class InverseMap {
   /**
    * Creates a new inverse map with the given pair added.
    *
-   * If inverse patterns are enabled, '^' can be used to lookup against the inverse of a URL.
+   * '^' can be used to lookup against the inverse of a URL.
    *
    * @param canonical The canonical IRI.
    * @param inverse The inverse IRI.
@@ -140,7 +158,6 @@ export class InverseMap {
    */
   add(canonical: string, inverse: string): InverseMap {
     if (
-      this.inversePatterns &&
       (canonical.startsWith('^') || inverse.startsWith('^'))
     ) {
       throw new Error('Cannot add inverted pattern to InverseMap')
@@ -154,7 +171,7 @@ export class InverseMap {
 
     const pairs = Array.from(this)
     pairs.push([canonical, inverse])
-    return new InverseMap(pairs, this.inversePatterns)
+    return new InverseMap(pairs)
   }
 
   /**
@@ -168,7 +185,7 @@ export class InverseMap {
   remove(canonical: string): InverseMap {
     const oldPairs = Array.from(this)
     let pairs: Array<[string, string]>
-    if (this.inversePatterns && canonical.startsWith('^')) {
+    if (canonical.startsWith('^')) {
       const inverted = canonical.slice(1)
       pairs = oldPairs.filter(([x, y]) => y !== inverted)
     } else {
@@ -177,13 +194,12 @@ export class InverseMap {
     if (pairs.length === oldPairs.length) {
       return this
     }
-    return new InverseMap(pairs, this.inversePatterns)
+    return new InverseMap(pairs)
   }
 
   toJSON(): InverseMapExport {
     return {
       type: 'inverse-map',
-      inverse_patterns: this.inversePatterns,
       pairs: Array.from(this),
     }
   }
@@ -194,7 +210,7 @@ export class InverseMap {
       return null
     }
 
-    return new InverseMap(data.pairs, data.inverse_patterns ?? true)
+    return new InverseMap(data.pairs)
   }
 
   /** checks if the given data is a valid inverse map */
@@ -208,14 +224,6 @@ export class InverseMap {
     }
     if (!('pairs' in data)) {
       return false
-    }
-
-    // if do_inverse pattern is present, it must be a boolean
-    if ('inverse_patterns' in data) {
-      const { inverse_patterns: inversePatterns } = data
-      if (typeof inversePatterns !== 'boolean') {
-        return false
-      }
     }
 
     const { pairs } = data

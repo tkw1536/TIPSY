@@ -109,61 +109,6 @@ Four presets can be applied via the side panel.
 
 The side panel also allows exporting and importing the colors as a json file.
 
-## The URIs Tab
-
-The URIS tab lists all URIs used by the pathbuilder.
-It is still experimental, and currently only available in debug mode.
-
-## The URI Config Tab
-
-The URI Config Tab allows users to configure how URIs are displayed within TIPSY.
-In consists of two sections:
-
-- The `Namespace Map`
-- The `Inverse Map`
-
-### The Namespace Map
-
-The `Namespace Map` allows the user to view and customize the namespace map used for displaying URIs.
-It is used for all tabs within the Inspector.
-The underlying pathbuilder always contains the full URIs, and namespace maps are not persisted beyond the current session.
-
-The initial version is generated automatically from all URIs found in the pathbuilder.
-Individual namespace URIs can be added, adjusted or deleted.
-
-- To adjust a namespace URI, type the new URI into the URI field.
-  Changes are only applied once the `Apply` button is pressed; unapplied changes are discarded when navigating to another tab.
-- To delete a namespace URI, click the `Delete` button.
-- To add an additional namespace, fill out the `NS` and `URI` fields, and then click the `Add` button.
-  Namespaces may only consist of letters, numbers, `-` and `_`s.
-  While the values are not valid, it is highlighted in red.
-
-To reset the namespace map to its' default value, click the `Reset To Default` button.
-
-The `Export` and `Import` can be used to export and import the namespace map to a file on disk.
-The Namespace Map is saved as a json file.
-
-### The Inverse Map
-
-The `Inverse Map` allows the user to declare two (property) URIs as inverses of each other.
-An inverse map contains a list of pairs - the so-called `canonical` URI as well as it's `inverse` URI.
-When the graph tabs display an edge labeled with an inverse URI, it's direction is reversed, and it is labeled with the canonical URI instead.
-Some renderers also display the inverted URI.
-
-The initial inverse map is empty.
-Individual URLs can be added, adjusted or deleted.
-
-- To adjust a URI, type the new URI into the URI field.
-  Changes are only applied once the `Apply` button is pressed; unapplied changes are discarded when navigating to another tab.
-- To swap a pair around, click the `Swap` button. This is only saved once you hit `Apply`. 
-- To delete a URI, click the `Delete` button.
-- To add an additional , fill out the `NS` and `URI` fields, and then click the `Add` button.
-  Namespaces may only consist of letters, numbers, `-` and `_`s.
-  While the values are not valid, it is highlighted in red.
-
-The `Export` and `Import` can be used to export and import the inverse map to a file on disk.
-The Inverse Map is saved as a json file.
-
 ## The Graph Tabs
 
 The Graph Tabs display the Model and Bundle Graph respectively.
@@ -251,6 +196,79 @@ Instead of showing each annotation as an attached node, it is also possible to c
 This is achieved by toggling off the `Complex` switch.
 In this case it's color is determined by the most important annotation.
 Most important means the path with the fewest number of descendants, or (if several nodes have the same number of descendants) the one higher in the pathbuilder.
+
+
+## The URI List Tab
+
+The URI List tab lists all URIs directly used in the pathbuilder.
+The table shows the following columns:
+- The URI itself.
+- Optionally the URIs inverse (if it exists) as well as if the primary URI is inverted or not.
+- The number of times it is used as a concept, property, and datatype in the pathbuilder.
+
+Unlike other tabs, the tab does not use the Namespace Map by default.
+This makes it easier to read URIs.
+The namespace map can be enabled using the side panel. 
+
+The inverse URI column can be enabled using settings in the side panel.
+
+Using the side panel, it is also possible to sort the table by any of the columns, with the exception of the inverse column.
+Sorting of the table can also be done by clicking on the `+` or `-` of the appropriate column header.
+
+Finally, it is also possible to search for specific URIs and highlight them in the table.
+This can be done by typing a query in the search box at the top of the `URI` column.
+Search is case-insensitive, and a column is matched if either the long form URI or abbreviated (namespaced) URI contains the search string.
+
+
+## The URI Config Tab
+
+The URI Config Tab allows users to configure how URIs are displayed within TIPSY.
+In consists of two sections:
+
+- The `Namespace Map`
+- The `Inverse Map`
+
+### The Namespace Map
+
+The `Namespace Map` allows the user to view and customize the namespace map used for displaying URIs.
+It is used for all tabs within the Inspector.
+The underlying pathbuilder always contains the full URIs, and namespace maps are not persisted beyond the current session.
+
+The initial version is generated automatically from all URIs found in the pathbuilder.
+Individual namespace URIs can be added, adjusted or deleted.
+
+- To adjust a namespace URI, type the new URI into the URI field.
+  Changes are only applied once the `Apply` button is pressed; unapplied changes are discarded when navigating to another tab.
+- To delete a namespace URI, click the `Delete` button.
+- To add an additional namespace, fill out the `NS` and `URI` fields, and then click the `Add` button.
+  Namespaces may only consist of letters, numbers, `-` and `_`s.
+  While the values are not valid, it is highlighted in red.
+
+To reset the namespace map to its' default value, click the `Reset To Default` button.
+
+The `Export` and `Import` can be used to export and import the namespace map to a file on disk.
+The Namespace Map is saved as a json file.
+
+### The Inverse Map
+
+The `Inverse Map` allows the user to declare two (property) URIs as inverses of each other.
+An inverse map contains a list of pairs - the so-called `canonical` URI as well as it's `inverse` URI.
+When the graph tabs display an edge labeled with an inverse URI, it's direction is reversed, and it is labeled with the canonical URI instead.
+Some renderers also display the inverted URI.
+
+The initial inverse map is empty.
+Individual URLs can be added, adjusted or deleted.
+
+- To adjust a URI, type the new URI into the URI field.
+  Changes are only applied once the `Apply` button is pressed; unapplied changes are discarded when navigating to another tab.
+- To swap a pair around, click the `Swap` button. This is only saved once you hit `Apply`. 
+- To delete a URI, click the `Delete` button.
+- To add an additional , fill out the `NS` and `URI` fields, and then click the `Add` button.
+  Namespaces may only consist of letters, numbers, `-` and `_`s.
+  While the values are not valid, it is highlighted in red.
+
+The `Export` and `Import` can be used to export and import the inverse map to a file on disk.
+The Inverse Map is saved as a json file.
 
 ## The About Tab
 

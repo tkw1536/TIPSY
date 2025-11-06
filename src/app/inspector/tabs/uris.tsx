@@ -1,6 +1,6 @@
 import { useCallback, useId, useMemo } from 'preact/hooks'
 import useInspectorStore from '../state'
-import type { VNode } from 'preact'
+import { Fragment, type VNode } from 'preact'
 import styles from './uris.module.css'
 import type { URISort } from '../state/uris'
 import { classes } from '../../../lib/utils/classes'
@@ -30,7 +30,9 @@ export default function URIListTab(): VNode<any> {
 function URIListPanel(): VNode<any> {
   const uriSort = useInspectorStore(s => s.uriSort)
   const setURISort = useInspectorStore(s => s.setURISort)
+  const setURIShowInverses = useInspectorStore(s => s.setURIShowInverses)
   const uriUseNamespaces = useInspectorStore(s => s.uriUseNamespaces)
+  const uriShowInverses = useInspectorStore(s => s.uriShowInverses)
   const setURIUseNamespaces = useInspectorStore(s => s.setURIUseNamespaces)
 
   const setSortColumn = useCallback(
@@ -96,7 +98,7 @@ function URIListPanel(): VNode<any> {
           </tbody>
         </table>
       </Control>
-      <Control name='URI Display'>
+      <Control name='Namespaces & URIs'>
         <p>
           By default, this Tab displays complete URIs. Here you can chose to use
           the namespace map instead.
@@ -107,6 +109,11 @@ function URIListPanel(): VNode<any> {
             and long-form URIs.
           </Switch>
         </p>
+        <p>
+          <Switch value={uriShowInverses} onInput={setURIShowInverses}>
+            Show Inverse URI Column
+          </Switch>
+        </p>
       </Control>
     </>
   )
@@ -114,15 +121,18 @@ function URIListPanel(): VNode<any> {
 
 function URIList(): VNode<any> {
   const tree = useInspectorStore(s => s.pathtree)
+  const inverses = useInspectorStore(s => s.inverses)
   const uriSort = useInspectorStore(s => s.uriSort)
   const search = useInspectorStore(s => s.uriSearch)
   const setSearch = useInspectorStore(s => s.setURISearch)
+  const uriShowInverses = useInspectorStore(s => s.uriShowInverses)
 
   const uris = useMemo(() => {
     const nodes = new Map<string, URIStats>()
     for (const node of tree.walk()) {
       for (const element of node.elements()) {
-        const count: URIStats = nodes.get(element.uri) ?? {
+        const theURI = inverses.canonicalize(element.uri)
+        const count: URIStats = nodes.get(theURI) ?? {
           concept: 0,
           property: { relation: 0, datatype: 0 },
         }
@@ -137,7 +147,7 @@ function URIList(): VNode<any> {
             count.concept += 1
             break
         }
-        nodes.set(element.uri, count)
+        nodes.set(theURI, count)
       }
     }
     return nodes
@@ -180,12 +190,22 @@ function URIList(): VNode<any> {
             URI
             <SortControl column='uri' />
           </th>
+          { uriShowInverses && (
+            <Fragment>
+              <th colspan={2}>
+                Inverse URI
+              </th>
+            </Fragment>
+          )}
           <th colSpan={3}>Stats</th>
         </tr>
         <tr>
           <th>
             <Text value={search} onInput={setSearch} />
           </th>
+          { uriShowInverses && (
+            <th colspan={2} />
+          )}
           <th>
             Concept
             <SortControl column='concept' />
@@ -220,6 +240,17 @@ function URInfoRow({
   const ns = useInspectorStore(s => s.ns)
   const nsURI = ns.apply(uri)
 
+  const uriShowInverses = useInspectorStore(s => s.uriShowInverses)
+  const inverses = useInspectorStore(s => s.inverses)
+  const inverseInfo = inverses.check(uri)
+
+  // determine if the URI is inverted
+  const isInverted = typeof inverseInfo !== 'undefined' ? inverseInfo.is_inverted : null
+
+  // determine the inverse URI (if one exists)
+  let inverseURI = typeof inverseInfo !== 'undefined' ? (inverseInfo.is_inverted ? inverseInfo.canonical : inverseInfo.inverse) : null
+  inverseURI = typeof inverseURI === 'string' && uriUseNamespaces ? ns.apply(inverseURI) : inverseURI
+
   const search = useInspectorStore(s => s.uriSearch)
   const matched = useMemo(() => {
     if (search === '') return null
@@ -238,6 +269,16 @@ function URInfoRow({
       <td>
         <code>{uriUseNamespaces ? nsURI : uri}</code>
       </td>
+      { uriShowInverses && (
+          <Fragment>
+            <td>
+              <code>{inverseURI}</code>
+            </td>
+            <td>
+              { isInverted && "inverted"}
+            </td>
+          </Fragment>
+        )}
       <td>{stats.concept}</td>
       <td>{stats.property.relation}</td>
       <td>{stats.property.datatype}</td>
