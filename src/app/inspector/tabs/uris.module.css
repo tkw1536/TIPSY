@@ -1,0 +1,50 @@
+.table td,
+.table th {
+  vertical-align: top;
+}
+
+.table thead {
+  margin-bottom: 10px;
+}
+.table {
+  --main-bundle-border: 7.5px solid var(--theme-generic-medium);
+  border-collapse: collapse;
+}
+.table td {
+  padding: 5px;
+  border: 1px solid var(--theme-generic-medium);
+}
+
+.table tbody tr:hover {
+  background-color: var(--theme-active-light);
+}
+
+.sortControl span {
+  color: var(--theme-generic-dark);
+  margin-left: 5px;
+  cursor: pointer;
+}
+.sortControl span.active {
+  color: var(--theme-active-dark);
+  font-weight: bold;
+}
+
+.sortControl .ascending::before {
+  content: '+';
+}
+
+.sortControl .descending::before {
+  content: '-';
+}
+
+.wide {
+  width: 100%;
+}
+
+.uri_matched,
+.uri_matched td {
+  background-color: var(--theme-active-light);
+}
+.uri_not_matched {
+  opacity: 0.5;
+}

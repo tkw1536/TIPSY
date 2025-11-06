@@ -9,6 +9,7 @@ import * as Inverses from './inverses'
 import * as Selection from './selection'
 import * as Tab from './tab'
 import * as Tree from './tree'
+import * as URIs from './uris'
 
 import type { PathTree } from '../../../lib/pathbuilder/pathtree'
 import type { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
@@ -23,7 +24,8 @@ export type BoundState = Bundle.Slice &
   Inverses.Slice &
   Selection.Slice &
   Tab.Slice &
-  Tree.Slice
+  Tree.Slice &
+  URIs.Slice
 
 /** contains all functions that reset the state */
 export const resetters = new Set<() => void>()
@@ -45,6 +47,7 @@ const useInspectorStore = create<BoundState>()((...a) => ({
   ...Selection.create(...a),
   ...Tab.create(...a),
   ...Tree.create(...a),
+  ...URIs.create(...a),
 }))
 
 export default useInspectorStore

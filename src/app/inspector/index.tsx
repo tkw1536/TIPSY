@@ -11,6 +11,7 @@ const BundleGraphTab = lazy(async () => await import('./tabs/bundle'))
 const ModelGraphTab = lazy(async () => await import('./tabs/model'))
 const URIConfigTab = lazy(async () => await import('./tabs/uri_config'))
 const AboutTab = lazy(async () => await import('./tabs/about'))
+const URIsTab = lazy(async () => await import('./tabs/uris'))
 
 export default function InspectorApp(): JSX.Element {
   const activeTab = useInspectorStore(s => s.activeTab)
@@ -37,15 +38,24 @@ export default function InspectorApp(): JSX.Element {
         <Tab title='Tree' disabled={!loaded} id='tree'>
           <TreeTab />
         </Tab>
+        <Tab title='URIs' id='uris' disabled={!loaded}>
+          <URIsTab />
+        </Tab>
         <Tab title='Bundle Graph' disabled={!loaded} id='bundle'>
           <BundleGraphTab />
         </Tab>
         <Tab title='Model Graph' disabled={!loaded} id='model'>
           <ModelGraphTab />
         </Tab>
-        <Tab title='URI Config &#9881;&#65039;' disabled={!loaded} id='uris'>
-          <URIConfigTab />
-        </Tab>
+        {import.meta.env.DEV && (
+          <Tab
+            title='URI Config &#9881;&#65039;'
+            disabled={!loaded}
+            id='uris_config'
+          >
+            <URIConfigTab />
+          </Tab>
+        )}
         <Tab title='About' id='about'>
           <AboutTab />
         </Tab>

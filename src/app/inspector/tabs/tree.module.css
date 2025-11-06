@@ -37,7 +37,7 @@
   background-color: var(--theme-active-light);
 }
 
-table tbody tr.path_matched:hover {
+.table tbody tr.path_matched:hover {
   background-color: var(--theme-active-medium);
 }
 

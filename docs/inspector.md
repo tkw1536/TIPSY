@@ -109,6 +109,11 @@ Four presets can be applied via the side panel.
 
 The side panel also allows exporting and importing the colors as a json file.
 
+## The URIs Tab
+
+The URIS tab lists all URIs used by the pathbuilder.
+It is still experimental, and currently only available in debug mode.
+
 ## The URI Config Tab
 
 The URI Config Tab allows users to configure how URIs are displayed within TIPSY.
