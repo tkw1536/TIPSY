@@ -231,9 +231,10 @@ export class NamespaceMap {
       if (uri === '') {
         return
       }
+      const theURI = uri.startsWith('^') ? uri.substring(1) : uri
 
       const until = Math.max(
-        ...Array.from(separators).map(c => uri.lastIndexOf(c)),
+        ...Array.from(separators).map(c => theURI.lastIndexOf(c)),
       )
       // no valid prefix
       if (until === -1) {
@@ -241,7 +242,7 @@ export class NamespaceMap {
       }
 
       // compute the prefix
-      const prefix = uri.substring(0, until + 1)
+      const prefix = theURI.substring(0, until + 1)
 
       // we already have a prefix
       if (prefixes.has(prefix)) {
