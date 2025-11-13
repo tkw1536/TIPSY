@@ -416,6 +416,7 @@ export class Path {
     element: Element,
     name: string,
     parser: (value: string) => T,
+    missingValue = '',
   ): T {
     const children = Array.from(element.childNodes).filter(
       node => node.nodeName === name,
@@ -428,7 +429,7 @@ export class Path {
 
     // if there are no children, pretend it is empty
     if (children.length === 0) {
-      return parser('')
+      return parser(missingValue)
     }
 
     return parser(
@@ -465,6 +466,7 @@ export class Path {
     const p = this.#parseValue.bind(this, node) as <T>(
       f: string,
       p: (v: string) => T,
+      missingValue?: string,
     ) => T
 
     const str = (value: string): string => value
@@ -495,7 +497,7 @@ export class Path {
     return new Path({
       id: p('id', str),
       weight: p('weight', int),
-      enabled: p('enabled', bool),
+      enabled: p('enabled', bool, '1'),
       groupId: p('group_id', str0),
 
       bundle: p('bundle', str),
