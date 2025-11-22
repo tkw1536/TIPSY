@@ -11,15 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Use Node.js 22.17.0
-        uses: actions/setup-node@v4
+      - name: Use latest Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: 22.17.0
+          node-version: latest
 
       - name: Install Dependencies
         run: |
+          corepack enable
           yarn install --frozen-lockfile
       - name: Run Typechecker
         run: |

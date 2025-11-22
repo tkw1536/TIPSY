@@ -28,13 +28,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Use Node.js 22.17.0
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v5
+      - name: Use latest Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: 22.17.0
+          node-version: latest
       - name: Build Distribution
         run: |
+          corepack enable
           yarn install --frozen-lockfile
           yarn build --mode pages
       - name: Setup Pages
