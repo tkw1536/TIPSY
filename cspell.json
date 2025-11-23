@@ -12,8 +12,12 @@
     "dedup",
     "endregion",
     "fakedom",
+    "foaf",
     "graphviz",
     "inversemap",
+    "noextension",
+    "nquads",
+    "ntriples",
     "pathbuilder",
     "pathbuilders",
     "pathtree",
@@ -30,10 +34,7 @@
     "WissKI",
     "Yaaaaaahs",
     "zenodo",
-    "zustand",
-    "nquads",
-    "ntriples",
-    "noextension"
+    "zustand"
   ],
   "ignorePaths": [
     "package.json",
