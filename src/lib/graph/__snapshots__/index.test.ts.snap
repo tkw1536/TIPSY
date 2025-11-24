@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Graph > toJSON > complex graph with object labels 1`] = `
+{
+  "edges": {
+    "4": {
+      "from": 1,
+      "label": {
+        "type": "strong",
+        "weight": 5,
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": {
+        "type": "weak",
+        "weight": 3,
+      },
+      "to": 3,
+    },
+    "6": {
+      "from": 1,
+      "label": {
+        "type": "self",
+        "weight": 1,
+      },
+      "to": 1,
+    },
+  },
+  "nodes": {
+    "1": {
+      "name": "alpha",
+      "value": 1,
+    },
+    "2": {
+      "name": "beta",
+      "value": 2,
+    },
+    "3": {
+      "name": "gamma",
+      "value": 3,
+    },
+  },
+}
+`;
+
+exports[`Graph > toJSON > empty graph 1`] = `
+{
+  "edges": {},
+  "nodes": {},
+}
+`;
+
+exports[`Graph > toJSON > graph with nodes and edges 1`] = `
+{
+  "edges": {
+    "4": {
+      "from": 1,
+      "label": "A->B",
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": "B->C",
+      "to": 3,
+    },
+    "6": {
+      "from": 1,
+      "label": "A->C",
+      "to": 3,
+    },
+  },
+  "nodes": {
+    "1": "A",
+    "2": "B",
+    "3": "C",
+  },
+}
+`;
+
+exports[`Graph > toJSON > graph with nodes only 1`] = `
+{
+  "edges": {},
+  "nodes": {
+    "1": "node1",
+    "2": "node2",
+    "3": "node3",
+  },
+}
+`;

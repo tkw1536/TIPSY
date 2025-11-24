@@ -588,4 +588,68 @@ describe(Graph, () => {
       expect(graph.getEdgeLabel(id1, id2)).toBe(42)
     })
   })
+
+  describe('toJSON', () => {
+    test('empty graph', () => {
+      const graph = new Graph<string, string>(false)
+
+      const json = graph.toJSON()
+
+      expect(json).toMatchSnapshot()
+    })
+
+    test('graph with nodes only', () => {
+      const graph = new Graph<string, string>(false)
+
+      graph.addNode('node1', 'id1')
+      graph.addNode('node2', 'id2')
+      graph.addNode('node3', 'id3')
+
+      const json = graph.toJSON()
+
+      expect(json).toMatchSnapshot()
+    })
+
+    test('graph with nodes and edges', () => {
+      const graph = new Graph<string, string>(false)
+
+      const id1 = graph.addNode('A', 'node-a')
+      const id2 = graph.addNode('B', 'node-b')
+      const id3 = graph.addNode('C', 'node-c')
+
+      graph.addEdge(id1, id2, 'A->B')
+      graph.addEdge(id2, id3, 'B->C')
+      graph.addEdge(id1, id3, 'A->C')
+
+      const json = graph.toJSON()
+
+      expect(json).toMatchSnapshot()
+    })
+
+    test('complex graph with object labels', () => {
+      interface NodeData {
+        name: string
+        value: number
+      }
+
+      interface EdgeData {
+        weight: number
+        type: string
+      }
+
+      const graph = new Graph<NodeData, EdgeData>(false)
+
+      const id1 = graph.addNode({ name: 'alpha', value: 1 }, 'node1')
+      const id2 = graph.addNode({ name: 'beta', value: 2 }, 'node2')
+      const id3 = graph.addNode({ name: 'gamma', value: 3 }, 'node3')
+
+      graph.addEdge(id1, id2, { weight: 5, type: 'strong' })
+      graph.addEdge(id2, id3, { weight: 3, type: 'weak' })
+      graph.addEdge(id1, id1, { weight: 1, type: 'self' })
+
+      const json = graph.toJSON()
+
+      expect(json).toMatchSnapshot()
+    })
+  })
 })

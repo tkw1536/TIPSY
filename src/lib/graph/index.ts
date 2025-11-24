@@ -187,4 +187,34 @@ export default class Graph<NodeLabel, EdgeLabel> {
       this.#edges.delete(fromId)
     }
   }
+
+  /**
+   * Exports this graph as a plain JSON object.
+   */
+  toJSON(): GraphJSON<NodeLabel, EdgeLabel> {
+    const nodes = this.getNodes()
+    const edges = this.getEdges().map(([id, from, to, label]) => [
+      id,
+      { from, to, label },
+    ])
+    return {
+      nodes: Object.fromEntries(nodes),
+      edges: Object.fromEntries(edges),
+    }
+  }
+}
+
+/**
+ * GraphJSON represents a graph as a JSON object
+ */
+interface GraphJSON<NodeLabel, EdgeLabel> {
+  /**
+   * Nodes holds a mapping from node id to node label.
+   */
+  nodes: Record<number, NodeLabel>
+
+  /**
+   * Edges holds a mapping from edge id to edge and its' label.
+   */
+  edges: Record<number, { from: number; to: number; label: EdgeLabel }>
 }
