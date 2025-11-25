@@ -2,6 +2,7 @@
 
 exports[`Graph > toJSON > complex graph with object labels 1`] = `
 {
+  "definitely_acyclic": false,
   "edges": {
     "4": {
       "from": 1,
@@ -47,6 +48,7 @@ exports[`Graph > toJSON > complex graph with object labels 1`] = `
 
 exports[`Graph > toJSON > empty graph 1`] = `
 {
+  "definitely_acyclic": false,
   "edges": {},
   "nodes": {},
 }
@@ -54,6 +56,7 @@ exports[`Graph > toJSON > empty graph 1`] = `
 
 exports[`Graph > toJSON > graph with nodes and edges 1`] = `
 {
+  "definitely_acyclic": false,
   "edges": {
     "4": {
       "from": 1,
@@ -81,6 +84,7 @@ exports[`Graph > toJSON > graph with nodes and edges 1`] = `
 
 exports[`Graph > toJSON > graph with nodes only 1`] = `
 {
+  "definitely_acyclic": false,
   "edges": {},
   "nodes": {
     "1": "node1",

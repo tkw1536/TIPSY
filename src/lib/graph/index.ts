@@ -198,6 +198,7 @@ export default class Graph<NodeLabel, EdgeLabel> {
       { from, to, label },
     ])
     return {
+      definitely_acyclic: this.definitelyAcyclic,
       nodes: Object.fromEntries(nodes),
       edges: Object.fromEntries(edges),
     }
@@ -208,6 +209,9 @@ export default class Graph<NodeLabel, EdgeLabel> {
  * GraphJSON represents a graph as a JSON object
  */
 interface GraphJSON<NodeLabel, EdgeLabel> {
+  /** If true, the graph is definitely acyclic */
+  definitely_acyclic: boolean
+
   /**
    * Nodes holds a mapping from node id to node label.
    */

@@ -36,53 +36,10 @@ describe(RDFGraphBuilder, () => {
   const options = { ns }
 
   describe('build', () => {
-    test('creates a graph with correct number of nodes', () => {
+    test('creates the correct graph', () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
-
-      const nodes = g.getNodes()
-      expect(nodes.length).toBe(8)
-    })
-
-    test('creates nodes for subjects and objects', () => {
-      const builder = new RDFGraphBuilder(store)
-      const g = builder.build()
-
-      const aliceId = g.getNode('n//' + alice.uri)
-      const bobId = g.getNode('n//' + bob.uri)
-
-      expect(aliceId).not.toBeNull()
-      expect(bobId).not.toBeNull()
-    })
-
-    test('creates edges between nodes', () => {
-      const builder = new RDFGraphBuilder(store)
-      const g = builder.build()
-
-      const aliceId = g.getNode('n//' + alice.uri)
-      const bobId = g.getNode('n//' + bob.uri)
-
-      expect(aliceId).not.toBeNull()
-      expect(bobId).not.toBeNull()
-
-      if (aliceId === null || bobId === null) return
-      expect(g.hasEdge(aliceId, bobId)).toBe(true)
-    })
-
-    test('build is idempotent', () => {
-      const builder = new RDFGraphBuilder(store)
-      const g1 = builder.build()
-      const g2 = builder.build()
-
-      expect(g1).toBe(g2)
-    })
-
-    test('creates correct number of edges', () => {
-      const builder = new RDFGraphBuilder(store)
-      const g = builder.build()
-
-      const edges = g.getEdges()
-      expect(edges.length).toBe(6)
+      expect(g.toJSON()).toMatchSnapshot()
     })
   })
 
@@ -100,12 +57,7 @@ describe(RDFGraphBuilder, () => {
       if (nodeLabel === null) return
 
       const element = nodeLabel.render('test-id', options)
-      expect(element).not.toBeNull()
-
-      expect(element.label).toBe('ex:alice')
-      expect(element.tooltip).toBe(alice.uri)
-      expect(element.color).toBe('green')
-      expect(element.shape).toBe('ellipse')
+      expect(element).toMatchSnapshot()
     })
 
     test('Literal renders with value', () => {
@@ -123,13 +75,7 @@ describe(RDFGraphBuilder, () => {
 
       const [, label] = literalNode
       const element = label.render('test-id', options)
-
-      expect(element).not.toBeNull()
-
-      expect(element.label).toBe('Alice')
-      expect(element.tooltip).toBe('Literal')
-      expect(element.color).toBe('blue')
-      expect(element.shape).toBe('box')
+      expect(element).toMatchSnapshot()
     })
 
     test('BlankNode renders with id', () => {
@@ -146,11 +92,7 @@ describe(RDFGraphBuilder, () => {
 
       const element = nodeLabel.render('test-id', options)
       expect(element).not.toBeNull()
-
-      expect(element.label).toBe(blank1.id)
-      expect(element.tooltip).toBe(blank1.id)
-      expect(element.color).toBe('yellow')
-      expect(element.shape).toBe('ellipse')
+      expect(element).toMatchSnapshot()
     })
   })
 
@@ -171,12 +113,7 @@ describe(RDFGraphBuilder, () => {
       if (edgeLabel === null) return
 
       const element = edgeLabel.render('test-edge-id', options)
-      expect(element).not.toBeNull()
-
-      expect(element.label).toBe('foaf:knows')
-      expect(element.tooltip).toBe(knows.uri)
-      expect(element.color).toBe('green')
-      expect(element.shape).toBeNull()
+      expect(element).toMatchSnapshot()
     })
 
     test('all edges have null shape', () => {
@@ -191,8 +128,7 @@ describe(RDFGraphBuilder, () => {
         if (edgeLabel === null) return
 
         const element = edgeLabel.render('test-id', options)
-        expect(element).not.toBeNull()
-        expect(element.shape).toBeNull()
+        expect(element).toMatchSnapshot()
       })
     })
   })

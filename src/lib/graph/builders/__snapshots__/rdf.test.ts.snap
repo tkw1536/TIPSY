@@ -1,0 +1,277 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RDFGraphBuilder > build > creates the correct graph 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 4,
+      "label": {
+        "edge": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://xmlns.com/foaf/0.1/knows",
+        },
+        "render": [Function],
+      },
+      "to": 10,
+    },
+    "14": {
+      "from": 12,
+      "label": {
+        "edge": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://xmlns.com/foaf/0.1/name",
+        },
+        "render": [Function],
+      },
+      "to": 13,
+    },
+    "3": {
+      "from": 1,
+      "label": {
+        "edge": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://xmlns.com/foaf/0.1/name",
+        },
+        "render": [Function],
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 1,
+      "label": {
+        "edge": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://xmlns.com/foaf/0.1/knows",
+        },
+        "render": [Function],
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": {
+        "edge": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://xmlns.com/foaf/0.1/name",
+        },
+        "render": [Function],
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 1,
+      "label": {
+        "edge": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://xmlns.com/foaf/0.1/age",
+        },
+        "render": [Function],
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": {
+      "node": NamedNode {
+        "classOrder": 5,
+        "termType": "NamedNode",
+        "value": "http://example.org/alice",
+      },
+      "render": [Function],
+    },
+    "10": {
+      "node": NamedNode {
+        "classOrder": 5,
+        "termType": "NamedNode",
+        "value": "http://example.org/charlie",
+      },
+      "render": [Function],
+    },
+    "12": {
+      "node": BlankNode {
+        "classOrder": 6,
+        "isBlank": 1,
+        "isVar": 1,
+        "termType": "BlankNode",
+        "value": "b1",
+      },
+      "render": [Function],
+    },
+    "13": {
+      "node": Literal {
+        "classOrder": 1,
+        "datatype": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "isVar": 0,
+        "language": "",
+        "termType": "Literal",
+        "value": "Anonymous",
+      },
+      "render": [Function],
+    },
+    "2": {
+      "node": Literal {
+        "classOrder": 1,
+        "datatype": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "isVar": 0,
+        "language": "",
+        "termType": "Literal",
+        "value": "Alice",
+      },
+      "render": [Function],
+    },
+    "4": {
+      "node": NamedNode {
+        "classOrder": 5,
+        "termType": "NamedNode",
+        "value": "http://example.org/bob",
+      },
+      "render": [Function],
+    },
+    "6": {
+      "node": Literal {
+        "classOrder": 1,
+        "datatype": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "isVar": 0,
+        "language": "",
+        "termType": "Literal",
+        "value": "Bob",
+      },
+      "render": [Function],
+    },
+    "8": {
+      "node": Literal {
+        "classOrder": 1,
+        "datatype": NamedNode {
+          "classOrder": 5,
+          "termType": "NamedNode",
+          "value": "http://www.w3.org/2001/XMLSchema#string",
+        },
+        "isVar": 0,
+        "language": "",
+        "termType": "Literal",
+        "value": "30",
+      },
+      "render": [Function],
+    },
+  },
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > all edges have null shape 1`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "foaf:name",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/name",
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > all edges have null shape 2`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "foaf:knows",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/knows",
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > all edges have null shape 3`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "foaf:age",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/age",
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > all edges have null shape 4`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "foaf:name",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/name",
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > all edges have null shape 5`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "foaf:knows",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/knows",
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > all edges have null shape 6`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "foaf:name",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/name",
+}
+`;
+
+exports[`RDFGraphBuilder > edge rendering > edge renders with namespace prefix and no shape 1`] = `
+{
+  "color": "green",
+  "id": "test-edge-id",
+  "label": "foaf:knows",
+  "shape": null,
+  "tooltip": "http://xmlns.com/foaf/0.1/knows",
+}
+`;
+
+exports[`RDFGraphBuilder > node rendering > BlankNode renders with id 1`] = `
+{
+  "color": "yellow",
+  "id": "test-id",
+  "label": "b1",
+  "shape": "ellipse",
+  "tooltip": "b1",
+}
+`;
+
+exports[`RDFGraphBuilder > node rendering > Literal renders with value 1`] = `
+{
+  "color": "blue",
+  "id": "test-id",
+  "label": "Alice",
+  "shape": "box",
+  "tooltip": "Literal",
+}
+`;
+
+exports[`RDFGraphBuilder > node rendering > NamedNode renders with namespace prefix 1`] = `
+{
+  "color": "green",
+  "id": "test-id",
+  "label": "ex:alice",
+  "shape": "ellipse",
+  "tooltip": "http://example.org/alice",
+}
+`;
