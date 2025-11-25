@@ -288,7 +288,7 @@ export type ModelEdge =
 export class PropertyModelEdge {
   constructor(
     /** the actual property */
-    public property: string,
+    public readonly property: string,
   ) {}
 
   render(id: string, options: ModelOptions): Element | null {
@@ -316,7 +316,7 @@ export class InversePropertyModelEdge extends PropertyModelEdge {
 export class DataModelEdge {
   constructor(
     /** the actual property */
-    public property: string,
+    public readonly property: string,
   ) {}
 
   render(id: string, options: ModelOptions): Element | null {

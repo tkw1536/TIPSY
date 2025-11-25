@@ -1,0 +1,3251 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ModelGraphBuilder > builds graph with all nodes selected bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "13": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 12,
+    },
+    "15": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 14,
+    },
+    "18": {
+      "from": 14,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 16,
+    },
+    "19": {
+      "from": 16,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 17,
+    },
+    "21": {
+      "from": 17,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 20,
+    },
+    "23": {
+      "from": 12,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 22,
+    },
+    "25": {
+      "from": 22,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 24,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "14": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "16": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "20": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "22": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "24": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with all nodes selected full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "13": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 12,
+    },
+    "15": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 14,
+    },
+    "18": {
+      "from": 14,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 16,
+    },
+    "19": {
+      "from": 16,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 17,
+    },
+    "21": {
+      "from": 17,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 20,
+    },
+    "22": {
+      "from": 12,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 2,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "14": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "16": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "20": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with all nodes selected none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "13": {
+      "from": 10,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 11,
+    },
+    "14": {
+      "from": 11,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 12,
+    },
+    "16": {
+      "from": 12,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 15,
+    },
+    "20": {
+      "from": 17,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 18,
+    },
+    "21": {
+      "from": 18,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 19,
+    },
+    "24": {
+      "from": 22,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 23,
+    },
+    "29": {
+      "from": 25,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 26,
+    },
+    "30": {
+      "from": 26,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 27,
+    },
+    "31": {
+      "from": 27,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 28,
+    },
+    "33": {
+      "from": 28,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 32,
+    },
+    "38": {
+      "from": 35,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 36,
+    },
+    "39": {
+      "from": 36,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 37,
+    },
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 3,
+    },
+    "41": {
+      "from": 37,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 40,
+    },
+    "45": {
+      "from": 43,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 44,
+    },
+    "47": {
+      "from": 44,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 46,
+    },
+    "6": {
+      "from": 3,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 7,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "11": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+    "15": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "18": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "19": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "22": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "23": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "25": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "26": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "27": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "28": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "32": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "34": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "35": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "36": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "37": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "40": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "42": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "43": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "44": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "46": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "5": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with bundle and its fields bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with bundle and its fields full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with bundle and its fields none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 3,
+    },
+    "6": {
+      "from": 3,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 5,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "5": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with deeply nested field bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 5,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "8": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with deeply nested field full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 5,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "8": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with deeply nested field none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "10": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 7,
+    },
+    "11": {
+      "from": 7,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 8,
+    },
+    "13": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 12,
+    },
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 3,
+    },
+    "9": {
+      "from": 5,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 6,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "12": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with entity reference field (author) bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with entity reference field (author) full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with entity reference field (author) none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 3,
+    },
+    "8": {
+      "from": 5,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 7,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with field without parent bundle bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with field without parent bundle full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with field without parent bundle none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with inverse relationships bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "13": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 12,
+    },
+    "15": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 14,
+    },
+    "18": {
+      "from": 14,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 16,
+    },
+    "19": {
+      "from": 16,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 17,
+    },
+    "21": {
+      "from": 17,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 20,
+    },
+    "23": {
+      "from": 12,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 22,
+    },
+    "25": {
+      "from": 22,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 24,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "14": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "16": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "20": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "22": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "24": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with inverse relationships full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "13": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 12,
+    },
+    "15": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 14,
+    },
+    "18": {
+      "from": 14,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 16,
+    },
+    "19": {
+      "from": 16,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 17,
+    },
+    "21": {
+      "from": 17,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 20,
+    },
+    "22": {
+      "from": 12,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 2,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "14": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "16": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "20": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with inverse relationships none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "13": {
+      "from": 10,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 11,
+    },
+    "14": {
+      "from": 11,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 12,
+    },
+    "16": {
+      "from": 12,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 15,
+    },
+    "20": {
+      "from": 17,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 18,
+    },
+    "21": {
+      "from": 18,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 19,
+    },
+    "24": {
+      "from": 22,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 23,
+    },
+    "29": {
+      "from": 25,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 26,
+    },
+    "30": {
+      "from": 26,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 27,
+    },
+    "31": {
+      "from": 27,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 28,
+    },
+    "33": {
+      "from": 28,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 32,
+    },
+    "38": {
+      "from": 35,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 36,
+    },
+    "39": {
+      "from": 36,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 37,
+    },
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 3,
+    },
+    "41": {
+      "from": 37,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 40,
+    },
+    "45": {
+      "from": 43,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 44,
+    },
+    "47": {
+      "from": 44,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 46,
+    },
+    "6": {
+      "from": 3,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 7,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "11": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+    "15": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "18": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "19": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "22": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "23": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "25": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "26": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "27": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "28": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "32": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "34": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "35": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "36": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "37": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "40": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "42": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "43": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "44": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "46": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "5": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with multiple inverses bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with multiple inverses full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with multiple inverses none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 3,
+    },
+    "8": {
+      "from": 5,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 7,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with multiple top-level bundles bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {},
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with multiple top-level bundles full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {},
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with multiple top-level bundles none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {},
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with nested bundle structure bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 6,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+    "6": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with nested bundle structure full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 6,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+    "6": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with nested bundle structure none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "11": {
+      "from": 7,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 3,
+    },
+    "8": {
+      "from": 5,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 7,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with single top-level bundle bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {},
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with single top-level bundle full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {},
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > builds graph with single top-level bundle none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {},
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles all top-level bundles with their fields bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "10": {
+      "from": 7,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 8,
+    },
+    "12": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 11,
+    },
+    "15": {
+      "from": 13,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 14,
+    },
+    "17": {
+      "from": 14,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 16,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 7,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "11": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "13": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "14": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "16": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles all top-level bundles with their fields full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "10": {
+      "from": 7,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 8,
+    },
+    "12": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 11,
+    },
+    "14": {
+      "from": 13,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 2,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 7,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "11": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "13": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles all top-level bundles with their fields none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 9,
+    },
+    "12": {
+      "from": 9,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 10,
+    },
+    "14": {
+      "from": 10,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 13,
+    },
+    "18": {
+      "from": 16,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P1_is_identified_by",
+      },
+      "to": 17,
+    },
+    "20": {
+      "from": 17,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 19,
+    },
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 3,
+    },
+    "6": {
+      "from": 3,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 5,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "13": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "15": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "16": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "19": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "5": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "9": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles disambiguation fields (same datatype property) bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 5,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "8": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles disambiguation fields (same datatype property) full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 4,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 5,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "8": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles disambiguation fields (same datatype property) none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "10": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 7,
+    },
+    "12": {
+      "from": 7,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 11,
+    },
+    "17": {
+      "from": 14,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 15,
+    },
+    "18": {
+      "from": 15,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 16,
+    },
+    "20": {
+      "from": 16,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 19,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "8": {
+      "from": 4,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 5,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 6,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "11": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "13": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "14": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "15": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "16": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "19": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles gaps in hierarchy bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "5": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 3,
+    },
+    "7": {
+      "from": 3,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 4,
+    },
+    "9": {
+      "from": 4,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "8": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles gaps in hierarchy full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "5": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 2,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 3,
+    },
+    "7": {
+      "from": 3,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 4,
+    },
+    "9": {
+      "from": 4,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "8": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles gaps in hierarchy none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "10": {
+      "from": 5,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 9,
+    },
+    "6": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P165_incorporates",
+      },
+      "to": 3,
+    },
+    "7": {
+      "from": 3,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P138i_has_representation",
+      },
+      "to": 4,
+    },
+    "8": {
+      "from": 4,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P48_has_preferred_identifier",
+      },
+      "to": 5,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E90_Symbolic_Object",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E36_Visual_Item",
+      "fields": ImmutableSet {},
+    },
+    "5": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E42_Identifier",
+      "fields": ImmutableSet {},
+    },
+    "9": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles inverses with partial selection bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "4": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 3,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles inverses with partial selection full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "4": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 3,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles inverses with partial selection none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "5": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 3,
+    },
+    "6": {
+      "from": 3,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 4,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "4": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles mixed bundles and fields across hierarchy bundle 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "13": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 12,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles mixed bundles and fields across hierarchy full 1`] = `
+{
+  "definitely_acyclic": false,
+  "edges": {
+    "11": {
+      "from": 8,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 10,
+    },
+    "13": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 12,
+    },
+    "3": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 2,
+    },
+    "5": {
+      "from": 2,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 4,
+    },
+    "7": {
+      "from": 1,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 6,
+    },
+    "9": {
+      "from": 6,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "4": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "6": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
+
+exports[`ModelGraphBuilder > handles mixed bundles and fields across hierarchy none 1`] = `
+{
+  "definitely_acyclic": true,
+  "edges": {
+    "13": {
+      "from": 10,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 11,
+    },
+    "14": {
+      "from": 11,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P4_has_time-span",
+      },
+      "to": 12,
+    },
+    "16": {
+      "from": 12,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P82_at_some_time_within",
+      },
+      "to": 15,
+    },
+    "20": {
+      "from": 17,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 18,
+    },
+    "21": {
+      "from": 18,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P14_carried_out_by",
+      },
+      "to": 19,
+    },
+    "4": {
+      "from": 2,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P102_has_title",
+      },
+      "to": 3,
+    },
+    "6": {
+      "from": 3,
+      "label": DataModelEdge {
+        "property": "http://erlangen-crm.org/240307/P3_has_note",
+      },
+      "to": 5,
+    },
+    "9": {
+      "from": 7,
+      "label": PropertyModelEdge {
+        "property": "http://erlangen-crm.org/240307/P94i_was_created_by",
+      },
+      "to": 8,
+    },
+  },
+  "nodes": {
+    "1": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "10": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "11": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "12": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E52_Time-Span",
+      "fields": ImmutableSet {},
+    },
+    "15": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "17": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "18": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+    "19": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E21_Person",
+      "fields": ImmutableSet {},
+    },
+    "2": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "3": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E35_Title",
+      "fields": ImmutableSet {},
+    },
+    "5": LiteralModelNode {
+      "fields": ImmutableSet {},
+    },
+    "7": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E31_Document",
+      "fields": ImmutableSet {},
+    },
+    "8": ConceptModelNode {
+      "bundles": ImmutableSet {},
+      "clz": "http://erlangen-crm.org/240307/E65_Creation",
+      "fields": ImmutableSet {},
+    },
+  },
+}
+`;
