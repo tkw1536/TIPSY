@@ -12,7 +12,7 @@ const samplePB = new Pathbuilder(
   sampleJSON.map(p => new Path(p)),
   sampleJSON.map(_ => null),
 )
-const sampleTree = PathTree.fromPathbuilder(samplePB)
+const [sampleTree] = PathTree.fromPathbuilder(samplePB)
 
 function mustGetNode(id: string): PathTreeNode {
   const node = sampleTree.find(id)
@@ -346,7 +346,7 @@ describe(ColorMap, () => {
     test('generates empty colormap for tree with no valid ids', () => {
       // Create a tree with nodes that don't have paths
       const pb = new Pathbuilder([], [])
-      const tree = PathTree.fromPathbuilder(pb)
+      const [tree] = PathTree.fromPathbuilder(pb)
 
       const cm = ColorMap.generate(tree, {
         bundle: '#ff0000',

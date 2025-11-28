@@ -83,8 +83,9 @@ const sampleTree = new PathTree([
 
 describe(PathTree, async () => {
   test('parses the sample pathbuilder correctly', async () => {
-    const tree = PathTree.fromPathbuilder(samplePB)
+    const [tree, diagnostics] = PathTree.fromPathbuilder(samplePB)
     expect(tree.equals(sampleTree)).toBe(true)
+    expect(diagnostics.length).toBe(0)
   })
 
   test('walk iterates over all children in order', () => {

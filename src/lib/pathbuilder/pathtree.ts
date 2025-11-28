@@ -1,3 +1,4 @@
+import { type Diagnostic, PathbuilderDiagnostics } from './diagnostics'
 import type { Pathbuilder, Path } from './pathbuilder'
 
 interface MutableProtoBundle {
@@ -20,21 +21,6 @@ interface ProtoField {
   readonly index: number
   readonly id: string
   readonly path: Path
-}
-
-export type Diagnostic = OrphanedField | OrphanedBundle | DuplicateBundle
-
-interface OrphanedField {
-  type: 'orphaned_field'
-  path: Path
-}
-interface OrphanedBundle {
-  type: 'missing_bundle'
-  id: string
-}
-interface DuplicateBundle {
-  type: 'duplicate_bundle'
-  path: Path
 }
 
 /** an element within the pathArray of this node */
@@ -120,7 +106,9 @@ export abstract class PathTreeNode {
   abstract get path(): Path | null
 
   /** iterates over the elements in the pathArray belonging to the path of this node (if any) */
-  *elements(): IterableIterator<PathElement> {
+  *elements(
+    diagnostics?: PathbuilderDiagnostics,
+  ): IterableIterator<PathElement> {
     // get the path
     const { path } = this
     const elements = path?.pathArray.slice(0)
@@ -128,12 +116,12 @@ export abstract class PathTreeNode {
 
     // ensure that we have a valid path
     if (elements.length % 2 === 0) {
-      console.warn('path of even length: ignoring dangling property')
+      diagnostics?.onPathOfEvenLength(this, elements.slice(0))
       elements.pop()
     }
 
     // figure out what the index within the path is
-    const ownPathIndex = this.#ownPathIndex(elements)
+    const ownPathIndex = this.#ownPathIndex(elements, diagnostics)
     const { disambiguationIndex } = path
 
     // add the datatype property (if any)
@@ -185,9 +173,12 @@ export abstract class PathTreeNode {
    * The parent must have an odd-length pathArray (i.e. be a group) which is a prefix of this node's pathArray.
    * If either condition is not met, returns null.
    */
-  #ownPathIndex(nodePath: string[] | undefined): number | null {
+  #ownPathIndex(
+    nodePath: string[] | undefined,
+    diagnostics?: PathbuilderDiagnostics,
+  ): number | null {
     if (!Array.isArray(nodePath)) {
-      console.warn('#ownPathIndex: nodePath is not an array')
+      diagnostics?.onNodePathIsNotAnArray(this, nodePath)
       return null
     }
 
@@ -195,12 +186,12 @@ export abstract class PathTreeNode {
     const parentPath = this.parent?.path?.pathArray
     if (!Array.isArray(parentPath)) {
       if (typeof parentPath !== 'undefined') {
-        console.warn('#ownPathIndex: parentPath is not an array')
+        diagnostics?.onParentPathIsNotAnArray(this, parentPath)
       }
       return null
     }
     if (parentPath.length % 2 === 0) {
-      console.warn('#ownPathIndex: parentPath is of odd length')
+      diagnostics?.onParentPathIsOfOddLength(this, parentPath)
       return null
     }
 
@@ -209,10 +200,10 @@ export abstract class PathTreeNode {
       parentPath.length > nodePath.length ||
       parentPath.some((parentURI, index) => nodePath[index] !== parentURI)
     ) {
-      console.warn(
-        '#ownPathIndex: parentPath is not equal with this path',
-        nodePath,
+      diagnostics?.onParentPathIsNotAPrefixOfNodePath(
+        this,
         parentPath,
+        nodePath,
       )
       return null
     }
@@ -361,14 +352,24 @@ export class PathTree extends PathTreeNode {
     return this.#bundles.length
   }
 
-  static fromPathbuilder(
+  static fromPathbuilder(pb: Pathbuilder): [PathTree, Diagnostic[]] {
+    // log all the diagnostics
+    const diagnostics = new PathbuilderDiagnostics()
+
+    // Iterate over all tree nodes and collect all the diagnostics.
+    const tree = this.#fromPathbuilder(pb, diagnostics)
+    for (const node of tree.walk()) {
+      Array.from(node.elements(diagnostics))
+    }
+
+    return [tree, diagnostics.diagnostics]
+  }
+  static #fromPathbuilder(
     pb: Pathbuilder,
-    emit?: (Diagnostic: Diagnostic) => void,
+    diagnostics?: PathbuilderDiagnostics,
   ): PathTree {
     const bundles = new Map<string, MutableProtoBundle>()
     const mainBundles: MutableProtoBundle[] = []
-
-    const emitDiagnostic = typeof emit === 'function' ? emit : () => {}
 
     const getOrCreateBundle = (id: string): MutableProtoBundle => {
       const get = bundles.get(id)
@@ -388,7 +389,11 @@ export class PathTree extends PathTreeNode {
     }
 
     pb.paths.forEach((path, index) => {
-      if (!path.enabled) return
+      // path is disabled
+      if (!path.enabled) {
+        diagnostics?.onDisabledPath(path)
+        return
+      }
 
       const parent =
         path.groupId !== '' ? getOrCreateBundle(path.groupId) : null
@@ -398,7 +403,7 @@ export class PathTree extends PathTreeNode {
         const field: ProtoField = { type: 'field', id: path.field, index, path }
 
         if (parent === null) {
-          emitDiagnostic({ type: 'orphaned_field', path })
+          diagnostics?.onOrphanedField(path.field, path)
           return
         }
         parent.children.push(field)
@@ -407,7 +412,7 @@ export class PathTree extends PathTreeNode {
 
       const group = getOrCreateBundle(path.id)
       if (group.data !== null) {
-        emitDiagnostic({ type: 'duplicate_bundle', path })
+        diagnostics?.onDuplicateBundle(path.id, path)
         return
       }
       group.data = { index, path }
@@ -423,7 +428,7 @@ export class PathTree extends PathTreeNode {
     // check for data about missing bundles
     for (const [id, bundle] of bundles.entries()) {
       if (bundle.data === null) {
-        emitDiagnostic({ type: 'missing_bundle', id })
+        diagnostics?.onOrphanedBundle(id)
       }
     }
 

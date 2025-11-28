@@ -3,6 +3,7 @@ import { resetters, type BoundState, loaders } from '.'
 import type { StateCreator } from 'zustand'
 import { Pathbuilder } from '../../../lib/pathbuilder/pathbuilder'
 import { PathTree } from '../../../lib/pathbuilder/pathtree'
+import type { Diagnostic } from '../../../lib/pathbuilder/diagnostics'
 
 export type Slice = State & Actions
 
@@ -13,6 +14,7 @@ interface State {
 
   pathbuilder: Pathbuilder
   pathtree: PathTree
+  diagnostics: Diagnostic[]
 }
 
 interface Actions {
@@ -26,6 +28,7 @@ const initialState: State = {
   embed: false,
   pathbuilder: new Pathbuilder([]),
   pathtree: new PathTree([]),
+  diagnostics: [],
 }
 const resetState: State = { ...initialState }
 
@@ -49,6 +52,7 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
 
         let pathbuilder: Pathbuilder
         let tree: PathTree
+        let diagnostics: Diagnostic[]
 
         let file: File
         try {
@@ -56,7 +60,10 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
           const fileText = await file.text()
 
           pathbuilder = Pathbuilder.parse(fileText)
-          tree = PathTree.fromPathbuilder(pathbuilder)
+
+          const treeAndDiagnostics = PathTree.fromPathbuilder(pathbuilder)
+          tree = treeAndDiagnostics[0]
+          diagnostics = treeAndDiagnostics[1]
 
           // load the entire initial state
           states = await Promise.all(
@@ -77,6 +84,7 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
           filename: file.name !== '' ? file.name : 'pathbuilder.xml',
           pathbuilder,
           pathtree: tree,
+          diagnostics,
         })
         set(state)
       })()

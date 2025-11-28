@@ -16,7 +16,7 @@ const sampleJSON = await readFixtureJSON<PathParams[]>(
   'sample.json',
 )
 const samplePB = new Pathbuilder(sampleJSON.map(p => new Path(p)))
-const sampleTree = PathTree.fromPathbuilder(samplePB)
+const [sampleTree] = PathTree.fromPathbuilder(samplePB)
 
 const emptyInverses = new InverseMap([])
 

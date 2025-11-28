@@ -25,7 +25,7 @@ async function main(): Promise<void> {
   const pb = Pathbuilder.parse(pbXML.toString())
 
   // create a tree
-  const tree = PathTree.fromPathbuilder(pb)
+  const [tree] = PathTree.fromPathbuilder(pb)
 
   // generate a colormap
   const ns = NamespaceMap.generate(

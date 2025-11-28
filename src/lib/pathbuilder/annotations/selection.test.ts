@@ -12,7 +12,7 @@ const samplePB = new Pathbuilder(
   sampleJSON.map(p => new Path(p)),
   sampleJSON.map(_ => null),
 )
-const sampleTree = PathTree.fromPathbuilder(samplePB)
+const [sampleTree] = PathTree.fromPathbuilder(samplePB)
 
 function mustGetNode(id: string): PathTreeNode {
   const node = sampleTree.find(id)

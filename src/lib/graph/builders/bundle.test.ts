@@ -19,7 +19,7 @@ const samplePB = new Pathbuilder(
   sampleJSON.map(p => new Path(p)),
   sampleJSON.map(_ => null),
 )
-const sampleTree = PathTree.fromPathbuilder(samplePB)
+const [sampleTree] = PathTree.fromPathbuilder(samplePB)
 
 function mustGetNode(id: string): PathTreeNode {
   const node = sampleTree.find(id)
@@ -96,7 +96,7 @@ describe(BundleGraphBuilder, () => {
   describe('graph build edge cases', () => {
     test('handles empty tree', () => {
       const emptyPB = new Pathbuilder([], [])
-      const emptyTree = PathTree.fromPathbuilder(emptyPB)
+      const [emptyTree] = PathTree.fromPathbuilder(emptyPB)
       const selection = NodeSelection.all()
 
       const builder = new BundleGraphBuilder(emptyTree, selection)

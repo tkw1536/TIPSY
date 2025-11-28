@@ -54,15 +54,17 @@ export abstract class DeduplicatingBuilder {
   protected readonly tracker = new ArrayTracker<number | string>()
   readonly #options: DedupOptions
   constructor(
-    protected tree: PathTree,
+    protected readonly tree: PathTree,
     options: DedupOptions,
-    protected graph: Graph<ModelNode, ModelEdge>,
+    protected readonly graph: Graph<ModelNode, ModelEdge>,
   ) {
     this.#options = options
   }
 
+  /** prepare is called before the graph is built */
   protected prepare(): void {}
 
+  /** Build builds the graph, updating the graph property */
   public build(): void {
     this.prepare()
 
