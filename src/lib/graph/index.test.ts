@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 import Graph from './index'
 
 describe(Graph, () => {
@@ -185,16 +185,22 @@ describe(Graph, () => {
     })
 
     test('addEdge returns false for non-existent from node', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
       const graph = new Graph<string, string>(false)
 
       const id2 = graph.addNode('node2')
 
       const result = graph.addEdge(999999, id2, 'edge-label')
-
       expect(result).toBe(false)
+      expect(warnSpy).toHaveBeenCalledWith('unknown from', 999999)
+
+      warnSpy.mockRestore()
     })
 
     test('addEdge returns false for non-existent to node', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
       const graph = new Graph<string, string>(false)
 
       const id1 = graph.addNode('node1')
@@ -202,6 +208,9 @@ describe(Graph, () => {
       const result = graph.addEdge(id1, 999999, 'edge-label')
 
       expect(result).toBe(false)
+      expect(warnSpy).toHaveBeenCalledWith('unknown to', 999999)
+
+      warnSpy.mockRestore()
     })
 
     test('hasEdge returns false for non-existent edges', () => {
