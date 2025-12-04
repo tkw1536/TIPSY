@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 import { Path, Pathbuilder, type PathParams } from './pathbuilder'
 import { readFixture, readFixtureJSON } from '../utils/test/fixture'
 import { DOMImplementation, MIME_TYPE, DOMParser } from '@xmldom/xmldom'
@@ -34,10 +34,17 @@ describe(Pathbuilder, async () => {
   })
 
   test('parses xml with an empty <path /> node transparently', async () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
     const xml = await readFixture('pathbuilder', 'empty_path.xml')
 
     // parse it into a pathbuilder
     const pb = Pathbuilder.parse(xml)
+    expect(warnSpy).toHaveBeenCalledWith(
+      'unable to parse <path> node, treating as transparent node',
+      expect.any(Error),
+      expect.any(String),
+    )
     expect(pb.paths.length).toEqual(1)
 
     // find the paths elements in the round tripped document
@@ -57,6 +64,8 @@ describe(Pathbuilder, async () => {
     // passed through from the input
     expect(paths?.item(3)?.nodeName).toBe('path')
     expect(paths?.item(3)?.childNodes.length).toBe(0)
+
+    warnSpy.mockRestore()
   })
 })
 
