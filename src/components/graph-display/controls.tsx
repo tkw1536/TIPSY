@@ -12,7 +12,6 @@ import { Label } from '../form/generic'
 import { Numeric } from '../form/value'
 import * as styles from './controls.module.css'
 import { classes } from '../../lib/utils/classes'
-import { IsAllowedBrowser } from '../legal'
 
 /** Control that provides only UI components */
 export function Control(props: {
@@ -269,13 +268,6 @@ export function ExportControl<
       const { instance } = controller
       if (!instance.driver.formats.has(format)) {
         console.warn('handleExport clicked on invalid element')
-        return
-      }
-
-      if (!IsAllowedBrowser) {
-        alert(
-          'Export is not available on Chrome and Chromium-based browsers. Try Firefox or Safari. ',
-        )
         return
       }
 

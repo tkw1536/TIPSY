@@ -7,10 +7,6 @@ For more information about the motivation behind TIPSY, you can read:
 - the Extended Abstract about TIPSY with doi [10.5281/zenodo.16735970](https://doi.org/10.5281/zenodo.16735970).
 
 This source code is made available for evaluation purposes only.
-
-It is tested on [Firefox](https://www.mozilla.org/en-US/firefox/new/) and [Safari](https://www.apple.com/safari/) only.
-It is explicitly <b>not</b> tested on Chrome and Chromium-based browsers, and some functionality may not be available.
-
 See [banner.md](docs/banner.md) for more information about licensing terms.
 
 ## User-facing Documentation

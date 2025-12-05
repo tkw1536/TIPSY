@@ -81,9 +81,6 @@ export function LegalModal(props: {
 }): JSX.Element | null {
   const { open, onClose } = props
   const handleClose = useCallback((): boolean => {
-    if (!isAllowedBrowser()) {
-      return false
-    }
     onClose()
     return true
   }, [onClose])
@@ -137,26 +134,4 @@ function Embedded(props: { children: VNode[] }): VNode {
   }
 
   return <Fragment>{props.children}</Fragment>
-}
-
-const skipBrowserCheckEnv = import.meta.env.VITE_SKIP_ALLOWED_BROWSER_CHECK
-const skipBrowserCheck =
-  typeof skipBrowserCheckEnv === 'string' && skipBrowserCheckEnv !== ''
-export const IsAllowedBrowser = skipBrowserCheck
-  ? true
-  : !('chrome' in globalThis)
-
-/**
- * Checks if the browser is allowed to use this software.
- * If so, returns true.
- * If not, returns false and {@link window.alert}s the user.
- */
-function isAllowedBrowser(): boolean {
-  if (!IsAllowedBrowser) {
-    return confirm(
-      'You are using Chrome or a Chromium-based browser. Please be aware that export functionality is not be available. ',
-    )
-  }
-
-  return true
 }
