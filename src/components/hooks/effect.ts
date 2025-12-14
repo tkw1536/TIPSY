@@ -13,7 +13,7 @@ export function useCurrent<V>(value: V): MutableRef<V> {
 }
 
 /**
- * useEffectWithSnapshot is like useEffect except that before
+ * useEffectWithSnapshot is like {@link useEffect} except that before
  * synchronizing a new effect, an optional snapshot is taken and passed to the next invocation
  */
 export default function useEffectWithSnapshot<S, I extends S | null = S | null>(
