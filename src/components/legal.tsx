@@ -76,6 +76,10 @@ function Copyable(props: { children: VNode[] }): VNode {
   )
 }
 
+const tipsyIsAvailable =
+  import.meta.env.VITE_TIPSY_AVAILABLE ===
+  'I_HAVE_RECEIVED_WRITTEN_PERMISSION_FROM_THE_COPYRIGHT_OWNER_TO_RUN_THIS_PROGRAM'
+
 const bannerHTML = markdownDocument('banner.md')
 
 export function LegalModal(props: {
@@ -84,6 +88,11 @@ export function LegalModal(props: {
 }): JSX.Element | null {
   const { open, onClose } = props
   const handleClose = useCallback((): boolean => {
+    if (!tipsyIsAvailable) {
+      alert('TIPSY IS NO LONGER AVAILABLE.')
+      return false
+    }
+
     onClose()
     return true
   }, [onClose])
@@ -110,9 +119,21 @@ export function LegalModal(props: {
         <h1>
           TIPSY - Tom's Inspector for Pathbuilders <sub>Yaaaaaahs!</sub>
         </h1>
-        <BannerContents />
+        {tipsyIsAvailable ? <BannerContents /> : <NoBannerContents />}
       </p>
     </UnClosableModal>
+  )
+}
+
+function NoBannerContents(): VNode {
+  return (
+    <>
+      TIPSY is no longer available.
+      <details>
+        <summary>Former Licensing Terms (no longer valid)</summary>
+        <BannerContents />
+      </details>
+    </>
   )
 }
 
