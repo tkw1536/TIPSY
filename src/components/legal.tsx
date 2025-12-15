@@ -8,7 +8,10 @@ import { classes } from '../lib/utils/classes'
 import * as styles from './legal.module.css'
 import useInspectorStore from '../app/inspector/state'
 
-const disclaimer = generateDisclaimer()
+export const testDisclaimer = 'disclaimer for test'
+
+const disclaimer =
+  import.meta.env.MODE === 'test' ? testDisclaimer : generateDisclaimer()
 
 export default function Legal(): VNode<any> {
   return (
