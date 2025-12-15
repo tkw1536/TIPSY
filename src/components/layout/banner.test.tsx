@@ -2,7 +2,7 @@ import { describe, expect, test, vi, beforeEach, afterEach } from 'vitest'
 import { render, fireEvent } from '@testing-library/preact'
 import UnClosableModal from './banner'
 
-import type {Window} from "happy-dom"
+import type { Window } from 'happy-dom'
 
 describe('UnClosableModal', () => {
   beforeEach(() => {
@@ -136,7 +136,7 @@ describe('UnClosableModal', () => {
 
     // Manually remove the dialog element from the DOM
     dialog.remove()
-    await (window as unknown as Window).happyDOM.waitUntilComplete();
+    await (window as unknown as Window).happyDOM.waitUntilComplete()
 
     expect(onDisappear).toHaveBeenCalled()
   })
@@ -157,8 +157,7 @@ describe('UnClosableModal', () => {
     expect(dialog).not.toBeNull()
     expect(document.contains(dialog)).toBe(true)
 
-    await (window as unknown as Window).happyDOM.waitUntilComplete();
-
+    await (window as unknown as Window).happyDOM.waitUntilComplete()
 
     expect(onDisappear).not.toHaveBeenCalled()
   })
