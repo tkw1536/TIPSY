@@ -6,7 +6,6 @@ For more information about the motivation behind TIPSY, you can read:
 - Chapter VI.3.4 of my PhD dissertation "Towards A Commons Of Object-Centered Research Data" with doi [10.25593/open-fau-1825](https://doi.org/10.25593/open-fau-1825) or
 - the Extended Abstract about TIPSY with doi [10.5281/zenodo.16735970](https://doi.org/10.5281/zenodo.16735970).
 
-TIPSY is no longer available for use.
 This source code is made available for evaluation purposes only.
 
 ## User-facing Documentation
