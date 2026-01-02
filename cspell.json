@@ -29,6 +29,7 @@
     "renderable",
     "typechecker",
     "unplugin",
+    "unstub",
     "vitest",
     "Wiesing",
     "WissKI",
