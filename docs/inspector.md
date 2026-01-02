@@ -197,18 +197,18 @@ This is achieved by toggling off the `Complex` switch.
 In this case it's color is determined by the most important annotation.
 Most important means the path with the fewest number of descendants, or (if several nodes have the same number of descendants) the one higher in the pathbuilder.
 
-
 ## The URI List Tab
 
 The URI List tab lists all URIs directly used in the pathbuilder.
 The table shows the following columns:
+
 - The URI itself.
 - Optionally the URIs inverse (if it exists) as well as if the primary URI is inverted or not.
 - The number of times it is used as a concept, property, and datatype in the pathbuilder.
 
 Unlike other tabs, the tab does not use the Namespace Map by default.
 This makes it easier to read URIs.
-The namespace map can be enabled using the side panel. 
+The namespace map can be enabled using the side panel.
 
 The inverse URI column can be enabled using settings in the side panel.
 
@@ -218,7 +218,6 @@ Sorting of the table can also be done by clicking on the `+` or `-` of the appro
 Finally, it is also possible to search for specific URIs and highlight them in the table.
 This can be done by typing a query in the search box at the top of the `URI` column.
 Search is case-insensitive, and a column is matched if either the long form URI or abbreviated (namespaced) URI contains the search string.
-
 
 ## The URI Config Tab
 
@@ -261,7 +260,7 @@ Individual URLs can be added, adjusted or deleted.
 
 - To adjust a URI, type the new URI into the URI field.
   Changes are only applied once the `Apply` button is pressed; unapplied changes are discarded when navigating to another tab.
-- To swap a pair around, click the `Swap` button. This is only saved once you hit `Apply`. 
+- To swap a pair around, click the `Swap` button. This is only saved once you hit `Apply`.
 - To delete a URI, click the `Delete` button.
 - To add an additional , fill out the `NS` and `URI` fields, and then click the `Add` button.
   Namespaces may only consist of letters, numbers, `-` and `_`s.
