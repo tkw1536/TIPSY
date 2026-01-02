@@ -17,6 +17,7 @@ const DiagTab = lazy(async () => await import('./tabs/diag'))
 export default function InspectorApp(): JSX.Element {
   const activeTab = useInspectorStore(s => s.activeTab)
   const loadStage = useInspectorStore(s => s.loadStage)
+  const isEmbedded = useInspectorStore(s => s.embed)
   const modal = useInspectorStore(s => s.modal)
   const setActiveTab = useInspectorStore(s => s.setActiveTab)
   const closeModal = useInspectorStore(s => s.closeModal)
@@ -25,7 +26,7 @@ export default function InspectorApp(): JSX.Element {
 
   return (
     <>
-      <LegalModal open={modal} onClose={closeModal} />
+      <LegalModal open={modal} onClose={closeModal} isEmbedded={isEmbedded} />
       <Tabs onChangeTab={setActiveTab} active={activeTab}>
         <TabLabel>
           <b>

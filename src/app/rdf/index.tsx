@@ -22,7 +22,7 @@ export default function RDFViewerApp(): JSX.Element {
 
   return (
     <>
-      <LegalModal open={modal} onClose={closeModal} />
+      <LegalModal open={modal} onClose={closeModal} isEmbedded={false} />
       <Tabs onChangeTab={setActiveTab} active={activeTab}>
         <TabLabel>
           <b>RDF Viewer</b>

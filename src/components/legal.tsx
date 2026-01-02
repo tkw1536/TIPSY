@@ -6,7 +6,6 @@ import HTML from './html'
 import { useCallback, useRef, useState } from 'preact/hooks'
 import { classes } from '../lib/utils/classes'
 import * as styles from './legal.module.css'
-import useInspectorStore from '../app/inspector/state'
 
 export const testDisclaimer = 'disclaimer for test'
 
@@ -84,9 +83,10 @@ const bannerHTML = markdownDocument('banner.md')
 
 export function LegalModal(props: {
   open: boolean
+  isEmbedded: boolean
   onClose: () => void
 }): JSX.Element | null {
-  const { open, onClose } = props
+  const { open, onClose, isEmbedded } = props
   const handleClose = useCallback((): boolean => {
     if (!tipsyIsAvailable) {
       alert('TIPSY IS NO LONGER AVAILABLE.')
@@ -119,43 +119,57 @@ export function LegalModal(props: {
         <h1>
           TIPSY - Tom's Inspector for Pathbuilders <sub>Yaaaaaahs!</sub>
         </h1>
-        {tipsyIsAvailable ? <BannerContents /> : <NoBannerContents />}
+        {tipsyIsAvailable ? (
+          <BannerContents isEmbedded={isEmbedded} />
+        ) : (
+          <NoBannerContents isEmbedded={isEmbedded} />
+        )}
       </p>
     </UnClosableModal>
   )
 }
 
-function NoBannerContents(): VNode {
+function NoBannerContents({ isEmbedded }: { isEmbedded: boolean }): VNode {
   return (
     <>
       TIPSY is no longer available.
       <details>
         <summary>Former Licensing Terms (no longer valid)</summary>
-        <BannerContents />
+        <BannerContents isEmbedded={isEmbedded} />
       </details>
     </>
   )
 }
 
-export function BannerContents(): VNode {
+export function BannerContents({ isEmbedded }: { isEmbedded: boolean }): VNode {
   return (
     <>
       <HTML
         html={bannerHTML}
         trim={false}
         noContainer
-        components={{ Legal: LegalDisclaimer, Copyable, Embedded }}
+        components={{
+          Legal: LegalDisclaimer,
+          Copyable,
+          Embed: (props: { children: VNode[] }) => (
+            <Embedded isEmbedded={isEmbedded} children={props.children} />
+          ),
+        }}
       />
     </>
   )
 }
 
-function Embedded(props: { children: VNode[] }): VNode {
-  const embed = useInspectorStore(s => s.embed)
-
-  if (!embed) {
+function Embedded({
+  children,
+  isEmbedded,
+}: {
+  children: VNode[]
+  isEmbedded: boolean
+}): VNode {
+  if (!isEmbedded) {
     return <Fragment />
   }
 
-  return <Fragment>{props.children}</Fragment>
+  return <Fragment>{children}</Fragment>
 }
