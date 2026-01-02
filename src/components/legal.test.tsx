@@ -104,7 +104,9 @@ describe('LegalModal', () => {
   test('returns null when open is false', () => {
     const onClose = vi.fn()
 
-    const { container } = render(<LegalModal open={false} onClose={onClose} isEmbedded={false} />)
+    const { container } = render(
+      <LegalModal open={false} onClose={onClose} isEmbedded={false} />,
+    )
 
     expect(container.innerHTML).toBe('')
   })
@@ -112,7 +114,9 @@ describe('LegalModal', () => {
   test('renders dialog when open is true', () => {
     const onClose = vi.fn()
 
-    const { container } = render(<LegalModal open={true} onClose={onClose} isEmbedded={false} />)
+    const { container } = render(
+      <LegalModal open={true} onClose={onClose} isEmbedded={false} />,
+    )
 
     const dialog = container.querySelector('dialog')
     expect(dialog).not.toBeNull()
@@ -121,7 +125,9 @@ describe('LegalModal', () => {
   test('renders title with TIPSY heading', () => {
     const onClose = vi.fn()
 
-    const { container } = render(<LegalModal open={true} onClose={onClose} isEmbedded={false} />)
+    const { container } = render(
+      <LegalModal open={true} onClose={onClose} isEmbedded={false} />,
+    )
 
     const heading = container.querySelector('h1')
     expect(heading).not.toBeNull()
@@ -131,7 +137,9 @@ describe('LegalModal', () => {
   test('renders button with agreement text', () => {
     const onClose = vi.fn()
 
-    const { container } = render(<LegalModal open={true} onClose={onClose} isEmbedded={false} />)
+    const { container } = render(
+      <LegalModal open={true} onClose={onClose} isEmbedded={false} />,
+    )
 
     const button = container.querySelector('button')
     expect(button).not.toBeNull()
@@ -141,7 +149,9 @@ describe('LegalModal', () => {
   test('shows alert when TIPSY is not available and button is clicked', () => {
     const onClose = vi.fn()
 
-    const { container } = render(<LegalModal open={true} onClose={onClose} isEmbedded={false} />)
+    const { container } = render(
+      <LegalModal open={true} onClose={onClose} isEmbedded={false} />,
+    )
 
     const button = container.querySelector('button')
     expect(button).not.toBeNull()
