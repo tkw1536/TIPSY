@@ -58,7 +58,7 @@
     "graphology-types": "^0.24.8",
     "hammerjs": "^2.0.8",
     "keycharm": "^0.4.0",
-    "preact": "^10.26.9",
+    "preact": "^10.28.2",
     "preact-markup": "^2.1.1",
     "rdflib": "^2.3.0",
     "react": "file:./packages/fake_react",

@@ -6150,10 +6150,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.26.9":
-  version: 10.27.2
-  resolution: "preact@npm:10.27.2"
-  checksum: 10c0/951b708f7afa34391e054b0f1026430e8f5f6d5de24020beef70288e17067e473b9ee5503a994e0a80ced014826f56708fea5902f80346432c22dfcf3dff4be7
+"preact@npm:^10.28.2":
+  version: 10.28.2
+  resolution: "preact@npm:10.28.2"
+  checksum: 10c0/eb60bf526eb6971701e6ac9c25236aca451f17f99e9c24704419196989b15bb576ed3101e084b151cd0fb30546b3e5e1ba73b774e8be2f2ed8187db42ec65faf
   languageName: node
   linkType: hard
 
@@ -7093,7 +7093,7 @@ __metadata:
     keycharm: "npm:^0.4.0"
     marked: "npm:^16.4.1"
     marked-footnote: "npm:^1.3.0"
-    preact: "npm:^10.26.9"
+    preact: "npm:^10.28.2"
     preact-markup: "npm:^2.1.1"
     prettier: "npm:^3.6.2"
     process: "npm:^0.11.10"
