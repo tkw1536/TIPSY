@@ -1,5 +1,5 @@
 import { describe, expect, test, vi, beforeEach, afterEach } from 'vitest'
-import { render, fireEvent } from '@testing-library/preact'
+import { render } from '@testing-library/preact'
 import Legal, {
   LegalDisclaimer,
   LegalModal,
