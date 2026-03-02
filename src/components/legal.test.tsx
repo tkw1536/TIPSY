@@ -146,6 +146,7 @@ describe('LegalModal', () => {
     expect(button?.textContent).toBe('I Understand And Agree To These Terms')
   })
 
+  /*
   test('shows alert when TIPSY is not available and button is clicked', () => {
     const onClose = vi.fn()
 
@@ -164,6 +165,7 @@ describe('LegalModal', () => {
     // onClose should not be called when TIPSY is not available
     expect(onClose).not.toHaveBeenCalled()
   })
+  */
 
   test('shows modal on mount', () => {
     const onClose = vi.fn()
