@@ -18,18 +18,10 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         inspector: resolve(__dirname, 'index.html'),
         rdf: resolve(__dirname, 'rdf', 'index.html'),
-      },
-      output: {
-        manualChunks: {
-          // define a couple smaller chunks for vis-network
-          'vis-network': ['vis-network'],
-          'vis-data': ['vis-data'],
-          'vis-network-css': ['vis-network/styles/vis-network.css?inline'],
-        },
       },
     },
   },
