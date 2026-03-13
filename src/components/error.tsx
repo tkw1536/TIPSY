@@ -165,13 +165,13 @@ class ApplicationCrash extends Error {
         : new Error(String(error), { cause: error })
     const message =
       typeof componentStack === 'string'
-        ? 'An error occurred while rendering. \n' + componentStack
-        : 'An unexpected error occurred. \n' + err.message
+        ? `An error occurred while rendering. \n${componentStack}`
+        : `An unexpected error occurred. \n${err.message}`
 
     super(message, { cause: err })
 
     this.stack = err.stack
-    this.name = 'Application Crash: ' + err.name
+    this.name = `Application Crash: ${err.name}`
   }
 
   readonly name: string

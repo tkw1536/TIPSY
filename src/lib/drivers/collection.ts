@@ -55,7 +55,7 @@ class DriverCollection<
   ): Promise<DriverClass<NodeLabel, EdgeLabel, Options, AttachmentKey>> {
     const lazy = this.#values.get(name)
     if (typeof lazy === 'undefined') {
-      throw new Error('unknown renderer ' + JSON.stringify(name))
+      throw new Error(`unknown renderer ${JSON.stringify(name)}`)
     }
 
     return await lazy.Get(async () => {

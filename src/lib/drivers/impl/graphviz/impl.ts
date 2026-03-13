@@ -16,9 +16,9 @@ export async function processRequest(
   const { instance } = await import('@viz-js/viz')
   const result = (await instance()).render(request.input, request.options)
   if (result.status !== 'success') {
-    const message =
-      'render() returned failure: \n' +
-      result.errors.map(formatError).join('\n')
+    const message = `render() returned failure: \n${result.errors
+      .map(formatError)
+      .join('\n')}`
     throw new Error(message)
   }
   return result.output

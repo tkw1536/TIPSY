@@ -16,7 +16,7 @@ export class IDPool<T = any> {
   #state = 0
 
   static #formatID(id: number): string {
-    return 'I' + id.toString(16).toUpperCase().padStart(15, '0')
+    return `I${id.toString(16).toUpperCase().padStart(15, '0')}`
   }
 
   /**

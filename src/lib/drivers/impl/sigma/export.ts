@@ -9,8 +9,8 @@ export default async function exportRaster(
     const canvas = document.createElement('canvas')
     const { width, height } = getCanvasDimensions(renderer)
 
-    canvas.setAttribute('width', width + '')
-    canvas.setAttribute('height', height + '')
+    canvas.setAttribute('width', `${width}`)
+    canvas.setAttribute('height', `${height}`)
 
     const ctx = canvas.getContext('2d')
     if (ctx === null) {

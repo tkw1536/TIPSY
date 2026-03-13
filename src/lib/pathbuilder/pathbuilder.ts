@@ -114,7 +114,9 @@ export class Pathbuilder {
           isTag(n, Pathbuilder.snapshotElement) &&
           values.has(n.getAttribute('name') ?? ''),
       )
-      .forEach(t => t.parentNode?.removeChild(t))
+      .forEach(t => {
+        t.parentNode?.removeChild(t)
+      })
 
     // set the new values
     values.forEach((data, name) => {
@@ -137,7 +139,7 @@ export class Pathbuilder {
   }
 
   static parse(source: string): Pathbuilder {
-    const parser = new DOMParser({ onError: () => {} })
+    const parser = new DOMParser({ onError: (): void => {} })
     const result = parser.parseFromString(source, MIME_TYPE.XML_TEXT)
 
     // find the top level node

@@ -51,6 +51,8 @@ export default [
 
       '@typescript-eslint/max-params': ['off'], // this is a bullshit rule that doesn't help
 
+      'require-unicode-regexp': ['error', { requireFlag: 'u' }], // the "v" flag is not supported by target ES2022
+
       // these rules have too many false positives ...
       '@typescript-eslint/no-magic-numbers': ['off'],
       '@typescript-eslint/prefer-destructuring': ['off'],
@@ -66,6 +68,9 @@ export default [
     rules: {
       // spying in test files is fine, so we disable this
       '@typescript-eslint/unbound-method': ['off'],
+
+      // used by so many mock functions
+      '@typescript-eslint/strict-void-return': ['off'],
     },
     files: testFiles,
   },

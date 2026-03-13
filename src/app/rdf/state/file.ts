@@ -57,8 +57,8 @@ export const create: StateCreator<BoundState, [], [], Slice> = set => {
           filename =
             file.name !== ''
               ? file.name
-              : 'upload.' + contentTypeToExtension(contentType)
-          const base = 'file://' + filename
+              : `upload.${contentTypeToExtension(contentType)}`
+          const base = `file://${filename}`
 
           // parse in the graph
           parse(source, store, base, contentType)

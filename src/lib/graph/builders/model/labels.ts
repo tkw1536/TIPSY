@@ -14,9 +14,10 @@ export type ModelNode = ConceptModelNode | LiteralModelNode
 
 export type ModelAttachmentKey = 'fields' | 'bundles'
 
-export class ConceptModelNode
-  implements Renderable<ModelOptions, ModelAttachmentKey>
-{
+export class ConceptModelNode implements Renderable<
+  ModelOptions,
+  ModelAttachmentKey
+> {
   constructor(
     /** class represented at this node */
     public readonly clz: string,
@@ -81,15 +82,15 @@ export class ConceptModelNode
 
     if (options.display.Labels.Bundle) {
       bundles.forEach(bundle => {
-        labelParts.push('Bundle ' + bundle.path.name)
-        tooltipParts.push('Bundle ' + bundle.path.id)
+        labelParts.push(`Bundle ${bundle.path.name}`)
+        tooltipParts.push(`Bundle ${bundle.path.id}`)
       })
     }
 
     if (options.display.Labels.ConceptField) {
       fields.forEach(field => {
-        labelParts.push('Field ' + field.path.name)
-        tooltipParts.push('Field ' + field.path.id)
+        labelParts.push(`Field ${field.path.name}`)
+        tooltipParts.push(`Field ${field.path.id}`)
       })
     }
 
@@ -131,14 +132,14 @@ export class ConceptModelNode
       const color = options.cm.get(bundle)
       return {
         node: {
-          id: bundleID + '-node',
+          id: `${bundleID}-node`,
           label: BundleLabels ? bundle.path.name : null,
           tooltip: BundleLabels ? bundle.path.id : null,
           color,
           shape: 'diamond',
         },
         edge: {
-          id: bundleID + '-edge',
+          id: `${bundleID}-edge`,
           label: null,
           tooltip: null,
           color,
@@ -153,14 +154,14 @@ export class ConceptModelNode
 
       return {
         node: {
-          id: fieldID + '-node',
+          id: `${fieldID}-node`,
           label: ConceptFieldLabels ? field.path.name : null,
           tooltip: ConceptFieldLabels ? field.path.id : null,
           color,
           shape: 'diamond',
         },
         edge: {
-          id: fieldID + '-edge',
+          id: `${fieldID}-edge`,
           label: ConceptFieldTypes ? field.path.informativeFieldType : null,
           tooltip: ConceptFieldTypes ? field.path.fieldType : null,
           color,
@@ -260,14 +261,14 @@ export class LiteralModelNode {
         const color = options.cm.get(field)
         return {
           node: {
-            id: fieldID + '-node',
+            id: `${fieldID}-node`,
             label: DatatypeFieldLabels ? field.path.name : null,
             tooltip: DatatypeFieldLabels ? field.path.id : null,
             color,
             shape: 'diamond',
           },
           edge: {
-            id: fieldID + '-edge',
+            id: `${fieldID}-edge`,
             label: DatatypeFieldTypes ? field.path.informativeFieldType : null,
             tooltip: DatatypeFieldTypes ? field.path.fieldType : null,
             color,

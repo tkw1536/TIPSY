@@ -46,9 +46,10 @@ function WelcomeView(): JSX.Element {
 
   const loadSampleFile = useCallback(() => {
     loadFile(async (): Promise<File> => {
-      const text = await import(
-        '../../../../fixtures/pathbuilder/example_file_in_ui.xml?raw'
-      ).then(m => m.default)
+      const text =
+        await import('../../../../fixtures/pathbuilder/example_file_in_ui.xml?raw').then(
+          m => m.default,
+        )
       return new File([text], 'sample.xml', { type: Type.XML })
     }, false)
   }, [loadFile])

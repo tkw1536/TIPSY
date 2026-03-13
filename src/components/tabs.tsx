@@ -43,7 +43,7 @@ export default function Tabs(props: TabsProps): JSX.Element {
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- needed by type inference
           child !== null &&
           typeof child === 'object' &&
-          Object.prototype.hasOwnProperty.call(child, 'type') &&
+          Object.hasOwn(child, 'type') &&
           typeof child.type !== 'undefined',
       )
       .map(c => {

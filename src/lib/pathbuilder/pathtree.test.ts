@@ -215,7 +215,7 @@ describe(PathTree, async () => {
   ])('isMainBundle(%1) === %2', (tBundle, want) => {
     const bundle = sampleTree.find(tBundle)
     if (!(bundle instanceof Bundle)) {
-      throw new Error('test case: missing bundle ' + tBundle)
+      throw new Error(`test case: missing bundle ${tBundle}`)
     }
 
     expect(bundle.isMain).toBe(want)
@@ -237,7 +237,7 @@ describe(PathTree, async () => {
   ])('mainBundle(%1) === %2', (tNode, tMain) => {
     const node = typeof tNode === 'string' ? sampleTree.find(tNode) : sampleTree
     if (node === null) {
-      throw new Error('test case: missing node ' + tNode)
+      throw new Error(`test case: missing node ${tNode}`)
     }
 
     const want = typeof tMain === 'string' ? sampleTree.find(tMain) : null

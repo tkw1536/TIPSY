@@ -278,7 +278,7 @@ export function ExportControl<
         })
         .catch((e: unknown) => {
           console.error('failed to download: ', e)
-          alert('Download has failed: ' + JSON.stringify(e))
+          alert(`Download has failed: ${JSON.stringify(e)}`)
         })
     },
     [controller, size],

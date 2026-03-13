@@ -136,9 +136,9 @@ interface GraphDisplayMainProps<
   Options,
   AttachmentKey extends string,
 > extends Omit<
-    KernelProps<NodeLabel, EdgeLabel, Options, AttachmentKey>,
-    'graph' | 'driver'
-  > {
+  KernelProps<NodeLabel, EdgeLabel, Options, AttachmentKey>,
+  'graph' | 'driver'
+> {
   driver: AsyncState<
     DriverClass<NodeLabel, EdgeLabel, Options, AttachmentKey>,
     Error

@@ -15,15 +15,15 @@ const renderer: RendererObject = {
       href.startsWith('#') ||
       href.startsWith('?')
 
-    let out = '<a href="' + href + '"'
+    let out = `<a href="${href}"`
     if (title !== null) {
-      out += ' title="' + title + '"'
+      out += ` title="${title}"`
     }
     if (!isInternal) {
       // spellchecker:words noopener noreferrer
       out += ' target="_blank" rel="noopener noreferrer"'
     }
-    out += '>' + text + '</a>'
+    out += `>${text}</a>`
     return out
   },
 }

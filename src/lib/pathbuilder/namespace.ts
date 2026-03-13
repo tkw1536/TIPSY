@@ -10,7 +10,7 @@ export interface NamespaceMapExport {
  * NamespaceMap represents an immutable namespace map
  */
 export class NamespaceMap {
-  static readonly validKey = /^[a-zA-Z0-9_-]+$/
+  static readonly validKey = /^[a-zA-Z0-9_-]+$/u
 
   /** maps short to long */
   readonly #entries: ImmutableMap<string, string>
@@ -141,12 +141,9 @@ export class NamespaceMap {
   apply(uri: string): string {
     const [ns, prefix, inverse] = this.#match(uri)
     if (ns === null) return uri
-    return (
-      (inverse ? '^' : '') +
-      ns +
-      ':' +
-      uri.substring(prefix.length + (inverse ? 1 : 0))
-    )
+    return `${(inverse ? '^' : '') + ns}:${uri.substring(
+      prefix.length + (inverse ? 1 : 0),
+    )}`
   }
   /** Applies the reverse of this namespace-map to a string, that is it replaces and shortened namespace with the long-form version */
   applyReverse(uri: string): string {
@@ -160,7 +157,7 @@ export class NamespaceMap {
       theURI = uri
     }
     for (const [s, l] of this.#entries) {
-      if (theURI.startsWith(s + ':')) {
+      if (theURI.startsWith(`${s}:`)) {
         return (inverse ? '^' : '') + l + theURI.substring(s.length + 1)
       }
     }
@@ -223,7 +220,7 @@ export class NamespaceMap {
   static generate(
     uris: Set<string>,
     separators = '/#',
-    specials: Array<[string, string]> | undefined = undefined,
+    specials?: Array<[string, string]>,
     len = 30,
   ): NamespaceMap {
     const prefixes = new Set<string>()
@@ -314,7 +311,7 @@ export class NamespaceMap {
 
     // guesstimate a special prefix
     return (
-      (name.match(/([a-zA-Z0-9]+)/g) ?? []).find(v => v !== 'www') ?? 'prefix'
+      (name.match(/[a-zA-Z0-9]+/gu) ?? []).find(v => v !== 'www') ?? 'prefix'
     )
   }
 

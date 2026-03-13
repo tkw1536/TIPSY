@@ -10,13 +10,13 @@ describe(RDFGraphBuilder, () => {
   const exNS = 'http://example.org/'
   const foafNS = 'http://xmlns.com/foaf/0.1/'
 
-  const alice = new NamedNode(exNS + 'alice')
-  const bob = new NamedNode(exNS + 'bob')
-  const charlie = new NamedNode(exNS + 'charlie')
+  const alice = new NamedNode(`${exNS}alice`)
+  const bob = new NamedNode(`${exNS}bob`)
+  const charlie = new NamedNode(`${exNS}charlie`)
 
-  const name = new NamedNode(foafNS + 'name')
-  const knows = new NamedNode(foafNS + 'knows')
-  const age = new NamedNode(foafNS + 'age')
+  const name = new NamedNode(`${foafNS}name`)
+  const knows = new NamedNode(`${foafNS}knows`)
+  const age = new NamedNode(`${foafNS}age`)
 
   const aliceName = new Literal('Alice')
   const bobName = new Literal('Bob')
@@ -48,7 +48,7 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
       expect(aliceId).not.toBeNull()
       if (aliceId === null) return
 
@@ -82,7 +82,7 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const blankId = g.getNode('b//' + blank1.id)
+      const blankId = g.getNode(`b//${blank1.id}`)
       expect(blankId).not.toBeNull()
       if (blankId === null) return
 
@@ -101,8 +101,8 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
-      const bobId = g.getNode('n//' + bob.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
+      const bobId = g.getNode(`n//${bob.uri}`)
 
       expect(aliceId).not.toBeNull()
       expect(bobId).not.toBeNull()
@@ -138,24 +138,24 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
       expect(aliceId).not.toBeNull()
       if (aliceId === null) return
 
       const stringId = g.getNodeString(aliceId)
-      expect(stringId).toBe('n//' + alice.uri)
+      expect(stringId).toBe(`n//${alice.uri}`)
     })
 
     test('BlankNode uses b// prefix', () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const blankId = g.getNode('b//' + blank1.id)
+      const blankId = g.getNode(`b//${blank1.id}`)
       expect(blankId).not.toBeNull()
       if (blankId === null) return
 
       const stringId = g.getNodeString(blankId)
-      expect(stringId).toBe('b//' + blank1.id)
+      expect(stringId).toBe(`b//${blank1.id}`)
     })
 
     test('Literal nodes have no string ID', () => {
@@ -177,8 +177,8 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
-      const bobId = g.getNode('n//' + bob.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
+      const bobId = g.getNode(`n//${bob.uri}`)
 
       expect(aliceId).not.toBeNull()
       expect(bobId).not.toBeNull()
@@ -191,8 +191,8 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const bobId = g.getNode('n//' + bob.uri)
-      const charlieId = g.getNode('n//' + charlie.uri)
+      const bobId = g.getNode(`n//${bob.uri}`)
+      const charlieId = g.getNode(`n//${charlie.uri}`)
 
       expect(bobId).not.toBeNull()
       expect(charlieId).not.toBeNull()
@@ -205,7 +205,7 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
       expect(aliceId).not.toBeNull()
       if (aliceId === null) return
 
@@ -224,7 +224,7 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
       expect(aliceId).not.toBeNull()
 
       if (aliceId === null) return
@@ -243,7 +243,7 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
       expect(aliceId).not.toBeNull()
       if (aliceId === null) return
 
@@ -265,7 +265,7 @@ describe(RDFGraphBuilder, () => {
       const builder = new RDFGraphBuilder(store)
       const g = builder.build()
 
-      const aliceId = g.getNode('n//' + alice.uri)
+      const aliceId = g.getNode(`n//${alice.uri}`)
       expect(aliceId).not.toBeNull()
       if (aliceId === null) return
 

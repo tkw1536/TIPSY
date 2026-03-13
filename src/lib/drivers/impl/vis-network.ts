@@ -430,7 +430,9 @@ class Dataset {
 
     // create a new set of edges
     const edgeSet = new DataSet<VisEdge<string>>()
-    edges.forEach(edge => edgeSet.add(edge))
+    edges.forEach(edge => {
+      edgeSet.add(edge)
+    })
 
     // create a temporary container with the original size
     const container = document.createElement('div')
@@ -465,7 +467,7 @@ class Dataset {
           await new Promise<Blob>((resolve, reject) => {
             canvas.toBlob(
               blob => {
-                if (blob == null) {
+                if (blob === null) {
                   reject(new Error('no blob'))
                   return
                 }

@@ -67,11 +67,11 @@ export default class RDFGraphBuilder extends GraphBuilder<
   static #subjectID(term: SubjectType): string {
     switch (term.termType) {
       case 'BlankNode':
-        return 'b//' + term.id
+        return `b//${term.id}`
       case 'NamedNode':
-        return 'n//' + term.uri
+        return `n//${term.uri}`
       case 'Variable':
-        return 'v//' + term.uri
+        return `v//${term.uri}`
     }
     throw new Error('never reached')
   }
@@ -120,8 +120,8 @@ function makeRenderMethod(
         element.shape = 'box'
         break
       case 'Variable':
-        element.label = '?' + node.value
-        element.tooltip = '?' + node.value
+        element.label = `?${node.value}`
+        element.tooltip = `?${node.value}`
         element.color = 'red'
         element.shape = 'ellipse'
         break

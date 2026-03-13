@@ -81,7 +81,7 @@ export abstract class DeduplicatingBuilder {
 
   /** checks if the given uri is included in the graph */
   #includesNode(node: PathTreeNode): boolean {
-    if (this.#options.include == null) return true
+    if (typeof this.#options.include === 'undefined') return true
 
     return this.#options.include(node)
   }

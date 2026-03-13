@@ -76,7 +76,9 @@ export default class Graph<NodeLabel, EdgeLabel> {
 
     // remove edges to and from the node
     this.#edges.delete(theId)
-    this.#edges.forEach(edgeSet => edgeSet.delete(theId))
+    this.#edges.forEach(edgeSet => {
+      edgeSet.delete(theId)
+    })
   }
 
   /** getNodes gets the ids of the given nodes */
@@ -114,7 +116,7 @@ export default class Graph<NodeLabel, EdgeLabel> {
 
     // get or initialize this.edges[fromId]
     let fromMap = this.#edges.get(fromId)
-    if (fromMap == null) {
+    if (typeof fromMap === 'undefined') {
       fromMap = new Map<number, { id: number; label: EdgeLabel }>()
       this.#edges.set(fromId, fromMap)
     }
@@ -148,7 +150,7 @@ export default class Graph<NodeLabel, EdgeLabel> {
     if (typeof toId !== 'number') return null
 
     const fromMap = this.#edges.get(fromId)
-    if (fromMap == null) return null
+    if (typeof fromMap === 'undefined') return null
 
     const label = fromMap.get(toId)?.label
     if (typeof label === 'undefined') return null
@@ -177,7 +179,7 @@ export default class Graph<NodeLabel, EdgeLabel> {
     if (typeof toId !== 'number') return
 
     const fromMap = this.#edges.get(fromId)
-    if (fromMap == null) return
+    if (typeof fromMap === 'undefined') return
 
     // delete edges to the given id!
     fromMap.delete(toId)

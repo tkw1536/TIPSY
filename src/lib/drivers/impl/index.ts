@@ -158,8 +158,7 @@ export abstract class DriverImpl<
   Context,
   Mount,
   HotContext = Context,
-> implements Driver<NodeLabel, EdgeLabel, Options, AttachmentKey>
-{
+> implements Driver<NodeLabel, EdgeLabel, Options, AttachmentKey> {
   abstract readonly driver: DriverClass<
     NodeLabel,
     EdgeLabel,
